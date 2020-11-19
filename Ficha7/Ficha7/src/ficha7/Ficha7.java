@@ -1,6 +1,6 @@
 package ficha7;
 
-import EX1.printElements;
+import EX1_EX2.printElements;
 import exceptions.InvalidElementException;
 import java.util.Iterator;
 import lists.LinkedList;
