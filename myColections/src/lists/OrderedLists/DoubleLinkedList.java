@@ -1,0 +1,179 @@
+package lists.OrderedLists;
+
+import contracts.ListADT;
+import exceptions.EmptyException;
+import java.util.Iterator;
+import nodes.DoubleLinkedNode;
+
+/**
+ *
+ * @author Nome : José Pedro Fernandes Número: 8190239 Turma: 1
+ * @param <T>
+ */
+public abstract class DoubleLinkedList<T> implements ListADT<T>, Iterable<T> {
+
+    protected DoubleLinkedNode<T> head;
+
+    protected DoubleLinkedNode<T> tail;
+
+    protected int size;
+
+    private final int ELEMENT_NOT_FOUND = -1;
+
+    protected int modCount;
+
+    public DoubleLinkedList() {
+        this.head = new DoubleLinkedNode<>();
+        this.tail = new DoubleLinkedNode<>();
+        this.head.setNext(this.tail);
+        this.tail.setPrevious(this.head);
+        this.size = 0;
+        this.modCount = 0;
+    }
+
+    private class DoubleLinkedListIterator<T> implements Iterator<T> {
+
+        private DoubleLinkedNode<T> cursor;
+
+        private final int excpectedModCount;
+
+        public DoubleLinkedListIterator(int modCount) {
+            this.excpectedModCount = modCount;
+            cursor = (DoubleLinkedNode<T>) head.getNext();
+        }
+
+        @Override
+        public boolean hasNext() {
+            if (this.excpectedModCount != modCount) {
+                return false;
+            }
+
+            return (cursor != tail);
+        }
+
+        @Override
+        public T next() {
+            if (this.hasNext()) {
+                T element = cursor.getElement();
+                cursor = cursor.getNext();
+                return element;
+            }
+            return null;
+        }
+    }
+
+    @Override
+    public T removeFirst() throws EmptyException {
+        if (this.isEmpty()) {
+            throw new EmptyException("Empty List");
+        }
+        T removedElement = this.head.getNext().getElement();
+        this.head.setNext(this.head.getNext().getNext());
+        this.head.getNext().setPrevious(this.head);
+        this.size--;
+        this.modCount++;
+        return removedElement;
+    }
+
+    @Override
+    public T removeLast() throws EmptyException {
+        if (this.isEmpty()) {
+            throw new EmptyException("Empty List");
+        }
+        T removedElement = this.tail.getPrevious().getElement();
+
+        this.tail.setPrevious(this.tail.getPrevious().getPrevious());
+        this.tail.getPrevious().setNext(this.tail);
+        this.size--;
+        this.modCount++;
+        return removedElement;
+    }
+
+    @Override
+    public T remove(T element) throws EmptyException {
+        if (this.isEmpty()) {
+            throw new EmptyException("Empty List");
+        }
+        DoubleLinkedNode<T> targetNode = this.find(element);
+
+        if (targetNode == null) {
+            return null;
+        }
+
+        targetNode.getPrevious().setNext(targetNode.getNext());
+        targetNode.getNext().setPrevious(targetNode.getPrevious());
+        this.size--;
+        this.modCount++;
+
+        return element;
+    }
+
+    @Override
+    public T first() {
+        return this.head.getElement();
+    }
+
+    @Override
+    public T last() {
+        return this.tail.getElement();
+    }
+
+    @Override
+    public boolean contains(T target) {
+        return (this.find(target) != null);
+    }
+
+    private DoubleLinkedNode<T> find(T target) {
+        DoubleLinkedNode<T> current = this.head.getNext();
+        DoubleLinkedNode<T> targetNode = null;
+        boolean found = false;
+
+        while (current != this.tail && !found) {
+            if (current.getElement() == target) {
+                found = true;
+            } else {
+                current = current.getNext();
+            }
+        }
+        if (found) {
+            targetNode = current;
+        }
+        return targetNode;
+    }
+
+    @Override
+    public boolean isEmpty() {
+        return (this.size == 0);
+    }
+
+    @Override
+    public int size() {
+        return this.size;
+    }
+
+    @Override
+    public Iterator<T> iterator() {
+        return (new DoubleLinkedListIterator<>(this.modCount));
+    }
+
+    /**
+     * Returns a String representation of the {@link DoubleLinkedNode}.
+     *
+     * @return a String representation of the {@link DoubleLinkedNode}.
+     */
+    @Override
+    public String toString() {
+        if (this.isEmpty()) {
+            return null;
+        }
+        String result = "";
+        DoubleLinkedNode<T> current = this.head.getNext();
+
+        while (current != this.tail) {
+            result += current.getElement().toString() + "\n";
+            current = current.getNext();
+        }
+
+        return result.substring(0, result.length() - 1);
+    }
+}
