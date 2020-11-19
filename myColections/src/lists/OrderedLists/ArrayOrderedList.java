@@ -8,13 +8,13 @@ import exceptions.InvalidElementException;
  * @author Nome : José Pedro Fernandes Número: 8190239 Turma: 1
  * @param <T> The type of elements to be stored.
  */
-public class ArrayOrderList<T> extends ArrayList<T> {
+public class ArrayOrderedList<T> extends ArrayList<T> {
 
-    public ArrayOrderList() {
+    public ArrayOrderedList() {
         super();
     }
 
-    public ArrayOrderList(int size) {
+    public ArrayOrderedList(int size) {
         super(size);
     }
 

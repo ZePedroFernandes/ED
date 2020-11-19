@@ -7,7 +7,7 @@ package zmain;
 
 import exceptions.EmptyException;
 import java.util.Iterator;
-import lists.OrderedLists.ArrayOrderList;
+import lists.OrderedLists.ArrayOrderedList;
 import lists.unorderedLists.ArrayUnorderedList;
 
 /**
