@@ -24,7 +24,7 @@ public class Ficha7 {
             lista.add(5);
             lista.add(4);
             
-            Iterator<Integer> itr = lista.iterator();
+            //Iterator<Integer> itr = lista.iterator();
             
 //            while(itr.hasNext()){
 //                Integer e = itr.next();

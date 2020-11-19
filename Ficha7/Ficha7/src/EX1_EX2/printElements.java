@@ -22,10 +22,9 @@ public class printElements {
     public static void printListElements(DoubleLinkedList list) {
         printElements(list.iterator());
     }
-    
+
     private static void printElements(Iterator collection) {
-        if (!collection.hasNext()) {
-        } else {
+        if (collection.hasNext()) {
             System.out.println(collection.next());
             printElements(collection);
         }
