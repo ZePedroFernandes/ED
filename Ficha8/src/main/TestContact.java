@@ -1,6 +1,6 @@
 package main;
 
-import Colections.SortingAndSearching;
+import Colections.ArraySortingandSearching;
 import Colections.Contact;
 
 /**
@@ -24,13 +24,13 @@ public class TestContact {
         friends[6] = new Contact("Matt", "Murdock", "243-555-2837");
         
         Integer[] numbers = new Integer[5];
-        numbers[0] = 2;
+        numbers[0] = 4;
         numbers[1] = 3;
-        numbers[2] = 0;
+        numbers[2] = 2;
         numbers[3] = 1;
-        numbers[4] = 4;
+        numbers[4] = 0;
         
-        SortingAndSearching.insertionSort(numbers);
+        ArraySortingandSearching.bubbleSort(numbers);
         
         for(Integer number : numbers){
             System.out.println(number.toString());
