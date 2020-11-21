@@ -22,22 +22,17 @@ public class DoubleLinkedListTest {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        DoubleLinkedOrderedListArrayable<Integer> numbers = new DoubleLinkedOrderedListArrayable<>();
-        
-        try {
-            numbers.add(3);
-            numbers.add(2);
-            numbers.add(0);
-            numbers.add(1);
-            Object[] numbersArray = numbers.toArray();
-            for (Object numbersArray1 : numbersArray) {
-                System.out.println(numbersArray1.toString());
-            }
-            
-        } catch (InvalidElementException ex) {
-            System.out.println(ex.getMessage());
-        }
+        DoubleLinkedUnorderedList<Integer> numbers = new DoubleLinkedUnorderedList<>();
 
+        numbers.addToRear(3);
+        numbers.addToRear(2);
+        numbers.addToRear(1);
+
+        Object[] array = numbers.getInverted();
+        
+        for(Object i : array){
+            System.out.println(i);
+        }
     }
 
 }

@@ -12,9 +12,9 @@ import nodes.DoubleLinkedNode;
  */
 public abstract class DoubleLinkedList<T> implements ListADT<T>, Iterable<T> {
 
-    protected DoubleLinkedNode<T> head;
+    protected DoubleLinkedNode<T> head; //Sentinel Node
 
-    protected DoubleLinkedNode<T> tail;
+    protected DoubleLinkedNode<T> tail; //Sentinel Node
 
     protected int size;
 
@@ -154,6 +154,22 @@ public abstract class DoubleLinkedList<T> implements ListADT<T>, Iterable<T> {
     @Override
     public Iterator<T> iterator() {
         return (new DoubleLinkedListIterator<>(this.modCount));
+    }
+
+    public T[] getInverted() {
+        T[] array = (T[]) new Object[this.size];
+        this.invert(array, this.head.getNext(), this.size);
+        return array;
+    }
+
+    private T invert(T[] array, DoubleLinkedNode<T> node, int size) {
+        if (node == this.tail.getPrevious()) {
+            array[size - 1] = node.getElement();
+            return node.getPrevious().getElement();
+        } else {
+            array[size - 1] = invert(array, node.getNext(), size - 1);
+            return node.getPrevious().getElement();
+        }
     }
 
     /**

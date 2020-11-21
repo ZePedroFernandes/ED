@@ -43,6 +43,7 @@ public class DoubleLinkedUnorderedList<T> extends DoubleLinkedList<T> implements
         newNode.setPrevious(this.tail.getPrevious());
         this.tail.getPrevious().setNext(newNode);
         this.tail.setPrevious(newNode);
+        this.size++;
     }
 
     @Override
