@@ -127,6 +127,22 @@ public class LinkedList<T> {
         return new LinkedListIterator<>();
     }
 
+    public void invert() {
+        this.invert(this.head, null);
+    }
+
+    private void invert(LinkedNode<T> current, LinkedNode<T> previous) {
+
+        if (current == this.tail) {
+            current.setNext(previous);
+        } else {
+            LinkedNode tmp = current.getNext();
+            current.setNext(previous);
+            this.head = tmp;
+            invert(tmp, current);
+        }
+    }
+
     /**
      * Returns a string representation of the {@link LinkedList}.
      *

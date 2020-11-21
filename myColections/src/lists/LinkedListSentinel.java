@@ -83,6 +83,23 @@ public class LinkedListSentinel<T> {
         }
     }
 
+    public void replace(T existingElement, T newElement) {
+        replaceRecursive(existingElement, newElement, this.head.getNext(), this.head);
+    }
+
+    public void replaceRecursive(T element, T replaceElement, LinkedNode<T> current, LinkedNode<T> previous) {
+        if (current.getElement().equals(element)) {
+            LinkedNode<T> newNode = new LinkedNode<>(replaceElement);
+            newNode.setNext(current.getNext());
+            previous.setNext(newNode);
+            current = newNode;
+        }
+        if (current.getNext() == this.tail) {
+        } else {
+            replaceRecursive(element, replaceElement, current.getNext(), current);
+        }
+    }
+
     /**
      * Returns a string representation of the {@link LinkedListSentinel}.
      *
