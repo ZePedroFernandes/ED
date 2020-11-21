@@ -22,12 +22,12 @@ public class LinkedList<T> {
     /**
      * List's first Node.
      */
-    private LinkedNode<T> head;
+    public LinkedNode<T> head;
 
     /**
      * List's last Node.
      */
-    private LinkedNode<T> tail;
+    public LinkedNode<T> tail;
 
     public LinkedList() {
         this.count = 0;
