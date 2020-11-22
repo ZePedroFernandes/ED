@@ -8,6 +8,12 @@ package zmain;
 import exceptions.EmptyException;
 import exceptions.InvalidElementException;
 import java.util.Iterator;
+import java.util.Random;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import lists.DoubleLinkedListSearching;
+import lists.LinkedList;
+import lists.LinkedListSorting;
 import lists.OrderedLists.DoubleLinkedOrderedList;
 import lists.OrderedLists.DoubleLinkedOrderedListArrayable;
 import lists.unorderedLists.DoubleLinkedUnorderedList;
@@ -22,17 +28,20 @@ public class DoubleLinkedListTest {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        DoubleLinkedUnorderedList<Integer> numbers = new DoubleLinkedUnorderedList<>();
-
-        numbers.addToRear(3);
-        numbers.addToRear(2);
-        numbers.addToRear(1);
-
-        Object[] array = numbers.getInverted();
+        LinkedList<Integer> numbers = new LinkedList<>();
         
-        for(Object i : array){
-            System.out.println(i);
+        Random randomizer = new Random();
+        
+        for(Integer i = 0; i <= 5;i++){
+            try {
+                numbers.add(i);
+            } catch (InvalidElementException ex) {
+                Logger.getLogger(DoubleLinkedListTest.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
+
+        LinkedListSorting.swapNodes(numbers, numbers.tail, numbers.head);
+        System.out.println("");
     }
 
 }

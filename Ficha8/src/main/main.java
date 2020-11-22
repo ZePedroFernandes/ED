@@ -1,7 +1,7 @@
 package main;
 
 import Colections.ArraySortingandSearching;
-import lists.OrderedLists.LinkedSortingAndSearching;
+import lists.DoubleLinkedListSearching;
 import car.Car;
 import exceptions.InvalidElementException;
 import lists.LinkedList;
@@ -39,9 +39,9 @@ public class main {
         } catch (InvalidElementException e) {
 
         }
-        //LinkedNode<Car> midle = LinkedSortingAndSearching.getMidle(cars.head, cars.tail);
+        //LinkedNode<Car> midle = DoubleLinkedListSearching.getMidle(cars.head, cars.tail);
         //System.out.println(midle.getElement().getName());
-        boolean found = LinkedSortingAndSearching.binnarySearch(cars, carS);
+        boolean found = DoubleLinkedListSearching.binnarySearch(cars, carS);
         System.out.println(found);
     }
 }

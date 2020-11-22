@@ -7,7 +7,7 @@ package EX1_EX2;
 
 import java.util.Iterator;
 import lists.LinkedList;
-import lists.OrderedLists.DoubleLinkedList;
+import lists.DoubleLinkedList;
 
 /**
  *

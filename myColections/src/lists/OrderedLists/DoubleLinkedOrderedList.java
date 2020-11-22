@@ -1,5 +1,6 @@
 package lists.OrderedLists;
 
+import lists.DoubleLinkedList;
 import exceptions.InvalidElementException;
 import nodes.DoubleLinkedNode;
 

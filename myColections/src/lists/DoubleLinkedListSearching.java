@@ -1,5 +1,6 @@
-package lists.OrderedLists;
+package lists;
 
+import lists.DoubleLinkedList;
 import java.util.Iterator;
 import nodes.DoubleLinkedNode;
 import nodes.LinkedNode;
@@ -8,7 +9,7 @@ import nodes.LinkedNode;
  *
  * @author Nome : José Pedro Fernandes Número: 8190239 Turma: 1
  */
-public class LinkedSortingAndSearching<T> {
+public class DoubleLinkedListSearching<T> {
 
     public static <T> boolean linearSearch(Iterator<T> node, T target) {
 

@@ -1,4 +1,4 @@
-package lists.OrderedLists;
+package lists;
 
 import contracts.ListADT;
 import exceptions.EmptyException;
