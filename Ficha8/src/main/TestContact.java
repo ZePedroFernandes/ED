@@ -2,6 +2,7 @@ package main;
 
 import Colections.ArraySortingandSearching;
 import Colections.Contact;
+import java.util.Random;
 
 /**
  *
@@ -22,19 +23,33 @@ public class TestContact {
         friends[4] = new Contact("Steven", "Rogers", "464-555-3489");
         friends[5] = new Contact("Britt", "Reid", "322-555-2284");
         friends[6] = new Contact("Matt", "Murdock", "243-555-2837");
+
+        Integer[] numbers = new Integer[8];
+        numbers[0] = -9;
+        numbers[1] = -9;
+        numbers[2] = 10;
+        numbers[3] = 0;
+        numbers[4] = -10;
+        numbers[5] = 13;
+        numbers[6] = 1;
+        numbers[7] = -4;
+
+        Random randomizer = new Random();
         
-        Integer[] numbers = new Integer[5];
-        numbers[0] = 4;
-        numbers[1] = 3;
-        numbers[2] = 2;
-        numbers[3] = 1;
-        numbers[4] = 0;
-        
-        ArraySortingandSearching.bubbleSort(numbers);
-        
-        for(Integer number : numbers){
+        Integer[] numbers2 = new Integer[100];
+        for (int i = 0; i < numbers2.length; i++) {
+            numbers2[i] = randomizer.nextInt() / 100000000;
+        }
+
+        ArraySortingandSearching.quickSort(numbers2, 0, numbers2.length - 1);
+
+        for (Integer number : numbers2) {
             System.out.println(number.toString());
         }
+
+//        for(Contact friend : friends){
+//            System.out.println(friend.toString());
+//        }
     }
 
 }
