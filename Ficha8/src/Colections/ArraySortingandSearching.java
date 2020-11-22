@@ -1,5 +1,7 @@
 package Colections;
 
+import java.util.Arrays;
+
 /**
  *
  * @author Nome : José Pedro Fernandes Número: 8190239 Turma: 1
@@ -160,8 +162,6 @@ public class ArraySortingandSearching<T> {
     }
 
     public static <T extends Comparable<? super T>> void mergeSort(T[] data, int min, int max) {
-        T[] temp;
-        int index1, left, right;
 
         //return on list of length one
         if (min == max) {
@@ -169,32 +169,38 @@ public class ArraySortingandSearching<T> {
         }
 
         //find the length and the midpoint of the list
-        int size = max - min + 1;
         int pivot = (min + max) / 2;
-        temp = (T[]) (new Comparable[size]);
+
         mergeSort(data, min, pivot); // sort left half of list      
         mergeSort(data, pivot + 1, max); // sort right half of list      
+        merge(data, min, pivot + 1, max);
+    }
 
-        //copy sorted data into workspace
-        for (index1 = 0; index1 < size; index1++) {
-            temp[index1] = data[min + index1];
+    public static <T extends Comparable<? super T>> void merge(T[] data, int min, int pivot, int max) {
+        int size = max - min + 1;
+        int index, left, right;
+        T[] workspace = (T[]) (new Comparable[size]);
+
+        //copy sorted data into workspace        
+        for (index = 0; index < size; index++) {
+            workspace[index] = data[min + index];
         }
         //merge the two sorted lists
         left = 0;
         right = pivot - min + 1;
-        for (index1 = 0; index1 < size; index1++) {
+        for (index = 0; index < size; index++) {
             if (right <= max - min) {
                 if (left <= pivot - min) {
-                    if (temp[left].compareTo(temp[right]) > 0) {
-                        data[index1 + min] = temp[right++];
+                    if (workspace[left].compareTo(workspace[right]) > 0) {
+                        data[index + min] = workspace[right++];
                     } else {
-                        data[index1 + min] = temp[left++];
+                        data[index + min] = workspace[left++];
                     }
                 } else {
-                    data[index1 + min] = temp[right++];
+                    data[index + min] = workspace[right++];
                 }
             } else {
-                data[index1 + min] = temp[left++];
+                data[index + min] = workspace[left++];
             }
         }
     }
