@@ -52,8 +52,6 @@ public class DoubleLinkedListTest {
         }
         System.out.println("]");
         
-        LinkedListSorting.swapNodes(numbers, numbers.head, numbers.head.getNext().getNext().getNext());
-
         Iterator<Integer> itr = numbers.iterator();
 
         System.out.print("[");
