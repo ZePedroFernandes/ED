@@ -33,7 +33,7 @@ public class LinkedListSorting {
         }
     }
 
-    public static <T extends Comparable<? super T>>
+    private static <T extends Comparable<? super T>>
             void swapNodes(LinkedList<T> list, LinkedNode<T> first, LinkedNode<T> second) {
         if (first == second) {
             return;
@@ -41,60 +41,42 @@ public class LinkedListSorting {
         LinkedNode<T> current = second;
         while (current != null) {
             if (current == first) {
-                swapNodes(list, second, first);
-                return;
+                LinkedNode<T> tmp = first;
+                first = second;
+                second = tmp;
+                break;
             }
             current = current.getNext();
         }
-
-        LinkedNode<T> firsNext = first.getNext();
-        LinkedNode<T> secondNext = second.getNext();
-        LinkedNode<T> prevFirst = null;
-        LinkedNode<T> prevSecond = null;
-
-        if (second != list.head) {
-            prevSecond = list.head;
-            while (prevSecond.getNext() != second) {
-                prevSecond = prevSecond.getNext();
-            }
+        LinkedNode<T> prevSecond = list.head;
+        while (prevSecond.getNext() != second) {
+            prevSecond = prevSecond.getNext();
         }
 
-        if (first != list.head) {
-            prevFirst = list.head;
+        if (first == list.head) {
+            LinkedNode<T> newHead = new LinkedNode<>(second.getElement());
+            LinkedNode<T> newSecond = new LinkedNode<>(first.getElement());
+            prevSecond.setNext(newSecond);
+            newSecond.setNext(second.getNext());
+            newHead.setNext(first.getNext());
+            list.head = newHead;
+
+        } else {
+
+            LinkedNode<T> prevFirst = list.head;
+            LinkedNode<T> tmp;
+
             while (prevFirst.getNext() != first) {
                 prevFirst = prevFirst.getNext();
             }
-        }
 
-        if (list.tail == second) {
-            list.tail = first;
-        } else if (list.tail == first) {
-            list.tail = second;
-        }
+            tmp = prevFirst.getNext();
+            prevFirst.setNext(prevSecond.getNext());
+            prevSecond.setNext(tmp);
 
-        if (list.head == first) {
-            list.head = second;
-        } else if (list.head == second) {
-            list.head = first;
+            tmp = prevFirst.getNext().getNext();
+            prevFirst.getNext().setNext(prevSecond.getNext().getNext());
+            prevSecond.getNext().setNext(tmp);
         }
-
-        second.setNext(null);
-        first.setNext(null);
-        if (prevFirst != null) {
-            prevFirst.setNext(null);
-        }
-        if (prevSecond != null) {
-            prevSecond.setNext(null);
-        }
-        if (prevFirst != null) {
-            prevFirst.setNext(second);
-        }
-        if (prevSecond != null) {
-            prevSecond.setNext(first);
-        }
-
-        second.setNext(firsNext);
-        first.setNext(secondNext);
-
     }
 }
