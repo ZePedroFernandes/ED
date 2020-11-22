@@ -2,6 +2,7 @@ package main;
 
 import Colections.ArraySortingandSearching;
 import Colections.Contact;
+import java.util.Arrays;
 import java.util.Random;
 
 /**
@@ -34,18 +35,10 @@ public class TestContact {
         numbers[6] = 1;
         numbers[7] = -4;
 
-        Random randomizer = new Random();
+        ArraySortingandSearching.mergeSort(numbers, 0, numbers.length - 1);
+
         
-        Integer[] numbers2 = new Integer[100];
-        for (int i = 0; i < numbers2.length; i++) {
-            numbers2[i] = randomizer.nextInt() / 100000000;
-        }
-
-        ArraySortingandSearching.quickSort(numbers2, 0, numbers2.length - 1);
-
-        for (Integer number : numbers2) {
-            System.out.println(number.toString());
-        }
+        System.out.println(Arrays.toString(numbers));
 
 //        for(Contact friend : friends){
 //            System.out.println(friend.toString());
