@@ -1,7 +1,5 @@
 package Colections;
 
-import java.util.Arrays;
-
 /**
  *
  * @author Nome : José Pedro Fernandes Número: 8190239 Turma: 1
@@ -162,7 +160,6 @@ public class ArraySortingandSearching<T> {
     }
 
     public static <T extends Comparable<? super T>> void mergeSort(T[] data, int min, int max) {
-
         //return on list of length one
         if (min == max) {
             return;
@@ -173,26 +170,26 @@ public class ArraySortingandSearching<T> {
 
         mergeSort(data, min, pivot); // sort left half of list      
         mergeSort(data, pivot + 1, max); // sort right half of list      
-        merge(data, min, pivot + 1, max);
+        merge(data, pivot, min, max); //merges both sides
+
     }
 
-    public static <T extends Comparable<? super T>> void merge(T[] data, int min, int pivot, int max) {
-        int size = max - min + 1;
+    private static <T extends Comparable<? super T>> void merge(T[] data, int pivot, int min, int max) {
         int index, left, right;
+
+        int size = max - min + 1;
         T[] workspace = (T[]) (new Comparable[size]);
 
-        //copy sorted data into workspace        
-        for (index = 0; index < size; index++) {
-            workspace[index] = data[min + index];
-        }
-        //merge the two sorted lists
+        System.arraycopy(data, min, workspace, 0, size);
+
         left = 0;
         right = pivot - min + 1;
+
         for (index = 0; index < size; index++) {
-            if (right <= max - min) {
-                if (left <= pivot - min) {
+            if (right <= size - 1) {
+                if (left <= pivot - min) { // min <= left <= pivot
                     if (workspace[left].compareTo(workspace[right]) > 0) {
-                        data[index + min] = workspace[right++];
+                        data[index + min] = workspace[right++]; 
                     } else {
                         data[index + min] = workspace[left++];
                     }
