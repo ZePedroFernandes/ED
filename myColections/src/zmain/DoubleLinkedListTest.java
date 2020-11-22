@@ -5,18 +5,10 @@
  */
 package zmain;
 
-import exceptions.EmptyException;
 import exceptions.InvalidElementException;
-import java.util.Iterator;
 import java.util.Random;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import lists.DoubleLinkedListSearching;
 import lists.LinkedList;
 import lists.LinkedListSorting;
-import lists.OrderedLists.DoubleLinkedOrderedList;
-import lists.OrderedLists.DoubleLinkedOrderedListArrayable;
-import lists.unorderedLists.DoubleLinkedUnorderedList;
 
 /**
  *
@@ -31,37 +23,31 @@ public class DoubleLinkedListTest {
         LinkedList<Integer> numbers = new LinkedList<>();
 
         Random randomizer = new Random();
+        try {
+//            for(int i = 0; i < 9 ; i++){
+//                numbers.add(randomizer.nextInt() /100000000);
+//            }
 
-        for (Integer i = 0; i <= 5; i++) {
-            try {
-                numbers.add(i);
-            } catch (InvalidElementException ex) {
-                Logger.getLogger(DoubleLinkedListTest.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-        
-        Iterator<Integer> itr1 = numbers.iterator();
+            /*[2027, -1093, -1850, -1442, 1173, -1827, -417, 211, -1979]*/
+            numbers.add(-1979);
+            numbers.add(211);
+            numbers.add(-417);
+            numbers.add(-1827);
+            numbers.add(1173);
+            numbers.add(-1442);
+            numbers.add(-1850);
+            numbers.add(-1093);
+            numbers.add(2027);
 
-        
-        System.out.print("[");
-        while (itr1.hasNext()) {
-            System.out.print(itr1.next());
-            if(itr1.hasNext()){
-                System.out.print(", ");
-            }
-        }
-        System.out.println("]");
-        
-        Iterator<Integer> itr = numbers.iterator();
+        } catch (InvalidElementException e) {
 
-        System.out.print("[");
-        while (itr.hasNext()) {
-            System.out.print(itr.next());
-            if(itr.hasNext()){
-                System.out.print(", ");
-            }
         }
-        System.out.println("]");
+
+        LinkedListSorting.printlist(numbers);
+
+        LinkedListSorting.insertionSort(numbers);
+        
+        LinkedListSorting.printlist(numbers);
 
     }
 
