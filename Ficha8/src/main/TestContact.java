@@ -25,11 +25,14 @@ public class TestContact {
         friends[5] = new Contact("Britt", "Reid", "322-555-2284");
         friends[6] = new Contact("Matt", "Murdock", "243-555-2837");
 
-        Integer[] numbers = new Integer[4];
+        Integer[] numbers = new Integer[7];
         numbers[0] = 1;
         numbers[1] = 3;
         numbers[2] = 4;
-        numbers[3] = 2;
+        numbers[3] = 5;
+        numbers[4] = 6;
+        numbers[5] = 7;
+        numbers[6] = 2;
 
         ArraySortingandSearching.mergeSort(numbers, 0, numbers.length - 1);
 
