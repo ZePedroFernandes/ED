@@ -9,6 +9,7 @@ import exceptions.InvalidElementException;
 import java.util.Random;
 import lists.LinkedList;
 import lists.LinkedListSorting;
+import nodes.LinkedNode;
 
 /**
  *
@@ -24,30 +25,30 @@ public class DoubleLinkedListTest {
 
         Random randomizer = new Random();
         try {
-//            for(int i = 0; i < 9 ; i++){
-//                numbers.add(randomizer.nextInt() /100000000);
-//            }
-
-            /*[2027, -1093, -1850, -1442, 1173, -1827, -417, 211, -1979]*/
-            numbers.add(-1979);
-            numbers.add(211);
-            numbers.add(-417);
-            numbers.add(-1827);
-            numbers.add(1173);
-            numbers.add(-1442);
-            numbers.add(-1850);
-            numbers.add(-1093);
-            numbers.add(2027);
+            for(int i = 0; i < 9 ; i++){
+                numbers.add(randomizer.nextInt());
+            }
 
         } catch (InvalidElementException e) {
 
         }
 
-        LinkedListSorting.printlist(numbers);
+        //LinkedListSorting.printlist(numbers);
 
         LinkedListSorting.insertionSort(numbers);
         
-        LinkedListSorting.printlist(numbers);
+        //LinkedListSorting.printlist(numbers);
+
+        boolean ordered = true;
+        LinkedNode<Integer> current = numbers.head;
+        while (current.getNext() != null) {
+            if (current.getElement().compareTo(current.getNext().getElement()) > 0) {
+                ordered = false;
+            }
+
+            current = current.getNext();
+        }
+        System.out.println(ordered);
 
     }
 

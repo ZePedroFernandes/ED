@@ -60,12 +60,12 @@ public class LinkedListSorting {
         }
 
         if (first == list.head) {
-            LinkedNode<T> newHead = new LinkedNode<>(second.getElement());
-            LinkedNode<T> newSecond = new LinkedNode<>(first.getElement());
-            prevSecond.setNext(newSecond);
-            newSecond.setNext(second.getNext());
-            newHead.setNext(first.getNext());
-            list.head = newHead;
+            LinkedNode<T> tmp = second.getNext();
+            prevSecond.setNext(first);
+            list.head = second;
+            second.setNext(first.getNext());
+            first.setNext(tmp);
+            
 
         } else {
 
