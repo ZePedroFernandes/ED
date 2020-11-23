@@ -25,7 +25,7 @@ public class DoubleLinkedListTest {
 
         Random randomizer = new Random();
         try {
-            for(int i = 0; i < 9 ; i++){
+            for (int i = 0; i < 9; i++) {
                 numbers.add(randomizer.nextInt());
             }
 
@@ -34,11 +34,10 @@ public class DoubleLinkedListTest {
         }
 
         //LinkedListSorting.printlist(numbers);
-
-        LinkedListSorting.insertionSort(numbers);
         
-        //LinkedListSorting.printlist(numbers);
+        LinkedListSorting.insertionSort(numbers);
 
+        //LinkedListSorting.printlist(numbers);
         boolean ordered = true;
         LinkedNode<Integer> current = numbers.head;
         while (current.getNext() != null) {

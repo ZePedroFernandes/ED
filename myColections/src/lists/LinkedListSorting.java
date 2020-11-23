@@ -6,7 +6,6 @@
 package lists;
 
 import java.util.Iterator;
-import nodes.DoubleLinkedNode;
 import nodes.LinkedNode;
 
 /**
@@ -14,7 +13,7 @@ import nodes.LinkedNode;
  * @author Nome : José Pedro Fernandes Número: 8190239 Turma: 1
  */
 public class LinkedListSorting {
-    
+
     public static <T extends Comparable<? super T>> void selectionSort(LinkedList<T> list) {
         LinkedNode<T> startNode = list.head;
         LinkedNode<T> currentNode = list.head;
@@ -65,7 +64,6 @@ public class LinkedListSorting {
             list.head = second;
             second.setNext(first.getNext());
             first.setNext(tmp);
-            
 
         } else {
 
@@ -113,7 +111,7 @@ public class LinkedListSorting {
         }
         LinkedNode<T> previous = list.head;
 
-        while (previous != null && previous.getNext() != node ) {
+        while (previous != null && previous.getNext() != node) {
             previous = previous.getNext();
         }
         return previous;
@@ -131,9 +129,9 @@ public class LinkedListSorting {
         }
         System.out.println("]");
     }
-    
+
     private static <T extends Comparable<? super T>>
-            void swapNodes2(LinkedList<T> list, LinkedNode<T> first, LinkedNode<T> second){
-                
-            }
+            void swapNodes2(LinkedList<T> list, LinkedNode<T> first, LinkedNode<T> second) {
+
+    }
 }
