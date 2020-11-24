@@ -15,7 +15,7 @@ import nodes.LinkedNode;
  *
  * @author Nome : José Pedro Fernandes Número: 8190239 Turma: 1
  */
-public class DoubleLinkedListTest {
+public class LinkedListSortTests {
 
     /**
      * @param args the command line arguments
@@ -26,18 +26,18 @@ public class DoubleLinkedListTest {
         Random randomizer = new Random();
         try {
             for (int i = 0; i < 9; i++) {
-                numbers.add(randomizer.nextInt());
+                numbers.add(randomizer.nextInt()/100000000);
             }
 
         } catch (InvalidElementException e) {
 
         }
 
-        //LinkedListSorting.printlist(numbers);
+        LinkedListSorting.printlist(numbers);
         
-        LinkedListSorting.insertionSort(numbers);
+        LinkedListSorting.selectionSort(numbers);
 
-        //LinkedListSorting.printlist(numbers);
+        LinkedListSorting.printlist(numbers);
         boolean ordered = true;
         LinkedNode<Integer> current = numbers.head;
         while (current.getNext() != null) {

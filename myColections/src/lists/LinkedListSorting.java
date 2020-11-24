@@ -43,23 +43,22 @@ public class LinkedListSorting {
         if (first == second) {
             return;
         }
-        LinkedNode<T> current = second;
-        while (current != null) {
-            if (current == first) {
-                LinkedNode<T> tmp = first;
-                first = second;
-                second = tmp;
-                break;
-            }
-            current = current.getNext();
+
+        if (second == list.head) {
+            LinkedNode<T> tmp = second;
+            second = first;
+            first = tmp;
         }
+        LinkedNode<T> prevFirst = list.head;
         LinkedNode<T> prevSecond = list.head;
+        LinkedNode<T> tmp;
+
         while (prevSecond.getNext() != second) {
             prevSecond = prevSecond.getNext();
         }
 
         if (first == list.head) {
-            LinkedNode<T> tmp = second.getNext();
+            tmp = second.getNext();
             prevSecond.setNext(first);
             list.head = second;
             second.setNext(first.getNext());
@@ -67,20 +66,17 @@ public class LinkedListSorting {
 
         } else {
 
-            LinkedNode<T> prevFirst = list.head;
-            LinkedNode<T> tmp;
-
             while (prevFirst.getNext() != first) {
                 prevFirst = prevFirst.getNext();
             }
 
-            tmp = prevFirst.getNext();
-            prevFirst.setNext(prevSecond.getNext());
-            prevSecond.setNext(tmp);
+            tmp = prevSecond.getNext();//
+            prevSecond.setNext(prevFirst.getNext());
+            prevFirst.setNext(tmp);
 
-            tmp = prevFirst.getNext().getNext();
-            prevFirst.getNext().setNext(prevSecond.getNext().getNext());
-            prevSecond.getNext().setNext(tmp);
+            tmp = prevSecond.getNext().getNext();
+            prevSecond.getNext().setNext(prevFirst.getNext().getNext());
+            prevFirst.getNext().setNext(tmp);
         }
     }
 
