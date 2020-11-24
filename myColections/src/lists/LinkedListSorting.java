@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package lists;
 
 import java.util.Iterator;
@@ -14,7 +9,21 @@ import nodes.LinkedNode;
  */
 public class LinkedListSorting {
 
+    /**
+     * Finds the position of a node in a linked list. Returns -1 if the node was
+     * not found or is null.
+     *
+     * @param <T> type of the stored elements
+     * @param list list where the node is
+     * @param node node wich position will be returned.
+     * @return the position of the node in the list, if the node is not found or
+     * is null -1 will be returned.
+     */
     public static <T> int findPosition(LinkedList<T> list, LinkedNode<T> node) {
+        if (node == null) {
+            return -1;
+        }
+
         LinkedNode<T> current = list.head;
         int count = 0;
 
@@ -52,10 +61,10 @@ public class LinkedListSorting {
             second = first;
             first = tmp;
         }
-        if(second == list.tail){
-            list.tail= first;
+        if (second == list.tail) {
+            list.tail = first;
         }
-        
+
         LinkedNode<T> prevFirst = list.head;
         LinkedNode<T> prevSecond = list.head;
         LinkedNode<T> tmp;
@@ -150,6 +159,22 @@ public class LinkedListSorting {
             swapNodes(list, greater, end);
             bubbleSort(list, findPrevious(list, greater));
         }
+    }
+
+    public static <T extends Comparable<? super T>>
+            void quickSort(LinkedList<T> list, LinkedNode<T> min, LinkedNode<T> max) {
+        if (min != max) {
+            LinkedNode<T> partition = findPartition(list, min, max);
+
+            quickSort(list, min, findPrevious(list, partition));
+
+            quickSort(list, partition.getNext(), max);
+        }
+    }
+
+    public static <T extends Comparable<? super T>>
+            LinkedNode<T> findPartition(LinkedList<T> list, LinkedNode<T> min, LinkedNode<T> MAX) {
+        throw new UnsupportedOperationException();
     }
 
     public static <T> void printlist(LinkedList<T> lista) {

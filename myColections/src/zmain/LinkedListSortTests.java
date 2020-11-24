@@ -42,7 +42,7 @@ public class LinkedListSortTests {
         
         LinkedListSorting.bubbleSort(numbers, numbers.tail);
         
-        int pos = LinkedListSorting.findPosition(numbers, numbers.tail);
+        int pos = LinkedListSorting.findPosition(numbers, numbers.tail.getNext());
 
         System.out.println(pos);
         
