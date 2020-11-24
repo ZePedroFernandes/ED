@@ -1,5 +1,7 @@
 package Colections;
 
+import java.util.Arrays;
+
 /**
  *
  * @author Nome : José Pedro Fernandes Número: 8190239 Turma: 1
@@ -123,31 +125,39 @@ public class ArraySortingandSearching<T> {
         right = max;
 
         while (left < right) {
+            System.out.println(Arrays.toString(data));
+            System.out.println("Left  " + data[left]);
+            System.out.println("Right " + data[right]);
+            System.out.println("Midle " + data[middle]);
 
             // search for an element that is > the partitionelement
             while (data[left].compareTo(partitionelement) <= 0
                     && left < right) {
                 left++;
+                System.out.println("Left-> " + data[left]);
             }
 
             //search for an element that is < the partitionelement
             while (data[right].compareTo(partitionelement) > 0
                     && right > 0) {
                 right--;
+                System.out.println("Right-> " + data[right]);
             }
 
             //swap the elements 
             if (left < right) {
                 if (left == middle) {
                     middle = right;
-                }
-                if (right == middle) {
+                    System.out.println("Middle-> " + data[right]);
+                } else if (right == middle) {
                     middle = left;
+                    System.out.println("Middle-> " + data[left]);
                 }
 
                 temp = data[left];
                 data[left] = data[right];
                 data[right] = temp;
+                System.out.println("swap right and left");
             }
         }
 
@@ -155,6 +165,8 @@ public class ArraySortingandSearching<T> {
         temp = data[middle];
         data[middle] = data[right];
         data[right] = temp;
+        System.out.println(Arrays.toString(data));
+        System.out.println("swap middle and right");
 
         return right;
     }
@@ -189,7 +201,7 @@ public class ArraySortingandSearching<T> {
             if (right <= size - 1) {
                 if (left <= pivot - min) { // min <= left <= pivot
                     if (workspace[left].compareTo(workspace[right]) > 0) {
-                        data[index + min] = workspace[right++]; 
+                        data[index + min] = workspace[right++];
                     } else {
                         data[index + min] = workspace[left++];
                     }

@@ -9,7 +9,7 @@ import exceptions.InvalidElementException;
 import java.util.Random;
 import lists.LinkedList;
 import lists.LinkedListSorting;
-import nodes.LinkedNode;
+import lists.LinkedNode;
 
 /**
  *
@@ -33,19 +33,19 @@ public class LinkedListSortTests {
             numbers.add(1);
             numbers.add(-1);
             numbers.add(2);
-            numbers.add(2);
+            numbers.add(4);
+            numbers.add(3);
         } catch (InvalidElementException e) {
 
         }
 
         LinkedListSorting.printlist(numbers);
-        
-        LinkedListSorting.bubbleSort(numbers, numbers.tail);
-        
-        int pos = LinkedListSorting.findPosition(numbers, numbers.tail.getNext());
+        LinkedListSorting.quickSort(numbers.head, numbers.tail);
 
-        System.out.println(pos);
-        
+        //int pos = LinkedListSorting.findPosition(numbers, numbers.tail.getNext());
+        LinkedListSorting.printlist(numbers);
+
+        System.out.println("");
 //        LinkedListSorting.printlist(numbers);
 //        boolean ordered = true;
 //        LinkedNode<Integer> current = numbers.head;
@@ -57,7 +57,6 @@ public class LinkedListSortTests {
 //            current = current.getNext();
 //        }
 //        System.out.println(ordered);
-
     }
 
 }

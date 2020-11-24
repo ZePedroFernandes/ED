@@ -3,7 +3,6 @@ package lists;
 import exceptions.InvalidElementException;
 import exceptions.EmptyException;
 import java.util.Iterator;
-import nodes.LinkedNode;
 
 /**
  * This class represents a LinkedList. This List is composed by

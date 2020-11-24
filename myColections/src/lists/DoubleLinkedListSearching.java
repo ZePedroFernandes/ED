@@ -3,7 +3,6 @@ package lists;
 import lists.DoubleLinkedList;
 import java.util.Iterator;
 import nodes.DoubleLinkedNode;
-import nodes.LinkedNode;
 
 /**
  *

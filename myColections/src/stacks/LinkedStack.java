@@ -2,7 +2,7 @@ package stacks;
 
 import exceptions.EmptyException;
 import contracts.StackADT;
-import nodes.LinkedNode;
+import lists.LinkedNode;
 
 /**
  * Represents a Linked Stack.

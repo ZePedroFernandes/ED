@@ -25,23 +25,37 @@ public class TestContact {
         friends[5] = new Contact("Britt", "Reid", "322-555-2284");
         friends[6] = new Contact("Matt", "Murdock", "243-555-2837");
 
-        Integer[] numbers = new Integer[7];
-        numbers[0] = 1;
-        numbers[1] = 3;
-        numbers[2] = 4;
-        numbers[3] = 5;
-        numbers[4] = 6;
-        numbers[5] = 7;
-        numbers[6] = 2;
-
-        ArraySortingandSearching.quickSort(friends, 0, friends.length - 1);
-
+        Integer[] numbers = new Integer[6];
+        numbers[0] = 3;
+        numbers[1] = 4;
+        numbers[2] = 2;
+        numbers[3] = -1;
+        numbers[4] = 1;
+        numbers[5] = 0;
+//
+//        Random rd = new Random();
+//        
+//        for(int i = 0; i < numbers.length;i++){
+//            numbers[i] = rd.nextInt()/100000000;
+//        }
         
-//        System.out.println(Arrays.toString(friends));
+        System.out.println(Arrays.toString(numbers));
 
-        for(Contact friend : friends){
-            System.out.println(friend.toString());
+        ArraySortingandSearching.quickSort(numbers, 0, numbers.length - 1);
+
+        System.out.println(Arrays.toString(numbers));
+
+        boolean ordered = true;
+        for(int i = 1; i < numbers.length; i++){
+            if(numbers[i] < numbers[i-1]){
+                ordered = false;
+            }
         }
+        System.out.println(ordered);
+        
+//        for(Integer number : numbers){
+//            System.out.println(number);
+//        }
     }
 
 }

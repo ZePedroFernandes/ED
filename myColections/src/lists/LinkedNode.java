@@ -1,4 +1,4 @@
-package nodes;
+package lists;
 
 import java.util.Objects;
 
@@ -15,7 +15,7 @@ public class LinkedNode<T> {
     /**
      * Node Element.
      */
-    private T element;
+    protected T element;
 
     /**
      * Next Node.

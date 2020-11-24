@@ -2,7 +2,6 @@ package lists;
 
 import exceptions.EmptyException;
 import exceptions.InvalidElementException;
-import nodes.LinkedNode;
 
 /**
  * This class represents a Sentinel Linked List where the head and the tail are

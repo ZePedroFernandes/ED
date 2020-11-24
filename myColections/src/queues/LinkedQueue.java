@@ -3,7 +3,7 @@ package queues;
 import contracts.QueueContract;
 import exceptions.EmptyException;
 import exceptions.InvalidElementException;
-import nodes.LinkedNode;
+import lists.LinkedNode;
 
 /**
  * Represents a queue implemented using linked nodes.

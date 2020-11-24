@@ -6,7 +6,7 @@ import car.Car;
 import exceptions.InvalidElementException;
 import lists.LinkedList;
 import lists.OrderedLists.DoubleLinkedOrderedList;
-import nodes.LinkedNode;
+import lists.LinkedNode;
 
 /**
  *

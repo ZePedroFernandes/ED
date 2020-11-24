@@ -1,13 +1,12 @@
 package lists;
 
 import java.util.Iterator;
-import nodes.LinkedNode;
 
 /**
  *
  * @author Nome : José Pedro Fernandes Número: 8190239 Turma: 1
  */
-public class LinkedListSorting {
+public class LinkedListSorting<T> {
 
     /**
      * Finds the position of a node in a linked list. Returns -1 if the node was
@@ -161,22 +160,104 @@ public class LinkedListSorting {
         }
     }
 
-    public static <T extends Comparable<? super T>>
-            void quickSort(LinkedList<T> list, LinkedNode<T> min, LinkedNode<T> max) {
-        if (min != max) {
-            LinkedNode<T> partition = findPartition(list, min, max);
-
-            quickSort(list, min, findPrevious(list, partition));
-
-            quickSort(list, partition.getNext(), max);
+//    public static <T extends Comparable<? super T>>
+//            void quickSort(LinkedList<T> list, LinkedNode<T> min, LinkedNode<T> max) {
+//        if (min != max) {
+//            LinkedNode<T> partition = findPartition(list, min, max);
+//
+//            quickSort(list, min, findPrevious(list, partition));
+//
+//            quickSort(list, partition.getNext(), max);
+//        }
+//    }
+    private static <T> LinkedNode<T>
+            getMidValue(LinkedNode<T> start, LinkedNode<T> end) {
+        LinkedNode<T> slow = start;
+        LinkedNode<T> fast = start;
+        if (start == end || start.getNext() == end) {
+            return start;
         }
+
+        while (fast != end && fast.getNext() != end) {
+            slow = slow.getNext();
+            fast = fast.getNext().getNext();
+        }
+        return slow;
     }
 
-    public static <T extends Comparable<? super T>>
-            LinkedNode<T> findPartition(LinkedList<T> list, LinkedNode<T> min, LinkedNode<T> MAX) {
-        throw new UnsupportedOperationException();
-    }
-
+//    public static <T extends Comparable<? super T>>
+//            LinkedNode<T> findPartition(LinkedList<T> list, LinkedNode<T> min, LinkedNode<T> max) {
+//
+//        if (min == max || min == null || max == null) {
+//            return min;
+//        }
+//        LinkedNode<T> partitionNode = min;
+//
+//        LinkedNode<T> left = min;
+//        LinkedNode<T> right = max;
+//        LinkedNode<T> tmp;
+//        boolean swap = true;
+//
+//        while (swap) {
+//            LinkedListSorting.printlist(list);
+//            System.out.println("Left  " + left.getElement());
+//            System.out.println("Right " + right.getElement());
+//            System.out.println("Midle " + partitionNode.getElement());
+//
+//            while (left.getElement().compareTo(partitionNode.getElement()) <= 0
+//                    && left != right) {
+//                left = left.getNext();
+//                System.out.println("Left->" + left.getElement());
+//            }
+//
+//            while (right.getElement().compareTo(partitionNode.getElement()) > 0 && right != min) {
+//                if (right == left) {
+//                    swap = false;
+//                    System.out.println("swap false");
+//                }
+//                right = findPrevious(list, right);
+//                System.out.println("Right->" + right.getElement());
+//            }
+//
+//            if (right == left) {
+//                swap = false;
+//            }
+//            if (swap) {
+//                if (left == partitionNode) {
+//                    partitionNode = right;
+//                    System.out.println("PNode-> right");
+//                } else if (right == partitionNode) {
+//                    partitionNode = left;
+//                    System.out.println("PNode-> left");
+//                }
+//
+//                LinkedListSorting.printlist(list);
+//                if (min == left) {
+//                    min = right;
+//                }
+//                if (max == right) {
+//                    max = left;
+//                }
+//                swapNodes(list, left, right);
+//                tmp = left;
+//                left = right;
+//                right = tmp;
+//                System.out.println("swap left e right");
+//            }
+//        }
+//        LinkedListSorting.printlist(list);
+//        if (max == right) {
+//            max = partitionNode;
+//        }
+//        if (min == partitionNode) {
+//            min = right;
+//        }
+//        swapNodes(list, partitionNode, right);
+//        System.out.println("swap Pnode e right");
+//        LinkedListSorting.printlist(list);
+//
+//        return partitionNode;
+//    }
     public static <T> void printlist(LinkedList<T> lista) {
         Iterator<T> itr1 = lista.iterator();
 
@@ -190,4 +271,48 @@ public class LinkedListSorting {
         System.out.println("]");
     }
 
+    public static <T extends Comparable<? super T>>
+            LinkedNode<T> findPartition(LinkedNode<T> start, LinkedNode<T> end) {
+        if (start == end || start == null || end == null) {
+            return start;
+        }
+        LinkedNode<T> pivot_prev = start;
+
+        LinkedNode<T> curr = start;
+
+        T pivot = end.getElement();
+
+        while (start != end) {
+            if (start.getElement().compareTo(pivot) < 0) {
+                pivot_prev = curr;
+                T tmp = curr.element;
+                curr.element = start.element;
+                start.element = tmp;
+                curr = curr.getNext();
+            }
+            start = start.getNext();
+        }
+        T tmp = curr.element;
+        curr.element = pivot;
+        end.element = tmp;
+
+        return pivot_prev;
+    }
+
+    public static <T extends Comparable<? super T>>
+            void quickSort(LinkedNode<T> start, LinkedNode<T> end) {
+        if (start == end) {
+            return;
+        }
+
+        LinkedNode<T> pivot_prev = findPartition(start, end);
+        quickSort(start, pivot_prev);
+
+        if (pivot_prev != null && pivot_prev == start) {
+            quickSort(pivot_prev.getNext(), end);
+        } else if (pivot_prev != null && pivot_prev.getNext() != null) {
+            quickSort(pivot_prev.getNext().getNext(), end);
+        }
+
+    }
 }
