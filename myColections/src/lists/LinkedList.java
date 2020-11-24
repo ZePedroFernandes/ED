@@ -142,6 +142,10 @@ public class LinkedList<T> {
             invert(tmp, current);
         }
     }
+    
+    public int size(){
+        return this.count;
+    }
 
     /**
      * Returns a string representation of the {@link LinkedList}.

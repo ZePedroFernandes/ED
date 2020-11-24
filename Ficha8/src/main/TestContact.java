@@ -34,14 +34,14 @@ public class TestContact {
         numbers[5] = 7;
         numbers[6] = 2;
 
-        ArraySortingandSearching.mergeSort(numbers, 0, numbers.length - 1);
+        ArraySortingandSearching.quickSort(friends, 0, friends.length - 1);
 
         
-        System.out.println(Arrays.toString(numbers));
+//        System.out.println(Arrays.toString(friends));
 
-//        for(Contact friend : friends){
-//            System.out.println(friend.toString());
-//        }
+        for(Contact friend : friends){
+            System.out.println(friend.toString());
+        }
     }
 
 }

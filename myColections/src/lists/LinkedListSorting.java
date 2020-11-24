@@ -14,28 +14,31 @@ import nodes.LinkedNode;
  */
 public class LinkedListSorting {
 
-    public static <T extends Comparable<? super T>> void selectionSort(LinkedList<T> list) {
-        LinkedNode<T> startNode = list.head;
-        LinkedNode<T> currentNode = list.head;
-        LinkedNode<T> smaller = list.head;
-        LinkedNode<T> aux;
+    public static <T> int findPosition(LinkedList<T> list, LinkedNode<T> node) {
+        LinkedNode<T> current = list.head;
+        int count = 0;
 
-        while (startNode != null) {
-            smaller = startNode;
-            currentNode = startNode;
-
-            while (currentNode != null) {
-                if (currentNode.getElement().compareTo(smaller.getElement()) < 0) {
-                    smaller = currentNode;
-                }
-                currentNode = currentNode.getNext();
-            }
-            aux = startNode.getNext();
-            if (smaller != startNode) {
-                swapNodes(list, smaller, startNode);
-            }
-            startNode = aux;
+        while (current != node && current != null) {
+            current = current.getNext();
+            count++;
         }
+        if (count < list.size()) {
+            return count;
+        } else {
+            return -1;
+        }
+    }
+
+    private static <T> LinkedNode<T> findPrevious(LinkedList<T> list, LinkedNode<T> node) {
+        if (node == list.head) {
+            return null;
+        }
+        LinkedNode<T> previous = list.head;
+
+        while (previous != null && previous.getNext() != node) {
+            previous = previous.getNext();
+        }
+        return previous;
     }
 
     private static <T extends Comparable<? super T>>
@@ -49,6 +52,10 @@ public class LinkedListSorting {
             second = first;
             first = tmp;
         }
+        if(second == list.tail){
+            list.tail= first;
+        }
+        
         LinkedNode<T> prevFirst = list.head;
         LinkedNode<T> prevSecond = list.head;
         LinkedNode<T> tmp;
@@ -101,16 +108,48 @@ public class LinkedListSorting {
         }
     }
 
-    private static <T> LinkedNode<T> findPrevious(LinkedList<T> list, LinkedNode<T> node) {
-        if (node == list.head) {
-            return null;
-        }
-        LinkedNode<T> previous = list.head;
+    public static <T extends Comparable<? super T>> void selectionSort(LinkedList<T> list) {
+        LinkedNode<T> startNode = list.head;
+        LinkedNode<T> currentNode = list.head;
+        LinkedNode<T> smaller = list.head;
+        LinkedNode<T> aux;
 
-        while (previous != null && previous.getNext() != node) {
-            previous = previous.getNext();
+        while (startNode != null) {
+            smaller = startNode;
+            currentNode = startNode;
+
+            while (currentNode != null) {
+                if (currentNode.getElement().compareTo(smaller.getElement()) < 0) {
+                    smaller = currentNode;
+                }
+                currentNode = currentNode.getNext();
+            }
+            aux = startNode.getNext();
+            if (smaller != startNode) {
+                swapNodes(list, smaller, startNode);
+            }
+            startNode = aux;
         }
-        return previous;
+    }
+
+    public static <T extends Comparable<? super T>>
+            void bubbleSort(LinkedList<T> list, LinkedNode<T> end) {
+
+        if (end == list.head) {
+
+        } else {
+            LinkedNode<T> current = list.head;
+            LinkedNode<T> greater = list.head;
+
+            while (current != end.getNext()) {
+                if (current.getElement().compareTo(greater.getElement()) > 0) {
+                    greater = current;
+                }
+                current = current.getNext();
+            }
+            swapNodes(list, greater, end);
+            bubbleSort(list, findPrevious(list, greater));
+        }
     }
 
     public static <T> void printlist(LinkedList<T> lista) {
@@ -126,8 +165,4 @@ public class LinkedListSorting {
         System.out.println("]");
     }
 
-    private static <T extends Comparable<? super T>>
-            void swapNodes2(LinkedList<T> list, LinkedNode<T> first, LinkedNode<T> second) {
-
-    }
 }
