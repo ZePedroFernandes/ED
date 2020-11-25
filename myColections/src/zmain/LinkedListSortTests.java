@@ -40,23 +40,21 @@ public class LinkedListSortTests {
         }
 
         LinkedListSorting.printlist(numbers);
-        LinkedListSorting.quickSort(numbers.head, numbers.tail);
+        
+        LinkedListSorting.quickSort(numbers,numbers.head, numbers.tail);
 
-        //int pos = LinkedListSorting.findPosition(numbers, numbers.tail.getNext());
         LinkedListSorting.printlist(numbers);
 
-        System.out.println("");
-//        LinkedListSorting.printlist(numbers);
-//        boolean ordered = true;
-//        LinkedNode<Integer> current = numbers.head;
-//        while (current.getNext() != null) {
-//            if (current.getElement().compareTo(current.getNext().getElement()) > 0) {
-//                ordered = false;
-//            }
-//
-//            current = current.getNext();
-//        }
-//        System.out.println(ordered);
+        boolean ordered = true;
+        LinkedNode<Integer> current = numbers.head;
+        while (current.getNext() != null) {
+            if (current.getElement().compareTo(current.getNext().getElement()) > 0) {
+                ordered = false;
+            }
+
+            current = current.getNext();
+        }
+        System.out.println(ordered);
     }
 
 }
