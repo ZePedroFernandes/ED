@@ -1,6 +1,8 @@
 package lists;
 
 import java.util.Iterator;
+import lists.LinkedList;
+import lists.LinkedNode;
 
 /**
  *
