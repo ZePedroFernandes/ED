@@ -20,9 +20,9 @@ public class ArrayUnorderedList<T> extends ArrayList<T> implements UnorderedList
 
     @Override
     public void addToFront(T element) {
-        if (element == null) {
-            return;
-        }
+//        if (element == null) {
+//            return;
+//        }
 
         if (this.rear == this.elements.length) {
             this.expandCapacity();
@@ -37,9 +37,9 @@ public class ArrayUnorderedList<T> extends ArrayList<T> implements UnorderedList
 
     @Override
     public void addToRear(T element) {
-        if (element == null) {
-            return;
-        }
+//        if (element == null) {
+//            return;
+//        }
 
         if (this.rear == this.elements.length) {
             this.expandCapacity();
@@ -50,9 +50,9 @@ public class ArrayUnorderedList<T> extends ArrayList<T> implements UnorderedList
 
     @Override
     public void addAfter(T element, T target) throws ElementNotFoundException {
-        if (element == null) {
-            return;
-        }
+//        if (element == null) {
+//            return;
+//        }
 
         if (this.rear == this.elements.length) {
             this.expandCapacity();

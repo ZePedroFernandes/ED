@@ -36,9 +36,14 @@ public abstract class ArrayList<T> implements ListADT<T> {
         public T next() {
             if (this.hasNext()) {
                 this.cursor++;
-                return (T) elements[this.cursor - 1];
+                if (elements[this.cursor - 1] == null) {
+                    return null;
+                } else {
+                    return (T) elements[this.cursor - 1];
+                }
             }
             return null;
+            //throw new NullPointerException("No more elements");
         }
     }
 
@@ -109,9 +114,9 @@ public abstract class ArrayList<T> implements ListADT<T> {
     }
 
     private int find(T element) {
-        if (element == null) {
-            return this.ELEMENT_NOT_FOUND;
-        }
+//        if (element == null) {
+//            return this.ELEMENT_NOT_FOUND;
+//        }
 
         for (int index = 0; index < this.rear; index++) {
             if (this.elements[index].equals(element)) {

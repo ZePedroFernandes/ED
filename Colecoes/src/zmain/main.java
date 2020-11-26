@@ -2,6 +2,7 @@ package zmain;
 
 import java.util.Iterator;
 import lists.LinkedList;
+import lists.unorderedLists.ArrayUnorderedList;
 
 /**
  *
@@ -13,11 +14,15 @@ public class main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        LinkedList<Integer> list = new LinkedList<>();
+        ArrayUnorderedList<Integer> a = new ArrayUnorderedList<>();
+        a.addToRear(null);
+        a.addToRear(1);
         
-        Iterator<Integer> itr = list.iterator();
+        Iterator<Integer> itr = a.iterator();
         
-        System.out.println(itr.next());
+        while(itr.hasNext()){
+            System.out.println(itr.next());
+        }
     }
     
 }

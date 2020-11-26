@@ -16,6 +16,10 @@ public class BinaryTreeNode<T> {
 
     protected BinaryTreeNode left, right;
 
+    public BinaryTreeNode(T element){
+        this.element = element;
+    }
+    
     public BinaryTreeNode(T element, BinaryTreeNode left, BinaryTreeNode right) {
         this.element = element;
         this.left = left;
