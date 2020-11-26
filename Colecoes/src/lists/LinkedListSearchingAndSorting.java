@@ -172,6 +172,8 @@ public class LinkedListSearchingAndSorting<T> {
         }
     }
 
+            
+            
     public static <T> void printlist(LinkedList<T> lista) {
         Iterator<T> itr1 = lista.iterator();
 

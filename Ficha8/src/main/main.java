@@ -41,7 +41,5 @@ public class main {
         }
         //LinkedNode<Car> midle = DoubleLinkedListSearching.getMidle(cars.head, cars.tail);
         //System.out.println(midle.getElement().getName());
-        boolean found = DoubleLinkedListSearching.binnarySearch(cars, carS);
-        System.out.println(found);
     }
 }
