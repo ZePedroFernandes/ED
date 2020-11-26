@@ -8,7 +8,7 @@ package zmain;
 import exceptions.InvalidElementException;
 import java.util.Random;
 import lists.LinkedList;
-import lists.LinkedListSorting;
+import lists.LinkedListSearchingAndSorting;
 import lists.LinkedNode;
 
 /**
@@ -39,11 +39,11 @@ public class LinkedListSortTests {
 
         }
 
-        LinkedListSorting.printlist(numbers);
+        LinkedListSearchingAndSorting.printlist(numbers);
         
-        LinkedListSorting.quickSort(numbers,numbers.head, numbers.tail);
+        LinkedListSearchingAndSorting.quickSort(numbers,numbers.head, numbers.tail);
 
-        LinkedListSorting.printlist(numbers);
+        LinkedListSearchingAndSorting.printlist(numbers);
 
         boolean ordered = true;
         LinkedNode<Integer> current = numbers.head;

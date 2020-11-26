@@ -6,7 +6,7 @@ import java.util.Iterator;
  *
  * @author Nome : José Pedro Fernandes Número: 8190239 Turma: 1
  */
-public class LinkedListSorting<T> {
+public class LinkedListSearchingAndSorting<T> {
 
     /**
      * Finds the position of a node in a linked list. Returns -1 if the node was
@@ -200,7 +200,7 @@ public class LinkedListSorting<T> {
         boolean swap = true;
 
         while (swap) {
-            LinkedListSorting.printlist(list);
+            LinkedListSearchingAndSorting.printlist(list);
             System.out.println("Left  " + left.getElement());
             System.out.println("Right " + right.getElement());
             System.out.println("Midle " + partitionNode.getElement());
@@ -232,7 +232,7 @@ public class LinkedListSorting<T> {
                     System.out.println("PNode-> left");
                 }
 
-                LinkedListSorting.printlist(list);
+                LinkedListSearchingAndSorting.printlist(list);
                 if (min == left) {
                     min = right;
                 }
@@ -246,7 +246,7 @@ public class LinkedListSorting<T> {
                 System.out.println("swap left e right");
             }
         }
-        LinkedListSorting.printlist(list);
+        LinkedListSearchingAndSorting.printlist(list);
         if (max == right) {
             max = partitionNode;
         }
@@ -255,7 +255,7 @@ public class LinkedListSorting<T> {
         }
         swapNodes(list, partitionNode, right);
         System.out.println("swap Pnode e right");
-        LinkedListSorting.printlist(list);
+        LinkedListSearchingAndSorting.printlist(list);
 
         return partitionNode;
     }
