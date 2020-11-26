@@ -35,4 +35,26 @@ public class BinaryTreeNode<T> {
 
         return children;
     }
+
+    public T getElement() {
+        return element;
+    }
+
+    public BinaryTreeNode getLeft() {
+        return left;
+    }
+
+    protected BinaryTreeNode getRight() {
+        return right;
+    }
+
+    protected void setElement(T element) {
+        this.element = element;
+    }
+
+    protected void setLeft(BinaryTreeNode left) {
+        this.left = left;
+    }
+    
+    
 }

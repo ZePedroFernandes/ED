@@ -11,7 +11,6 @@ import exceptions.EmptyException;
 import exceptions.InvalidElementException;
 import java.util.Iterator;
 import lists.unorderedLists.ArrayUnorderedList;
-import lists.unorderedLists.DoubleLinkedUnorderedList;
 import queues.LinkedQueue;
 
 /**
@@ -24,6 +23,11 @@ public class LinkedBinaryTree<T> implements BinaryTreeADT<T> {
     protected int count;
 
     protected BinaryTreeNode<T> root;
+
+    public LinkedBinaryTree(T element) {
+        count = 1;
+        root = new BinaryTreeNode<>(element);
+    }
 
     @Override
     public T getRoot() {
@@ -121,11 +125,8 @@ public class LinkedBinaryTree<T> implements BinaryTreeADT<T> {
 
         return tmpList.iterator();
     }
-    
-    @Override
-    public Iterator<T> iteratorLevelOrder() {
-        LinkedQueue<BinaryTreeNode<T>> nodes = new LinkedQueue<>();
-        DoubleLinkedUnorderedList<T> results = new DoubleLinkedUnorderedList<>();
+
+    public void levelOrder(LinkedQueue<BinaryTreeNode<T>> nodes, ArrayUnorderedList<T> results) {
         BinaryTreeNode<T> element = null;
 
         try {
@@ -153,6 +154,13 @@ public class LinkedBinaryTree<T> implements BinaryTreeADT<T> {
                 results.addToRear(null);
             }
         }
+    }
+
+    @Override
+    public Iterator<T> iteratorLevelOrder() {
+        LinkedQueue<BinaryTreeNode<T>> nodes = new LinkedQueue<>();
+        ArrayUnorderedList<T> results = new ArrayUnorderedList<>();
+        levelOrder(nodes, results);
         return results.iterator();
     }
 
