@@ -63,6 +63,10 @@ public class LinkedNode<T> {
     public T getElement() {
         return this.element;
     }
+    
+    public void setElement(T element) {
+        this.element = element;
+    }
 
     /**
      * Compares if two Nodes are equal.

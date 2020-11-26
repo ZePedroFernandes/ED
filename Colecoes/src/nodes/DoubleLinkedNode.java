@@ -93,6 +93,10 @@ public class DoubleLinkedNode<T> {
     public T getElement() {
         return this.element;
     }
+    
+    public void setElement(T element) {
+        this.element = element;
+    }
 
     /**
      * Compares if two {@link DoubleLinkedNode} are equal.

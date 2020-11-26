@@ -72,6 +72,7 @@ public class LinkedListSearchingAndSorting<T> {
             second = first;
             first = tmp;
         }
+
         if (second == list.tail) {
             list.tail = first;
         }
@@ -113,6 +114,7 @@ public class LinkedListSearchingAndSorting<T> {
         LinkedNode<T> prev = list.head;
         LinkedNode<T> auxprev;
         LinkedNode<T> aux;
+        T tmp;
 
         while (current != null) {
 
@@ -120,8 +122,11 @@ public class LinkedListSearchingAndSorting<T> {
             aux = current;
 
             while (auxprev != null && auxprev.getElement().compareTo(aux.getElement()) > 0) {
-                swapNodes(list, auxprev, aux);
-                auxprev = findPrevious(list, aux);
+                tmp = auxprev.getElement();
+                auxprev.setElement(aux.getElement());
+                aux.setElement(tmp);
+                aux = auxprev;
+                auxprev = findPrevious(list, auxprev);
             }
             prev = current;
             current = current.getNext();
@@ -133,6 +138,7 @@ public class LinkedListSearchingAndSorting<T> {
         LinkedNode<T> currentNode = list.head;
         LinkedNode<T> smaller = list.head;
         LinkedNode<T> aux;
+        T tmp;
 
         while (startNode != null) {
             smaller = startNode;
@@ -146,7 +152,10 @@ public class LinkedListSearchingAndSorting<T> {
             }
             aux = startNode.getNext();
             if (smaller != startNode) {
-                swapNodes(list, smaller, startNode);
+                tmp = smaller.getElement();
+                smaller.setElement(startNode.getElement());
+                startNode.setElement(tmp);
+//                swapNodes(list, smaller, startNode);
             }
             startNode = aux;
         }
@@ -160,20 +169,51 @@ public class LinkedListSearchingAndSorting<T> {
         } else {
             LinkedNode<T> current = list.head;
             LinkedNode<T> greater = list.head;
-
+            T tmp;
+            
             while (current != end.getNext()) {
                 if (current.getElement().compareTo(greater.getElement()) > 0) {
                     greater = current;
                 }
                 current = current.getNext();
             }
-            swapNodes(list, greater, end);
-            bubbleSort(list, findPrevious(list, greater));
+            tmp = greater.getElement();
+            greater.setElement(end.getElement());
+            end.setElement(tmp);
+//            swapNodes(list, greater, end);
+            bubbleSort(list, findPrevious(list, end));
         }
     }
 
-            
-            
+    private static <T> LinkedNode<T> findMiddle(LinkedNode<T> start, LinkedNode<T> end) {
+        LinkedNode<T> slow = start;
+        LinkedNode<T> fast = start;
+
+        while (fast.getNext().getNext() != end && fast.getNext() != end) {
+            slow = slow.getNext();
+            fast = fast.getNext().getNext();
+        }
+
+        return slow;
+    }
+
+//    public static <T extends Comparable<? super T>>
+//            void mergeSort(LinkedList<T> list ,LinkedNode<T> start, LinkedNode<T> end) {
+//        if (end == start) {
+//            return;
+//        }
+//
+//        LinkedList<T> half1 = new LinkedList<> ();
+//        LinkedList<T> half2 = new LinkedList<> ();
+//        LinkedNode<T> current = start;
+//        
+//        while(current != )
+//        
+//        LinkedNode<T> middle = findMiddle(start, end);
+//        
+//        int size = list.size();
+//
+//    }
     public static <T> void printlist(LinkedList<T> lista) {
         Iterator<T> itr1 = lista.iterator();
 

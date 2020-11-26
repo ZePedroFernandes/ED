@@ -25,36 +25,36 @@ public class LinkedListSortTests {
 
         Random randomizer = new Random();
         try {
-//            for (int i = 0; i < 9; i++) {
-//                numbers.add(randomizer.nextInt()/100000000);
-//            }
+            for (int i = 0; i < 9; i++) {
+                numbers.add(randomizer.nextInt()/100000000);
+            }
 
-            numbers.add(0);
-            numbers.add(1);
-            numbers.add(-1);
-            numbers.add(2);
-            numbers.add(4);
-            numbers.add(3);
+//            numbers.add(0);
+//            numbers.add(1);
+//            numbers.add(-1);
+//            numbers.add(2);
+//            numbers.add(4);
+//            numbers.add(3);
         } catch (InvalidElementException e) {
 
         }
 
         LinkedListSearchingAndSorting.printlist(numbers);
         
-        System.out.println(LinkedListSearchingAndSorting.linearSearch(numbers.iterator(), 4));
+        LinkedListSearchingAndSorting.selectionSort(numbers);
 
         LinkedListSearchingAndSorting.printlist(numbers);
 
-//        boolean ordered = true;
-//        LinkedNode<Integer> current = numbers.head;
-//        while (current.getNext() != null) {
-//            if (current.getElement().compareTo(current.getNext().getElement()) > 0) {
-//                ordered = false;
-//            }
-//
-//            current = current.getNext();
-//        }
-//        System.out.println(ordered);
+        boolean ordered = true;
+        LinkedNode<Integer> current = numbers.head;
+        while (current.getNext() != null) {
+            if (current.getElement().compareTo(current.getNext().getElement()) > 0) {
+                ordered = false;
+            }
+
+            current = current.getNext();
+        }
+        System.out.println(ordered);
     }
 
 }
