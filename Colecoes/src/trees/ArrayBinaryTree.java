@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package trees;
 
 import contracts.BinaryTreeADT;
@@ -145,20 +140,20 @@ public class ArrayBinaryTree<T> implements BinaryTreeADT<T> {
             } catch (EmptyException ex) {
                 System.out.println(ex.getMessage());
             }
-            if (tree[element] != null && element < count) {
-                results.addToRear(tree[element]);
-                try {
-                    nodes.enqueue(2 * element + 1);
-                    nodes.enqueue(2 * (element + 1));
-                } catch (InvalidElementException e) {
-                    System.out.println(e.getMessage());
+            if (element < count) {
+                if (tree[element] != null) {
+                    results.addToRear(tree[element]);
+                    try {
+                        nodes.enqueue(2 * element + 1);
+                        nodes.enqueue(2 * (element + 1));
+                    } catch (InvalidElementException e) {
+                        System.out.println(e.getMessage());
+                    }
+                } else {
+                    results.addToRear(null);
                 }
-            } else {
-                results.addToRear(null);
             }
-
         }
-
     }
 
     @Override
