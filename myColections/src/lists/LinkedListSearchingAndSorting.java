@@ -8,6 +8,18 @@ import java.util.Iterator;
  */
 public class LinkedListSearchingAndSorting<T> {
 
+    public static <T> boolean linearSearch(Iterator<T> node, T target) {
+
+        if (node.next().equals(target)) {
+            return true;
+        } else if (!node.hasNext()) {
+            return false;
+
+        } else {
+            return linearSearch(node, target);
+        }
+    }
+
     /**
      * Finds the position of a node in a linked list. Returns -1 if the node was
      * not found or is null.
@@ -160,106 +172,104 @@ public class LinkedListSearchingAndSorting<T> {
         }
     }
 
-    public static <T extends Comparable<? super T>>
-            void quickSort(LinkedList<T> list, LinkedNode<T> min, LinkedNode<T> max) {
-        if (min != max) {
-            LinkedNode<T> partition = findPartition(list, min, max);
-
-            quickSort(list, min, findPrevious(list, partition));
-
-            quickSort(list, partition.getNext(), max);
-        }
-    }
-
-    private static <T> LinkedNode<T>
-            getMidValue(LinkedNode<T> start, LinkedNode<T> end) {
-        LinkedNode<T> slow = start;
-        LinkedNode<T> fast = start;
-        if (start == end || start.getNext() == end) {
-            return start;
-        }
-
-        while (fast != end && fast.getNext() != end) {
-            slow = slow.getNext();
-            fast = fast.getNext().getNext();
-        }
-        return slow;
-    }
-
-    public static <T extends Comparable<? super T>>
-            LinkedNode<T> findPartition(LinkedList<T> list, LinkedNode<T> min, LinkedNode<T> max) {
-
-        if (min == max || min == null || max == null) {
-            return min;
-        }
-        LinkedNode<T> partitionNode = min;
-
-        LinkedNode<T> left = min;
-        LinkedNode<T> right = max;
-        LinkedNode<T> tmp;
-        boolean swap = true;
-
-        while (swap) {
-            LinkedListSearchingAndSorting.printlist(list);
-            System.out.println("Left  " + left.getElement());
-            System.out.println("Right " + right.getElement());
-            System.out.println("Midle " + partitionNode.getElement());
-
-            while (left.getElement().compareTo(partitionNode.getElement()) <= 0
-                    && left != right) {
-                left = left.getNext();
-                System.out.println("Left->" + left.getElement());
-            }
-
-            while (right.getElement().compareTo(partitionNode.getElement()) > 0 && right != min) {
-                if (right == left) {
-                    swap = false;
-                    System.out.println("swap false");
-                }
-                right = findPrevious(list, right);
-                System.out.println("Right->" + right.getElement());
-            }
-
-            if (right == left) {
-                swap = false;
-            }
-            if (swap) {
-                if (left == partitionNode) {
-                    partitionNode = right;
-                    System.out.println("PNode-> right");
-                } else if (right == partitionNode) {
-                    partitionNode = left;
-                    System.out.println("PNode-> left");
-                }
-
-                LinkedListSearchingAndSorting.printlist(list);
-                if (min == left) {
-                    min = right;
-                }
-                if (max == right) {
-                    max = left;
-                }
-                swapNodes(list, left, right);
-                tmp = left;
-                left = right;
-                right = tmp;
-                System.out.println("swap left e right");
-            }
-        }
-        LinkedListSearchingAndSorting.printlist(list);
-        if (max == right) {
-            max = partitionNode;
-        }
-        if (min == partitionNode) {
-            min = right;
-        }
-        swapNodes(list, partitionNode, right);
-        System.out.println("swap Pnode e right");
-        LinkedListSearchingAndSorting.printlist(list);
-
-        return partitionNode;
-    }
-
+//    public static <T extends Comparable<? super T>>
+//            void quickSort(LinkedList<T> list, LinkedNode<T> min, LinkedNode<T> max) {
+//        if (min != max) {
+//            LinkedNode<T> partition = findPartition(list, min, max);
+//
+//            quickSort(list, min, findPrevious(list, partition));
+//
+//            quickSort(list, partition.getNext(), max);
+//        }
+//    }
+//
+//    private static <T> LinkedNode<T>
+//            getMidValue(LinkedNode<T> start, LinkedNode<T> end) {
+//        LinkedNode<T> slow = start;
+//        LinkedNode<T> fast = start;
+//        if (start == end || start.getNext() == end) {
+//            return start;
+//        }
+//
+//        while (fast != end && fast.getNext() != end) {
+//            slow = slow.getNext();
+//            fast = fast.getNext().getNext();
+//        }
+//        return slow;
+//    }
+//    public static <T extends Comparable<? super T>>
+//            LinkedNode<T> findPartition(LinkedList<T> list, LinkedNode<T> min, LinkedNode<T> max) {
+//
+//        if (min == max || min == null || max == null) {
+//            return min;
+//        }
+//        LinkedNode<T> partitionNode = min;
+//
+//        LinkedNode<T> left = min;
+//        LinkedNode<T> right = max;
+//        LinkedNode<T> tmp;
+//        boolean swap = true;
+//
+//        while (swap) {
+//            LinkedListSearchingAndSorting.printlist(list);
+//            System.out.println("Left  " + left.getElement());
+//            System.out.println("Right " + right.getElement());
+//            System.out.println("Midle " + partitionNode.getElement());
+//
+//            while (left.getElement().compareTo(partitionNode.getElement()) <= 0
+//                    && left != right) {
+//                left = left.getNext();
+//                System.out.println("Left->" + left.getElement());
+//            }
+//
+//            while (right.getElement().compareTo(partitionNode.getElement()) > 0 && right != min) {
+//                if (right == left) {
+//                    swap = false;
+//                    System.out.println("swap false");
+//                }
+//                right = findPrevious(list, right);
+//                System.out.println("Right->" + right.getElement());
+//            }
+//
+//            if (right == left) {
+//                swap = false;
+//            }
+//            if (swap) {
+//                if (left == partitionNode) {
+//                    partitionNode = right;
+//                    System.out.println("PNode-> right");
+//                } else if (right == partitionNode) {
+//                    partitionNode = left;
+//                    System.out.println("PNode-> left");
+//                }
+//
+//                LinkedListSearchingAndSorting.printlist(list);
+//                if (min == left) {
+//                    min = right;
+//                }
+//                if (max == right) {
+//                    max = left;
+//                }
+//                swapNodes(list, left, right);
+//                tmp = left;
+//                left = right;
+//                right = tmp;
+//                System.out.println("swap left e right");
+//            }
+//        }
+//        LinkedListSearchingAndSorting.printlist(list);
+//        if (max == right) {
+//            max = partitionNode;
+//        }
+//        if (min == partitionNode) {
+//            min = right;
+//        }
+//        swapNodes(list, partitionNode, right);
+//        System.out.println("swap Pnode e right");
+//        LinkedListSearchingAndSorting.printlist(list);
+//
+//        return partitionNode;
+//    }
     public static <T> void printlist(LinkedList<T> lista) {
         Iterator<T> itr1 = lista.iterator();
 
