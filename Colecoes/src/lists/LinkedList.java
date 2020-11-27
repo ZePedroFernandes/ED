@@ -2,7 +2,7 @@ package lists;
 
 import exceptions.InvalidElementException;
 import exceptions.EmptyException;
-import java.util.Iterator;
+import java.util.*;
 
 /**
  * This class represents a LinkedList. This List is composed by
@@ -42,21 +42,17 @@ public class LinkedList<T> {
 
         @Override
         public boolean hasNext() {
-            if (this.cursor == null) {
-                return false;
-            } else {
-                return true;
-            }
+            return (this.cursor != null);
         }
 
         @Override
         public T next() {
-            if (this.hasNext()) {
-                T element = this.cursor.getElement();
-                this.cursor = this.cursor.getNext();
-                return element;
+            if (!this.hasNext()) {
+                throw new NoSuchElementException();
             }
-            return null;
+            T element = this.cursor.getElement();
+            this.cursor = this.cursor.getNext();
+            return element;
         }
 
     }
@@ -141,8 +137,8 @@ public class LinkedList<T> {
             invert(tmp, current);
         }
     }
-    
-    public int size(){
+
+    public int size() {
         return this.count;
     }
 
