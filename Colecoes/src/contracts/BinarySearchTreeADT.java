@@ -5,6 +5,8 @@
  */
 package contracts;
 
+import exceptions.ElementNotFoundException;
+
 /**
  *
  * @author Nome : José Pedro Fernandes Número: 8190239 Turma: 1
@@ -24,8 +26,9 @@ public interface BinarySearchTreeADT<T> extends BinaryTreeADT<T> {
      *
      * @param targetElement the element to be removed from this tree
      * @return the element removed from this tree
+     * @throws exceptions.ElementNotFoundException if the element is not present in the tree.
      */
-    public T removeElement(T targetElement);
+    public T removeElement(T targetElement) throws ElementNotFoundException;
 
     /**
      * Removes all occurences of the specified element from this tree.

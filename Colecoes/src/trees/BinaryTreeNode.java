@@ -11,10 +11,13 @@ public class BinaryTreeNode<T> {
 
     protected BinaryTreeNode left, right;
 
-    public BinaryTreeNode(T element){
+    public BinaryTreeNode() {
+    }
+
+    public BinaryTreeNode(T element) {
         this.element = element;
     }
-    
+
     public BinaryTreeNode(T element, BinaryTreeNode left, BinaryTreeNode right) {
         this.element = element;
         this.left = left;
@@ -54,5 +57,5 @@ public class BinaryTreeNode<T> {
     protected void setLeft(BinaryTreeNode left) {
         this.left = left;
     }
-    
+
 }

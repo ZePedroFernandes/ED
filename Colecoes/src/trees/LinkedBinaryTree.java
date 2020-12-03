@@ -19,6 +19,11 @@ public class LinkedBinaryTree<T> implements BinaryTreeADT<T> {
 
     protected BinaryTreeNode<T> root;
 
+    public LinkedBinaryTree(){
+        count = 0;
+        root = new BinaryTreeNode<>();
+    }
+    
     public LinkedBinaryTree(T element) {
         count = 1;
         root = new BinaryTreeNode<>(element);
