@@ -19,11 +19,11 @@ public class LinkedBinaryTree<T> implements BinaryTreeADT<T> {
 
     protected BinaryTreeNode<T> root;
 
-    public LinkedBinaryTree(){
+    public LinkedBinaryTree() {
         count = 0;
         root = new BinaryTreeNode<>();
     }
-    
+
     public LinkedBinaryTree(T element) {
         count = 1;
         root = new BinaryTreeNode<>(element);
@@ -78,18 +78,18 @@ public class LinkedBinaryTree<T> implements BinaryTreeADT<T> {
         return current.element;
     }
 
-    protected void inorder(BinaryTreeNode<T> node, ArrayUnorderedList<T> tmpList) {
+    protected void inOrder(BinaryTreeNode<T> node, ArrayUnorderedList<T> tmpList) {
         if (node != null) {
-            inorder(node.left, tmpList);
+            inOrder(node.left, tmpList);
             tmpList.addToRear(node.element);
-            inorder(node.right, tmpList);
+            inOrder(node.right, tmpList);
         }
     }
 
     @Override
     public Iterator<T> iteratorInOrder() {
         ArrayUnorderedList<T> tmpList = new ArrayUnorderedList<>();
-        inorder(root, tmpList);
+        inOrder(root, tmpList);
 
         return tmpList.iterator();
     }
@@ -97,8 +97,8 @@ public class LinkedBinaryTree<T> implements BinaryTreeADT<T> {
     protected void preOrder(BinaryTreeNode<T> node, ArrayUnorderedList<T> tmpList) {
         if (node != null) {
             tmpList.addToRear(node.element);
-            inorder(node.left, tmpList);
-            inorder(node.right, tmpList);
+            preOrder(node.left, tmpList);
+            preOrder(node.right, tmpList);
         }
     }
 
@@ -112,8 +112,8 @@ public class LinkedBinaryTree<T> implements BinaryTreeADT<T> {
 
     public void postOrder(BinaryTreeNode<T> node, ArrayUnorderedList<T> tmpList) {
         if (node != null) {
-            inorder(node.left, tmpList);
-            inorder(node.right, tmpList);
+            postOrder(node.left, tmpList);
+            postOrder(node.right, tmpList);
             tmpList.addToRear(node.element);
         }
     }
@@ -148,7 +148,6 @@ public class LinkedBinaryTree<T> implements BinaryTreeADT<T> {
                     nodes.enqueue(element.left);
                     nodes.enqueue(element.right);
                 } catch (InvalidElementException e) {
-                    System.out.println(e.getMessage());
                 }
             } else {
                 results.addToRear(null);

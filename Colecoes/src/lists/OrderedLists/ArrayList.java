@@ -3,6 +3,7 @@ package lists.OrderedLists;
 import contracts.ListADT;
 import exceptions.EmptyException;
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 /**
  *
@@ -34,15 +35,11 @@ public abstract class ArrayList<T> implements ListADT<T> {
 
         @Override
         public T next() {
-            if (this.hasNext()) {
-                this.cursor++;
-                if (elements[this.cursor - 1] == null) {
-                    return null;
-                } else {
-                    return (T) elements[this.cursor - 1];
-                }
+            if (!hasNext()) {
+                throw new NoSuchElementException();
             }
-            return null;
+            cursor++;
+            return ((T) elements[cursor - 1]);
             //throw new NullPointerException("No more elements");
         }
     }
