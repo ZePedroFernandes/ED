@@ -3,6 +3,7 @@ package lists.unorderedLists;
 import lists.OrderedLists.ArrayList;
 import contracts.UnorderedListContract;
 import exceptions.ElementNotFoundException;
+import exceptions.InvalidElementException;
 
 /**
  *
@@ -19,7 +20,7 @@ public class ArrayUnorderedList<T> extends ArrayList<T> implements UnorderedList
     }
 
     @Override
-    public void addToFront(T element) {
+    public void addToFront(T element){
         if (this.rear == this.elements.length) {
             this.expandCapacity();
         }

@@ -126,7 +126,8 @@ public class LinkedBinaryTree<T> implements BinaryTreeADT<T> {
         return tmpList.iterator();
     }
 
-    public void levelOrder(LinkedQueue<BinaryTreeNode<T>> nodes, ArrayUnorderedList<T> results) {
+    public void levelOrder(ArrayUnorderedList<T> results) {
+        LinkedQueue<BinaryTreeNode<T>> nodes = new LinkedQueue<>();
         BinaryTreeNode<T> element = null;
         nodes.enqueue(root);
 
@@ -149,9 +150,8 @@ public class LinkedBinaryTree<T> implements BinaryTreeADT<T> {
 
     @Override
     public Iterator<T> iteratorLevelOrder() {
-        LinkedQueue<BinaryTreeNode<T>> nodes = new LinkedQueue<>();
         ArrayUnorderedList<T> results = new ArrayUnorderedList<>();
-        levelOrder(nodes, results);
+        levelOrder(results);
         return results.iterator();
     }
 

@@ -2,6 +2,7 @@ package zmain;
 
 import java.util.Iterator;
 import queues.LinkedQueue;
+import trees.ArrayBinarySearchTree;
 import trees.LinkedBinarySearchTree;
 
 /**
@@ -14,23 +15,22 @@ public class main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        LinkedBinarySearchTree<Integer> tree = new LinkedBinarySearchTree<>();
+        ArrayBinarySearchTree<Integer> tree = new ArrayBinarySearchTree<>();
         
-        tree.addElement(3);
-        tree.addElement(3);
-        tree.addElement(3);
+        tree.addElement(5);
         tree.addElement(1);
-        tree.addElement(2);
+        tree.addElement(3);
         tree.addElement(4);
+        tree.addElement(10);
+        tree.addElement(6);
+        tree.addElement(-1);
         tree.addElement(0);
-        tree.addElement(4);
-        tree.addElement(4);
-        tree.addElement(4);
-        tree.addElement(4);
-        tree.addElement(4);
-        tree.removeAllOccurrences(4);
-        tree.removeAllOccurrences(3);
-        System.out.println(tree.findMax());
+        tree.addElement(11);
+        tree.addElement(-2);
+        tree.addElement(2);
+//        tree.removeAllOccurrences(4);
+//        tree.removeAllOccurrences(3);
+//        System.out.println(tree.findMax());
         
         System.out.print("Pre Order: [");
         Iterator<Integer> itrPreOrder = tree.iteratorPreOrder();

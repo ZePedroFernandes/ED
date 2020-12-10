@@ -170,7 +170,7 @@ public class LinkedBinarySearchTree<T> extends LinkedBinaryTree<T> implements Bi
             }
         }
     }
-
+    
     @Override
     public T removeMin() {
         T element = null;

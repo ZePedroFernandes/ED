@@ -2,8 +2,6 @@ package trees;
 
 import contracts.BinaryTreeADT;
 import exceptions.ElementNotFoundException;
-import exceptions.EmptyException;
-import exceptions.InvalidElementException;
 import java.util.Iterator;
 import lists.unorderedLists.ArrayUnorderedList;
 import queues.LinkedQueue;
@@ -19,7 +17,7 @@ public class ArrayBinaryTree<T> implements BinaryTreeADT<T> {
 
     protected T[] tree;
 
-    private final int CAPACITY = 50;
+    private final int CAPACITY = 2;
 
     public ArrayBinaryTree() {
         this.count = 0;
@@ -131,15 +129,15 @@ public class ArrayBinaryTree<T> implements BinaryTreeADT<T> {
         Integer element = null;
 
         while (!nodes.isEmpty()) {
-                element = nodes.dequeue();
-            if (element < count) {
+            element = nodes.dequeue();
+            if (element < tree.length) {
                 if (tree[element] != null) {
                     results.addToRear(tree[element]);
                     nodes.enqueue(2 * element + 1);
                     nodes.enqueue(2 * (element + 1));
-                } else {
+                } /*else {
                     results.addToRear(null);
-                }
+                }*/
             }
         }
     }
