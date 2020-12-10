@@ -86,7 +86,7 @@ public class LinkedListSentinel<T> {
         replaceRecursive(existingElement, newElement, this.head.getNext(), this.head);
     }
 
-    public void replaceRecursive(T element, T replaceElement, LinkedNode<T> current, LinkedNode<T> previous) {
+    private void replaceRecursive(T element, T replaceElement, LinkedNode<T> current, LinkedNode<T> previous) {
         if (current.getElement().equals(element)) {
             LinkedNode<T> newNode = new LinkedNode<>(replaceElement);
             newNode.setNext(current.getNext());

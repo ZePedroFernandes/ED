@@ -20,23 +20,19 @@ public class ExemploClientes {
      */
     public static void main(String[] args) {
 
-        try {
-            LinkedQueue<String> Clients = new LinkedQueue<>();
+        LinkedQueue<String> Clients = new LinkedQueue<>();
 
-            Clients.enqueue("Manel");
-            Clients.enqueue("Luis");
-            Clients.enqueue("Maria");
-            Clients.dequeue();
-            Clients.enqueue("Ana");
+        Clients.enqueue("Manel");
+        Clients.enqueue("Luis");
+        Clients.enqueue("Maria");
+        Clients.dequeue();
+        Clients.enqueue("Ana");
 
-            System.out.println(Clients.toString());
-            System.out.println("First: " + Clients.first());
-            System.out.println("Empty: " + Clients.isEmpty());
-            System.out.println("Size: " + Clients.size());
+        System.out.println(Clients.toString());
+        System.out.println("First: " + Clients.first());
+        System.out.println("Empty: " + Clients.isEmpty());
+        System.out.println("Size: " + Clients.size());
 
-        } catch (EmptyException | InvalidElementException expection) {
-            System.out.println(expection.getMessage());
-        }
     }
 
 }

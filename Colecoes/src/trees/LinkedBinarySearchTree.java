@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package trees;
 
 import contracts.BinarySearchTreeADT;
@@ -11,6 +6,7 @@ import exceptions.ElementNotFoundException;
 /**
  *
  * @author Nome : José Pedro Fernandes Número: 8190239 Turma: 1
+ * @param <T>
  */
 public class LinkedBinarySearchTree<T> extends LinkedBinaryTree<T> implements BinarySearchTreeADT<T> {
 
@@ -177,42 +173,72 @@ public class LinkedBinarySearchTree<T> extends LinkedBinaryTree<T> implements Bi
 
     @Override
     public T removeMin() {
-        T element;
-
+        T element = null;
         if (root.left == null) {
             element = root.element;
             root = root.right;
-            return element;
+        } else {
+            BinaryTreeNode<T> parent = root;
+            BinaryTreeNode<T> current = root.left;
+
+            while (current.left != null) {
+                parent = current;
+                current = current.getLeft();
+            }
+            element = current.getElement();
+            parent.left = replacement(current);
         }
 
-        BinaryTreeNode<T> parent = root;
-        BinaryTreeNode<T> current = root.left;
-        while (current.left != null) {
-            current = current.left;
-        }
-        element = current.element;
-        if (current.right != null) {
-            current = current.right;
-            parent.left = current;
-        } else {
-            parent.left = null;
-        }
         return element;
     }
 
     @Override
     public T removeMax() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        T element = null;
+        if (root.right == null) {
+            element = root.element;
+            root = root.left;
+        } else {
+            BinaryTreeNode<T> parent = root;
+            BinaryTreeNode<T> current = root.right;
+
+            while (current.right != null) {
+                parent = current;
+                current = current.getLeft();
+            }
+            element = current.getElement();
+            parent.right = replacement(current);
+        }
+
+        return element;
     }
 
     @Override
     public T findMin() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        T element = null;
+
+        BinaryTreeNode<T> current = root;
+        while (current.left != null) {
+            current = current.left;
+        }
+
+        element = current.element;
+
+        return element;
     }
 
     @Override
     public T findMax() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        T element = null;
+
+        BinaryTreeNode<T> current = root;
+        while (current.right != null) {
+            current = current.right;
+        }
+
+        element = current.element;
+
+        return element;
     }
 
 }

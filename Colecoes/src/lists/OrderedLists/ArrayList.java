@@ -40,7 +40,6 @@ public abstract class ArrayList<T> implements ListADT<T> {
             }
             cursor++;
             return ((T) elements[cursor - 1]);
-            //throw new NullPointerException("No more elements");
         }
     }
 

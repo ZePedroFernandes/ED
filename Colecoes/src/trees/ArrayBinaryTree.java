@@ -127,28 +127,16 @@ public class ArrayBinaryTree<T> implements BinaryTreeADT<T> {
     }
 
     private void levelOrder(LinkedQueue<Integer> nodes, ArrayUnorderedList<T> results) {
-        try {
-            nodes.enqueue(0);
-        } catch (InvalidElementException ex) {
-            System.out.println(ex.getMessage());
-        }
+        nodes.enqueue(0);
         Integer element = null;
 
         while (!nodes.isEmpty()) {
-            try {
                 element = nodes.dequeue();
-            } catch (EmptyException ex) {
-                System.out.println(ex.getMessage());
-            }
             if (element < count) {
                 if (tree[element] != null) {
                     results.addToRear(tree[element]);
-                    try {
-                        nodes.enqueue(2 * element + 1);
-                        nodes.enqueue(2 * (element + 1));
-                    } catch (InvalidElementException e) {
-                        System.out.println(e.getMessage());
-                    }
+                    nodes.enqueue(2 * element + 1);
+                    nodes.enqueue(2 * (element + 1));
                 } else {
                     results.addToRear(null);
                 }

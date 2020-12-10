@@ -3,11 +3,12 @@ package queues;
 import contracts.QueueContract;
 import exceptions.EmptyException;
 import exceptions.InvalidElementException;
+import java.util.NoSuchElementException;
 import lists.LinkedNode;
 
 /**
  * Represents a queue implemented using linked nodes.
- * 
+ *
  * @author Nome : José Pedro Fernandes Número: 8190239 Turma: 1
  * @param <T> Type of elements to be stored in the queue.
  */
@@ -33,10 +34,9 @@ public class LinkedQueue<T> implements QueueContract<T> {
      * Adds an element to the rear of the queue.
      *
      * @param element element to be added
-     * @throws InvalidElementException If the element is invalid
      */
     @Override
-    public void enqueue(T element) throws InvalidElementException {
+    public void enqueue(T element) {
         if (element == null) {
             throw new InvalidElementException();
         }
@@ -56,12 +56,11 @@ public class LinkedQueue<T> implements QueueContract<T> {
      * Removes an element from the front of the queue.
      *
      * @return the removed element.
-     * @throws exceptions.EmptyException if the queue is empty.
      */
     @Override
-    public T dequeue() throws EmptyException {
+    public T dequeue() {
         if (this.count == 0) {
-            throw new EmptyException("Empty queue");
+            throw new NoSuchElementException("Empty Queue");
         }
 
         T element = this.front.getElement();
@@ -75,14 +74,13 @@ public class LinkedQueue<T> implements QueueContract<T> {
      * Examins the element at the front of the queue.
      *
      * @return the examined element.
-     * @throws exceptions.EmptyException if the queue is empty.
      */
     @Override
-    public T first() throws EmptyException{
-        if(this.isEmpty()){
-            throw new EmptyException("Empty queue");
+    public T first(){
+        if (this.isEmpty()) {
+            throw new NoSuchElementException("Empty Queue");
         }
-        
+
         return this.front.getElement();
     }
 
@@ -108,7 +106,7 @@ public class LinkedQueue<T> implements QueueContract<T> {
 
     /**
      * Returns a string representation of the queue.
-     * 
+     *
      * @return a string representation of the queue.
      */
     @Override
@@ -117,12 +115,21 @@ public class LinkedQueue<T> implements QueueContract<T> {
         LinkedNode<T> current = this.front;
         if (this.front != null) {
             while (current.getNext() != null) {
-                queue += current.toString() + "\n";
+                if (current.getElement() == null) {
+                    queue += "null\n";
+                } else {
+                    queue += current.toString() + "\n";
+                }
                 current = current.getNext();
+
             }
-            queue += current.toString();
+            if (current.getElement() == null) {
+                queue += "null";
+            } else {
+                queue += current.toString();
+            }
         }
-        
+
         return queue;
     }
 }

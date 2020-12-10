@@ -16,7 +16,6 @@ import queues.CircularArrayQueue;
 public class Slide27_Test {
 
     public static void main(String[] args) {
-        try {
             CircularArrayQueue<Character> alphabet = new CircularArrayQueue<>();
             alphabet.enqueue('A');
             alphabet.enqueue('B');
@@ -36,8 +35,5 @@ public class Slide27_Test {
             alphabet.enqueue('L');
 
             System.out.println(alphabet.toString());
-        } catch (EmptyException | InvalidElementException exception) {
-            System.out.println(exception.getMessage());
-        }
     }
 }

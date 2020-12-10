@@ -3,6 +3,7 @@ package queues;
 import contracts.QueueContract;
 import exceptions.EmptyException;
 import exceptions.InvalidElementException;
+import java.util.NoSuchElementException;
 
 /**
  * Represents a queue implemented with a Circular Array.
@@ -64,12 +65,11 @@ public class CircularArrayQueue<T> implements QueueContract<T> {
      * Adds an element to the rear of the queue.
      *
      * @param element element to be added.
-     * @throws exceptions.InvalidElementException if the element is invalid
      */
     @Override
-    public void enqueue(T element) throws InvalidElementException {
+    public void enqueue(T element){
         if (element == null) {
-            throw new InvalidElementException("Invalid element");
+            throw new NullPointerException("Invalid element");
         }
 
         if (this.count == this.elements.length) {
@@ -85,12 +85,11 @@ public class CircularArrayQueue<T> implements QueueContract<T> {
      * Removes an element from the front of the queue.
      *
      * @return the removed element.
-     * @throws exceptions.EmptyException if the queue is empty.
      */
     @Override
-    public T dequeue() throws EmptyException {
+    public T dequeue() {
         if (this.isEmpty()) {
-            throw new EmptyException("Empty queue");
+            throw new NoSuchElementException("Empty queue");
         }
 
         T element = this.elements[this.front];
@@ -104,12 +103,11 @@ public class CircularArrayQueue<T> implements QueueContract<T> {
      * Examins the element at the front of the queue.
      *
      * @return the examined element.
-     * @throws exceptions.EmptyException if the queue is empty.
      */
     @Override
-    public T first() throws EmptyException {
+    public T first() {
         if (this.isEmpty()) {
-            throw new EmptyException("Empty queue");
+            throw new NoSuchElementException("Empty queue");
         }
         return this.elements[this.front];
     }

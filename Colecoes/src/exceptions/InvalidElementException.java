@@ -5,7 +5,7 @@ package exceptions;
  *
  * @author Nome : José Pedro Fernandes Número: 8190239 Turma: 1
  */
-public class InvalidElementException extends Exception {
+public class InvalidElementException extends RuntimeException {
 
     /**
      * Constructs an instance of {@link InvalidElementException}.

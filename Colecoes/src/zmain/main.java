@@ -1,8 +1,8 @@
 package zmain;
 
 import java.util.Iterator;
-import lists.LinkedList;
-import lists.unorderedLists.ArrayUnorderedList;
+import queues.LinkedQueue;
+import trees.LinkedBinarySearchTree;
 
 /**
  *
@@ -14,15 +14,64 @@ public class main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        ArrayUnorderedList<Integer> a = new ArrayUnorderedList<>();
-        a.addToRear(null);
-        a.addToRear(1);
+        LinkedBinarySearchTree<Integer> tree = new LinkedBinarySearchTree<>();
         
-        Iterator<Integer> itr = a.iterator();
+        tree.addElement(3);
+        tree.addElement(3);
+        tree.addElement(3);
+        tree.addElement(1);
+        tree.addElement(2);
+        tree.addElement(4);
+        tree.addElement(0);
+        tree.addElement(4);
+        tree.addElement(4);
+        tree.addElement(4);
+        tree.addElement(4);
+        tree.addElement(4);
+        tree.removeAllOccurrences(4);
+        tree.removeAllOccurrences(3);
+        System.out.println(tree.findMax());
         
-        while(itr.hasNext()){
-            System.out.println(itr.next());
+        System.out.print("Pre Order: [");
+        Iterator<Integer> itrPreOrder = tree.iteratorPreOrder();
+        while(itrPreOrder.hasNext()){
+            System.out.print(itrPreOrder.next());
+            if(itrPreOrder.hasNext()){
+                System.out.print(", ");
+            }
         }
-    }
+        System.out.println("]");
+        
+        System.out.print("In Order: [");
+        Iterator<Integer> itrInOrder = tree.iteratorInOrder();
+        while(itrInOrder.hasNext()){
+            System.out.print(itrInOrder.next());
+            if(itrInOrder.hasNext()){
+                System.out.print(", ");
+            }
+        }
+        System.out.println("]");
+        
+        System.out.print("Post Order: [");
+        Iterator<Integer> itrPostOrder = tree.iteratorPostOrder();
+        while(itrPostOrder.hasNext()){
+            System.out.print(itrPostOrder.next());
+            if(itrPostOrder.hasNext()){
+                System.out.print(", ");
+            }
+        }
+        System.out.println("]");
+        
+        System.out.print("Level Order: [");
+        Iterator<Integer> itrLevelOrder = tree.iteratorLevelOrder();
+        while(itrLevelOrder.hasNext()){
+            System.out.print(itrLevelOrder.next());
+            if(itrLevelOrder.hasNext()){
+                System.out.print(", ");
+            }
+        }
+        System.out.println("]");
     
+    }
+
 }

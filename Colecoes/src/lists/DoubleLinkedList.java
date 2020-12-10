@@ -2,10 +2,13 @@ package lists;
 
 import contracts.ListADT;
 import exceptions.EmptyException;
+import java.util.ConcurrentModificationException;
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 import nodes.DoubleLinkedNode;
 
 /**
+ * Sentinel Double Linked List.
  *
  * @author Nome : José Pedro Fernandes Número: 8190239 Turma: 1
  * @param <T>
@@ -45,7 +48,7 @@ public abstract class DoubleLinkedList<T> implements ListADT<T>, Iterable<T> {
         @Override
         public boolean hasNext() {
             if (this.excpectedModCount != modCount) {
-                return false;
+                throw new ConcurrentModificationException("A lista foi alterada");
             }
 
             return (cursor != tail);
@@ -53,12 +56,13 @@ public abstract class DoubleLinkedList<T> implements ListADT<T>, Iterable<T> {
 
         @Override
         public T next() {
-            if (this.hasNext()) {
-                T element = cursor.getElement();
-                cursor = cursor.getNext();
-                return element;
+            T element = null;
+            if (!this.hasNext()) {
+                throw new NoSuchElementException();
             }
-            return null;
+            element = cursor.getElement();
+            cursor = cursor.getNext();
+            return element;
         }
     }
 

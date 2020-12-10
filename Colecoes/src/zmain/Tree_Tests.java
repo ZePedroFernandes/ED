@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package zmain;
 
 import java.util.Iterator;
@@ -20,10 +15,7 @@ public class Tree_Tests {
     public static void main(String[] args) {
         LinkedBinarySearchTree<Integer> tree = new LinkedBinarySearchTree<>();
         
-        tree.addElement(2);
-        tree.addElement(1);
         tree.addElement(3);
-        tree.addElement(0);
         
         System.out.print("Pre Order: [");
         Iterator<Integer> itrPreOrder = tree.iteratorPreOrder();
