@@ -91,34 +91,46 @@ public class ArrayBinarySearchTree<T> extends ArrayBinaryTree<T> implements Bina
         count++;
     }
 
+    /**
+     * Troca um elemento com o maior elemento que seja filho do filho esquerdo.
+     * O método vai á esquerda do elemento de paramentro (filho esquerdo),
+     * depois de ir ao filho esquerdo, vai ao filho direito do filho esquerdo,
+     * depois vai outra vez ao filho direito e assim sucessivamente até chegar
+     * ao fim do ramo.
+     *
+     * @param element o elemento a ser substituido.
+     */
     public void replace(int element) {
-        if (tree.length - 1 < element * 2 + 1) {
+        if (tree.length - 1 < element * 2 + 1) { // Se não há espaço no array para os filhos, não há filhos.
             tree[element] = null;
+        } else if (tree.length - 1 == element * 2 + 1) { // Se o array apenas permitir ter filho esquerdo.
+            tree[element] = tree[element * 2 + 1];
         } else {
-            int temp = element;
-            if (tree.length - 1 == element * 2 + 1) {
-                tree[element] = tree[element * 2 + 1];
-            }
-            if (tree[element * 2 + 1] == null && tree[element * 2 + 2] == null) {
+            if (tree[element * 2 + 1] == null && tree[element * 2 + 2] == null) { // Não tem filhos
                 tree[element] = null;
 
-            } else if (tree[element * 2 + 1] != null && tree[element * 2 + 2] == null) {
+            } else if (tree[element * 2 + 1] != null && tree[element * 2 + 2] == null) { //Tem so um filho ,esquerdo
 
                 tree[element] = tree[element * 2 + 1];
+                tree[element * 2 + 1] = null;
+                replace(element * 2 + 1);
 
-            } else if (tree[element * 2 + 1] == null && tree[element * 2 + 2] != null) {
+            } else if (tree[element * 2 + 1] == null && tree[element * 2 + 2] != null) { // Tem so um filho, direito
 
                 tree[element] = tree[element * 2 + 2];
+                tree[element * 2 + 2] = null;
+                replace(element * 2 + 2);
 
-            } else {
-                element = element * 2 + 1;
-                while (tree[element * 2 + 2] != null && tree.length - 1 > element * 2 + 2) {
-                    element = element * 2 + 2;
+            } else { //Tem dois filhos
+                int closestLeftValue = element * 2 + 1;
+                while (tree[closestLeftValue * 2 + 2] != null && tree.length - 1 > closestLeftValue * 2 + 2) {
+                    closestLeftValue = closestLeftValue * 2 + 2;
                 }
+
+                tree[element] = tree[closestLeftValue];
+                tree[closestLeftValue] = null;
             }
 
-            tree[temp] = tree[element];
-            tree[element] = null;
         }
     }
 
@@ -149,7 +161,15 @@ public class ArrayBinarySearchTree<T> extends ArrayBinaryTree<T> implements Bina
 
     @Override
     public void removeAllOccurrences(T targetElement) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        boolean allRemoved = false;
+        
+        while(!allRemoved){
+            try{
+                removeElement(targetElement);
+            }catch(ElementNotFoundException exception){
+                allRemoved = true;
+            }
+        }
     }
 
     @Override
