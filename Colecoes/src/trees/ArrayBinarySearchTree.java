@@ -45,6 +45,7 @@ public class ArrayBinarySearchTree<T> extends ArrayBinaryTree<T> implements Bina
      *
      * @param element the element to be added to the search tree
      */
+    @Override
     public void addElement(T element) {
         if (tree.length < maxIndex * 2 + 3) {
             expandCapacity();
@@ -90,9 +91,60 @@ public class ArrayBinarySearchTree<T> extends ArrayBinaryTree<T> implements Bina
         count++;
     }
 
+    public void replace(int element) {
+        if (tree.length - 1 < element * 2 + 1) {
+            tree[element] = null;
+        } else {
+            int temp = element;
+            if (tree.length - 1 == element * 2 + 1) {
+                tree[element] = tree[element * 2 + 1];
+            }
+            if (tree[element * 2 + 1] == null && tree[element * 2 + 2] == null) {
+                tree[element] = null;
+
+            } else if (tree[element * 2 + 1] != null && tree[element * 2 + 2] == null) {
+
+                tree[element] = tree[element * 2 + 1];
+
+            } else if (tree[element * 2 + 1] == null && tree[element * 2 + 2] != null) {
+
+                tree[element] = tree[element * 2 + 2];
+
+            } else {
+                element = element * 2 + 1;
+                while (tree[element * 2 + 2] != null && tree.length - 1 > element * 2 + 2) {
+                    element = element * 2 + 2;
+                }
+            }
+
+            tree[temp] = tree[element];
+            tree[element] = null;
+        }
+    }
+
     @Override
     public T removeElement(T targetElement) throws ElementNotFoundException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        T result = null;
+        int element = 0;
+        boolean found = false;
+        while (!found) {
+            if (tree.length - 1 < element || tree[element] == null) {
+                throw new ElementNotFoundException("Element not found");
+            }
+            if (tree[element] == targetElement) {
+                found = true;
+            } else {
+                if (((Comparable) tree[element]).compareTo(targetElement) < 0) {
+                    element = element * 2 + 2;
+                } else {
+                    element = element * 2 + 1;
+                }
+            }
+        }
+        result = tree[element];
+        replace(element);
+
+        return result;
     }
 
     @Override

@@ -1,5 +1,6 @@
 package zmain;
 
+import exceptions.ElementNotFoundException;
 import java.util.Iterator;
 import queues.LinkedQueue;
 import trees.ArrayBinarySearchTree;
@@ -14,20 +15,16 @@ public class main {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ElementNotFoundException{
         ArrayBinarySearchTree<Integer> tree = new ArrayBinarySearchTree<>();
 
-        tree.addElement(5);
-        tree.addElement(1);
-        tree.addElement(3);
-        tree.addElement(4);
         tree.addElement(10);
-        tree.addElement(6);
-        tree.addElement(-1);
+        tree.addElement(5);
+        tree.addElement(20);
         tree.addElement(0);
-        tree.addElement(11);
-        tree.addElement(-2);
-        tree.addElement(2);
+        tree.addElement(8);
+        tree.addElement(15);
+        tree.addElement(25);
 //        tree.removeAllOccurrences(4);
 //        tree.removeAllOccurrences(3);
 //        System.out.println(tree.findMax());
@@ -72,8 +69,19 @@ public class main {
         }
         System.out.println("]");
 
-        int min = tree.findMax();
-        System.out.println(min);
+        int removed = tree.removeElement(25);
+        System.out.println(removed);
+        System.out.print("Level Order: [");
+        
+        Iterator<Integer> itrLevelOrder2 = tree.iteratorInOrder();
+        while (itrLevelOrder2.hasNext()) {
+            System.out.print(itrLevelOrder2.next());
+            if (itrLevelOrder2.hasNext()) {
+                System.out.print(", ");
+            }
+        }
+        System.out.println("]");
+        System.out.println("");
     }
 
 }
