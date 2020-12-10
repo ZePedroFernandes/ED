@@ -3,7 +3,6 @@ package lists.unorderedLists;
 import lists.OrderedLists.ArrayList;
 import contracts.UnorderedListContract;
 import exceptions.ElementNotFoundException;
-import exceptions.InvalidElementException;
 
 /**
  *

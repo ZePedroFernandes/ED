@@ -16,7 +16,7 @@ public class main {
      */
     public static void main(String[] args) {
         ArrayBinarySearchTree<Integer> tree = new ArrayBinarySearchTree<>();
-        
+
         tree.addElement(5);
         tree.addElement(1);
         tree.addElement(3);
@@ -31,47 +31,49 @@ public class main {
 //        tree.removeAllOccurrences(4);
 //        tree.removeAllOccurrences(3);
 //        System.out.println(tree.findMax());
-        
+
         System.out.print("Pre Order: [");
         Iterator<Integer> itrPreOrder = tree.iteratorPreOrder();
-        while(itrPreOrder.hasNext()){
+        while (itrPreOrder.hasNext()) {
             System.out.print(itrPreOrder.next());
-            if(itrPreOrder.hasNext()){
+            if (itrPreOrder.hasNext()) {
                 System.out.print(", ");
             }
         }
         System.out.println("]");
-        
+
         System.out.print("In Order: [");
         Iterator<Integer> itrInOrder = tree.iteratorInOrder();
-        while(itrInOrder.hasNext()){
+        while (itrInOrder.hasNext()) {
             System.out.print(itrInOrder.next());
-            if(itrInOrder.hasNext()){
+            if (itrInOrder.hasNext()) {
                 System.out.print(", ");
             }
         }
         System.out.println("]");
-        
+
         System.out.print("Post Order: [");
         Iterator<Integer> itrPostOrder = tree.iteratorPostOrder();
-        while(itrPostOrder.hasNext()){
+        while (itrPostOrder.hasNext()) {
             System.out.print(itrPostOrder.next());
-            if(itrPostOrder.hasNext()){
+            if (itrPostOrder.hasNext()) {
                 System.out.print(", ");
             }
         }
         System.out.println("]");
-        
+
         System.out.print("Level Order: [");
         Iterator<Integer> itrLevelOrder = tree.iteratorLevelOrder();
-        while(itrLevelOrder.hasNext()){
+        while (itrLevelOrder.hasNext()) {
             System.out.print(itrLevelOrder.next());
-            if(itrLevelOrder.hasNext()){
+            if (itrLevelOrder.hasNext()) {
                 System.out.print(", ");
             }
         }
         System.out.println("]");
-    
+
+        int min = tree.findMax();
+        System.out.println(min);
     }
 
 }

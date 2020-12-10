@@ -1,12 +1,13 @@
 package trees;
 
-import contracts.BinaryTreeADT;
+import contracts.BinarySearchTreeADT;
+import exceptions.ElementNotFoundException;
 
 /**
  *
  * @author Nome : José Pedro Fernandes Número: 8190239 Turma: 1
  */
-public class ArrayBinarySearchTree<T> extends ArrayBinaryTree<T> implements BinaryTreeADT<T> {
+public class ArrayBinarySearchTree<T> extends ArrayBinaryTree<T> implements BinarySearchTreeADT<T> {
 
     protected int height;
     protected int maxIndex;
@@ -36,7 +37,7 @@ public class ArrayBinarySearchTree<T> extends ArrayBinaryTree<T> implements Bina
 
     /**
      * Adds the specified object to this binary search tree in the appropriate
-     * position according to its key value. Note that * equal elements are added
+     * position according to its key value. Note that equal elements are added
      * to the right. Also note that the index of the left child of the current
      * index can be found by doubling the current index and adding 1. Finding
      * the index of the right child can be calculated by doubling the current
@@ -87,6 +88,62 @@ public class ArrayBinarySearchTree<T> extends ArrayBinaryTree<T> implements Bina
         }
         height = (int) (Math.log(maxIndex + 1) / Math.log(2)) + 1;
         count++;
+    }
+
+    @Override
+    public T removeElement(T targetElement) throws ElementNotFoundException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void removeAllOccurrences(T targetElement) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public T removeMin() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public T removeMax() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public T findMin() {
+        boolean found = false;
+        int element = 0;
+
+        if (tree[1] != null) {
+            while (!found) {
+                if (tree.length > element * 2 + 1 && tree[element * 2 + 1] == null) {
+                    found = true;
+                } else {
+                    element = element * 2 + 1;
+                }
+            }
+        }
+
+        return tree[element];
+    }
+
+    @Override
+    public T findMax() {
+        boolean found = false;
+        int element = 0;
+
+        if (tree[1] != null) {
+            while (!found) {
+                if (tree.length > element * 2 + 2 && tree[element * 2 + 2] == null) {
+                    found = true;
+                } else {
+                    element = element * 2 + 2;
+                }
+            }
+        }
+
+        return tree[element];
     }
 
 }
