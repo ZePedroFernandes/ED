@@ -26,8 +26,6 @@ public class main {
         tree.addElement(8);
         tree.addElement(15);
         tree.addElement(15);
-        tree.addElement(15);
-        tree.addElement(25);
 //        tree.removeAllOccurrences(4);
 //        tree.removeAllOccurrences(3);
 //        System.out.println(tree.findMax());
