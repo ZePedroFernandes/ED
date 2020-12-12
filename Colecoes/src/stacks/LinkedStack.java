@@ -58,12 +58,11 @@ public class LinkedStack<T> implements StackADT<T> {
      * {@link EmptyException} is thrown.
      *
      * @return the element from the top of the stack
-     * @throws EmptyException if the stack is empty
      */
     @Override
-    public T pop() throws EmptyException {
+    public T pop() {
         if (isEmpty()) {
-            throw new EmptyException("Empty Stack");
+            return null;
         }
         LinkedNode<T> popNode = this.top.getNext();
         this.top.setNext(popNode.getNext());
