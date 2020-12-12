@@ -106,25 +106,46 @@ public class ArrayBinarySearchTree<T> extends ArrayBinaryTree<T> implements Bina
 
                 tree[element] = tree[element * 2 + 1];
 
-            } else if (tree[element * 2 + 1] == null && tree[element * 2 + 2] != null) {
+            } else if (tree[element * 2 + 1] != null && tree[element * 2 + 2] == null) {
 
-                tree[element] = tree[element * 2 + 2];
+                tree[element] = tree[element * 2 + 1];
 
             } else {
-                element = element * 2 + 1;
-                while (tree[element * 2 + 2] != null && tree.length - 1 > element * 2 + 2) {
-                    element = element * 2 + 2;
+                element = element * 2 + 2;
+                while (tree[element * 2 + 1] != null && tree.length - 1 > element * 2 + 1) {
+                    element = element * 2 + 1;
                 }
+                tree[temp] = tree[element];
+                tree[element] = null;
+                replace(element);
             }
 
-            tree[temp] = tree[element];
-            tree[element] = null;
         }
     }
 
     @Override
     public T removeElement(T targetElement) throws ElementNotFoundException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        T result = null;
+        int element = 0;
+        boolean found = false;
+        while (!found) {
+            if (tree.length - 1 < element || tree[element] == null) {
+                throw new ElementNotFoundException("Element not found");
+            }
+            if (tree[element] == targetElement) {
+                found = true;
+            } else {
+                if (((Comparable) tree[element]).compareTo(targetElement) < 0) {
+                    element = element * 2 + 2;
+                } else {
+                    element = element * 2 + 1;
+                }
+            }
+        }
+        result = tree[element];
+        replace(element);
+
+        return result;
     }
 
     @Override
@@ -138,7 +159,6 @@ public class ArrayBinarySearchTree<T> extends ArrayBinaryTree<T> implements Bina
                 allRemoved = true;
             }
         }
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override

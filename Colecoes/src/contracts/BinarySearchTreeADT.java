@@ -1,16 +1,13 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package contracts;
 
 import exceptions.ElementNotFoundException;
 
 /**
+ * This interface represents the contract to implement a BinarySearchTree. This
+ * tree is an ordered one, this way its possible to serch elements.
  *
  * @author Nome : José Pedro Fernandes Número: 8190239 Turma: 1
- * @param <T> type of the elements
+ * @param <T> type of the elements in the tree, this type must be comparable.
  */
 public interface BinarySearchTreeADT<T> extends BinaryTreeADT<T> {
 
@@ -26,7 +23,8 @@ public interface BinarySearchTreeADT<T> extends BinaryTreeADT<T> {
      *
      * @param targetElement the element to be removed from this tree
      * @return the element removed from this tree
-     * @throws exceptions.ElementNotFoundException if the element is not present in the tree.
+     * @throws ElementNotFoundException if the element is not present in the
+     * tree.
      */
     public T removeElement(T targetElement) throws ElementNotFoundException;
 
@@ -37,32 +35,31 @@ public interface BinarySearchTreeADT<T> extends BinaryTreeADT<T> {
      * it removed
      */
     public void removeAllOccurrences(T targetElement);
-    
-    
+
     /**
      * Removes and returns the smallest element from this tree.
-     * 
+     *
      * @return the smallest element from this tree
      */
     public T removeMin();
-    
+
     /**
      * Removes and returns the largest element from this tree.
-     * 
-     * @return  the largest element from this tree
+     *
+     * @return the largest element from this tree
      */
     public T removeMax();
-    
+
     /**
      * Returns a reference to the smallest element in this tree.
-     * 
+     *
      * @return a reference to the smallest element in this tree
      */
     public T findMin();
-    
+
     /**
      * Returns a reference to the largest element in this tree.
-     * 
+     *
      * @return a reference to the largest element in this tree
      */
     public T findMax();

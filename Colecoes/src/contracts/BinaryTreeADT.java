@@ -4,8 +4,10 @@ import exceptions.ElementNotFoundException;
 import java.util.Iterator;
 
 /**
+ * This interface represents the contract to implement a Binary tree.
  *
  * @author Nome : José Pedro Fernandes Número: 8190239 Turma: 1
+ * @param <T> the type of elements of the tree.
  */
 public interface BinaryTreeADT<T> {
 

@@ -14,38 +14,38 @@ public interface QueueContract<T> {
     /**
      * Adds an element to the rear of the queue.
      *
-     * @param element element to be added.
-     * @throws exceptions.InvalidElementException if the element is invalid
+     * @param element element to be added
+     * @throws InvalidElementException if the element is invalid
      */
     public void enqueue(T element) throws InvalidElementException;
 
     /**
      * Removes an element from the front of the queue.
      *
-     * @return the removed element.
-     * @throws exceptions.EmptyException if the queue is empty.
+     * @return the removed element
+     * @throws EmptyException if the queue is empty
      */
     public T dequeue() throws EmptyException;
 
     /**
      * Examins the element at the front of the queue.
      *
-     * @return the examined element.
-     * @throws exceptions.EmptyException if the queue is empty.
+     * @return the examined element
+     * @throws EmptyException if the queue is empty
      */
     public T first() throws EmptyException;
 
     /**
-     * Determines if the queue is empty.
+     * Determines if the queue is empty, returns true if so, otherwise returns false.
      *
-     * @return true if the queue is empty otherwise returns false.
+     * @return true if the queue is empty otherwise returns false
      */
     public boolean isEmpty();
 
     /**
      * Determines the number of the elements in the queue.
      *
-     * @return the number of elements in the queue.
+     * @return the number of elements in the queue
      */
     public int size();
 

@@ -30,36 +30,36 @@ public class main {
 //        tree.removeAllOccurrences(3);
 //        System.out.println(tree.findMax());
 
-        System.out.print("Pre Order: [");
-        Iterator<Integer> itrPreOrder = tree.iteratorPreOrder();
-        while (itrPreOrder.hasNext()) {
-            System.out.print(itrPreOrder.next());
-            if (itrPreOrder.hasNext()) {
-                System.out.print(", ");
-            }
-        }
-        System.out.println("]");
-
-        System.out.print("In Order: [");
-        Iterator<Integer> itrInOrder = tree.iteratorInOrder();
-        while (itrInOrder.hasNext()) {
-            System.out.print(itrInOrder.next());
-            if (itrInOrder.hasNext()) {
-                System.out.print(", ");
-            }
-        }
-        System.out.println("]");
-
-        System.out.print("Post Order: [");
-        Iterator<Integer> itrPostOrder = tree.iteratorPostOrder();
-        while (itrPostOrder.hasNext()) {
-            System.out.print(itrPostOrder.next());
-            if (itrPostOrder.hasNext()) {
-                System.out.print(", ");
-            }
-        }
-        System.out.println("]");
-
+//        System.out.print("Pre Order: [");
+//        Iterator<Integer> itrPreOrder = tree.iteratorPreOrder();
+//        while (itrPreOrder.hasNext()) {
+//            System.out.print(itrPreOrder.next());
+//            if (itrPreOrder.hasNext()) {
+//                System.out.print(", ");
+//            }
+//        }
+//        System.out.println("]");
+//
+//        System.out.print("In Order: [");
+//        Iterator<Integer> itrInOrder = tree.iteratorInOrder();
+//        while (itrInOrder.hasNext()) {
+//            System.out.print(itrInOrder.next());
+//            if (itrInOrder.hasNext()) {
+//                System.out.print(", ");
+//            }
+//        }
+//        System.out.println("]");
+//
+//        System.out.print("Post Order: [");
+//        Iterator<Integer> itrPostOrder = tree.iteratorPostOrder();
+//        while (itrPostOrder.hasNext()) {
+//            System.out.print(itrPostOrder.next());
+//            if (itrPostOrder.hasNext()) {
+//                System.out.print(", ");
+//            }
+//        }
+//        System.out.println("]");
+//
         System.out.print("Level Order: [");
         Iterator<Integer> itrLevelOrder = tree.iteratorLevelOrder();
         while (itrLevelOrder.hasNext()) {
@@ -70,11 +70,12 @@ public class main {
         }
         System.out.println("]");
 
-        int removed = tree.removeElement(25);
+        int removed = tree.removeElement(15);
+         removed = tree.removeElement(15);
         System.out.println(removed);
         System.out.print("Level Order: [");
         
-        Iterator<Integer> itrLevelOrder2 = tree.iteratorInOrder();
+        Iterator<Integer> itrLevelOrder2 = tree.iteratorLevelOrder();
         while (itrLevelOrder2.hasNext()) {
             System.out.print(itrLevelOrder2.next());
             if (itrLevelOrder2.hasNext()) {
@@ -82,7 +83,7 @@ public class main {
             }
         }
         System.out.println("]");
-        System.out.println("");
+        System.out.print("");
     }
 
 }
