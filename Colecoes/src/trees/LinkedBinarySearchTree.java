@@ -4,7 +4,8 @@ import contracts.BinarySearchTreeADT;
 import exceptions.ElementNotFoundException;
 
 /**
- *
+ * Represents a binary search tree implemented using linked nodes
+ * 
  * @author Nome : José Pedro Fernandes Número: 8190239 Turma: 1
  * @param <T>
  */
@@ -159,6 +160,12 @@ public class LinkedBinarySearchTree<T> extends LinkedBinaryTree<T> implements Bi
         return result;
     }
 
+    /**
+     * Removes all occurences of the specified element from this tree.
+     *
+     * @param targetElement the element that the list will have all instances of
+     * it removed
+     */
     @Override
     public void removeAllOccurrences(T targetElement) {
         boolean stop = false;
@@ -171,6 +178,11 @@ public class LinkedBinarySearchTree<T> extends LinkedBinaryTree<T> implements Bi
         }
     }
     
+    /**
+     * Removes and returns the smallest element from this tree.
+     *
+     * @return the smallest element from this tree
+     */
     @Override
     public T removeMin() {
         T element = null;
@@ -192,6 +204,11 @@ public class LinkedBinarySearchTree<T> extends LinkedBinaryTree<T> implements Bi
         return element;
     }
 
+    /**
+     * Removes and returns the largest element from this tree.
+     *
+     * @return the largest element from this tree
+     */
     @Override
     public T removeMax() {
         T element = null;
@@ -213,6 +230,11 @@ public class LinkedBinarySearchTree<T> extends LinkedBinaryTree<T> implements Bi
         return element;
     }
 
+    /**
+     * Returns a reference to the smallest element in this tree.
+     *
+     * @return a reference to the smallest element in this tree
+     */
     @Override
     public T findMin() {
         T element = null;
@@ -227,6 +249,11 @@ public class LinkedBinarySearchTree<T> extends LinkedBinaryTree<T> implements Bi
         return element;
     }
 
+    /**
+     * Returns a reference to the largest element in this tree.
+     *
+     * @return a reference to the largest element in this tree
+     */
     @Override
     public T findMax() {
         T element = null;

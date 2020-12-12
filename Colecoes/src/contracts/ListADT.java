@@ -32,7 +32,7 @@ public interface ListADT<T> extends Iterable<T> {
      *
      * @param element the element to be removed from the list
      * @return removed element or null if it does not exist
-     * @throws exceptions.EmptyException if the list is empty
+     * @throws EmptyException if the list is empty
      */
     public T remove(T element) throws EmptyException;
 
