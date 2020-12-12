@@ -2,7 +2,8 @@ package lists;
 
 import exceptions.InvalidElementException;
 import exceptions.EmptyException;
-import java.util.*;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 /**
  * This class represents a LinkedList. This List is composed by
@@ -28,23 +29,47 @@ public class LinkedList<T> {
      */
     public LinkedNode<T> tail;
 
+    /**
+     * Construct's an instance of {@link LinkedList}
+     */
     public LinkedList() {
         this.count = 0;
     }
 
+    /**
+     * Provides an itrator the the {@link LinkedList}.
+     * 
+     * @param <T> the type of elements present in the {@link LinkedList}
+     */
     private class LinkedListIterator<T> implements Iterator<T> {
 
+        /**
+         * The iterator's cursor.
+         */
         private LinkedNode<T> cursor;
 
+        /**
+         * Creates an instance of {@link LinkedListIterator}
+         */
         public LinkedListIterator() {
             this.cursor = (LinkedNode<T>) head;
         }
 
+        /**
+         * Checks if there is a next element.
+         * 
+         * @return true if there is a next element, else false
+         */
         @Override
         public boolean hasNext() {
             return (this.cursor != null);
         }
 
+        /**
+         * Returns the next element in the {@link LinkedList}.
+         * 
+         * @return the next element in the {@link LinkedList}
+         */
         @Override
         public T next() {
             if (!this.hasNext()) {
@@ -118,14 +143,28 @@ public class LinkedList<T> {
         }
     }
 
+    /**
+     * Returns an iterator of the {@link LinkedList}.
+     * 
+     * @return an iterator of the {@link LinkedList}
+     */
     public Iterator<T> iterator() {
         return new LinkedListIterator<>();
     }
 
+    /**
+     * Inverts the list.
+     */
     public void invert() {
         this.invert(this.head, null);
     }
 
+    /**
+     * Recursively inverts the list.
+     * 
+     * @param current the current node 
+     * @param previous the previous node
+     */
     private void invert(LinkedNode<T> current, LinkedNode<T> previous) {
 
         if (current == this.tail) {
@@ -138,6 +177,10 @@ public class LinkedList<T> {
         }
     }
 
+    /**
+     * Returns the size of the {@link LinkedList}.
+     * @return the size of the {@link LinkedList}
+     */
     public int size() {
         return this.count;
     }

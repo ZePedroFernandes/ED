@@ -1,24 +1,32 @@
 package lists;
 
 import java.util.Iterator;
-import lists.LinkedList;
-import lists.LinkedNode;
 
 /**
- *
+ * This class allows the element sorting and searching in a linked list.
+ * 
  * @author Nome : José Pedro Fernandes Número: 8190239 Turma: 1
+ * @param <T> the type of elements in the List.
  */
 public class LinkedListSearchingAndSorting<T> {
 
-    public static <T> boolean linearSearch(Iterator<T> node, T target) {
+    /**
+     * Finds a target element using a linear Search strategy.
+     * Works recursively.
+     * 
+     * @param listIterator the list iterator
+     * @param target the target element.
+     * @return true if the element is found, false if the element isn't found
+     */
+    public static <T> boolean linearSearch(Iterator<T> listIterator, T target) {
 
-        if (node.next().equals(target)) {
+        if (listIterator.next().equals(target)) {
             return true;
-        } else if (!node.hasNext()) {
+        } else if (!listIterator.hasNext()) {
             return false;
 
         } else {
-            return linearSearch(node, target);
+            return linearSearch(listIterator, target);
         }
     }
 
