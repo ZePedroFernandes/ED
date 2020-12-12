@@ -8,7 +8,7 @@ import java.util.NoSuchElementException;
 import nodes.DoubleLinkedNode;
 
 /**
- * Sentinel Double Linked List.
+ * This classe represents a Double Linked List that has sentinel nodes.
  *
  * @author Nome : José Pedro Fernandes Número: 8190239 Turma: 1
  * @param <T>

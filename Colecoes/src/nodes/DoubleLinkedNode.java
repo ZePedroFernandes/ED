@@ -46,7 +46,7 @@ public class DoubleLinkedNode<T> {
      * {@link DoubleLinkedNode Node's} {@link DoubleLinkedNode#next next Node}.
      *
      * @return the
-     * {@link DoubleLinkedNode Node's} {@link DoubleLinkedNode#next next Node}.
+     * {@link DoubleLinkedNode Node's} {@link DoubleLinkedNode#next next Node}
      */
     public DoubleLinkedNode<T> getNext() {
         return this.next;
@@ -68,7 +68,7 @@ public class DoubleLinkedNode<T> {
      * {@link DoubleLinkedNode Node's} {@link DoubleLinkedNode#next next Node}.
      *
      * @param next
-     * {@link DoubleLinkedNode Node's} {@link DoubleLinkedNode#next next Node}.
+     * {@link DoubleLinkedNode Node's} {@link DoubleLinkedNode#next next Node}
      */
     public void setNext(DoubleLinkedNode<T> next) {
         this.next = next;
@@ -79,7 +79,7 @@ public class DoubleLinkedNode<T> {
      * {@link DoubleLinkedNode Node's} {@link DoubleLinkedNode#previous previous Node}.
      *
      * @param previous
-     * {@link DoubleLinkedNode Node's} {@link DoubleLinkedNode#previous previous Node}.
+     * {@link DoubleLinkedNode Node's} {@link DoubleLinkedNode#previous previous Node}
      */
     public void setPrevious(DoubleLinkedNode<T> previous) {
         this.previous = previous;
@@ -88,21 +88,25 @@ public class DoubleLinkedNode<T> {
     /**
      * Gets the {@link DoubleLinkedNode#element Node's element}.
      *
-     * @return the {@link DoubleLinkedNode#element Node's element}.
+     * @return the {@link DoubleLinkedNode#element Node's element}
      */
     public T getElement() {
         return this.element;
     }
     
+    /**
+     * Sets the {@link DoubleLinkedNode#element Node's element}.
+     * @param element the {@link DoubleLinkedNode#element Node's element}.
+     */
     public void setElement(T element) {
         this.element = element;
     }
 
     /**
-     * Compares if two {@link DoubleLinkedNode} are equal.
+     * Compares if two {@link DoubleLinkedNode Double Linked Nodes} are equal.
      *
-     * @param obj the Object to be compraed.
-     * @return true if the the Objects are equal or false id they aren´t.
+     * @param obj the Object to be comprared
+     * @return true if the the Objects are equal or false id they aren´t
      */
     @Override
     public boolean equals(Object obj) {
@@ -125,7 +129,7 @@ public class DoubleLinkedNode<T> {
     /**
      * Returns a String representation of the {@link DoubleLinkedNode}.
      *
-     * @return a String representation of the {@link DoubleLinkedNode}.
+     * @return a String representation of the {@link DoubleLinkedNode}
      */
     @Override
     public String toString() {

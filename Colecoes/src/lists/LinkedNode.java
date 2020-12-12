@@ -4,8 +4,7 @@ import java.util.Objects;
 
 /**
  * This class represents a node that will be used to form a LinkedList. It's
- * composed by an element and a next node.
- *
+ * has an element and a reference to the next node.
  *
  * @author Nome : José Pedro Fernandes Número: 8190239 Turma: 1
  * @param <T> the type of elements held in this collection
@@ -18,7 +17,7 @@ public class LinkedNode<T> {
     protected T element;
 
     /**
-     * Next Node.
+     * Node's Next Node.
      */
     private LinkedNode<T> next;
 
@@ -40,7 +39,7 @@ public class LinkedNode<T> {
     /**
      * Gets the {@link LinkedNode#next next Node}.
      *
-     * @return The {@link LinkedNode#next next Node}.
+     * @return The {@link LinkedNode#next next Node}
      */
     public LinkedNode<T> getNext() {
         return this.next;
@@ -49,7 +48,7 @@ public class LinkedNode<T> {
     /**
      * Sets the {@link LinkedNode#next next Node}.
      *
-     * @param next The {@link LinkedNode#next next Node}.
+     * @param next The {@link LinkedNode#next next Node}
      */
     public void setNext(LinkedNode<T> next) {
         this.next = next;
@@ -58,7 +57,7 @@ public class LinkedNode<T> {
     /**
      * Gets the {@link LinkedNode#element Node's element}.
      *
-     * @return the {@link LinkedNode#element Node's element}.
+     * @return the {@link LinkedNode#element Node's element}
      */
     public T getElement() {
         return this.element;
@@ -71,8 +70,8 @@ public class LinkedNode<T> {
     /**
      * Compares if two Nodes are equal.
      *
-     * @param obj the Object to be compraed.
-     * @return true if the the Objects are equal or false id they aren´t.
+     * @param obj the Object to be compraed
+     * @return true if the the Objects are equal or false id they aren´t
      */
     @Override
     public boolean equals(Object obj) {
@@ -95,7 +94,7 @@ public class LinkedNode<T> {
     /**
      * Returns a String representation of the {@link LinkedNode}.
      *
-     * @return a String representation of the {@link LinkedNode}.
+     * @return a String representation of the {@link LinkedNode}
      */
     @Override
     public String toString() {
