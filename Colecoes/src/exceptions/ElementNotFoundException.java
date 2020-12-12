@@ -16,7 +16,7 @@ public class ElementNotFoundException extends Exception {
     /**
      * Constructs an instance of {@link ElementNotFoundException} with a message.
      *
-     * @param message the message of the {@link ElementNotFoundException}.
+     * @param message the message of the {@link ElementNotFoundException}
      */
     public ElementNotFoundException(String message) {
         super(message);

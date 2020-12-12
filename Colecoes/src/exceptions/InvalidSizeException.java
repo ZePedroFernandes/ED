@@ -16,7 +16,7 @@ public class InvalidSizeException extends Exception {
     /**
      * Constructs an instance of {@link InvalidSizeException} with a message.
      *
-     * @param message the message of the {@link InvalidSizeException}.
+     * @param message the message of the {@link InvalidSizeException}
      */
     public InvalidSizeException(String message) {
         super(message);

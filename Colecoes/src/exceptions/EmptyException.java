@@ -16,7 +16,7 @@ public class EmptyException extends Exception {
     /**
      * Constructs an instance of {@link EmptyException} with a message.
      *
-     * @param message the message of the {@link EmptyException}.
+     * @param message the message of the {@link EmptyException}
      */
     public EmptyException(String message) {
         super(message);
