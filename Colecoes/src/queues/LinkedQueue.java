@@ -1,7 +1,6 @@
 package queues;
 
 import contracts.QueueContract;
-import exceptions.EmptyException;
 import exceptions.InvalidElementException;
 import java.util.NoSuchElementException;
 import lists.LinkedNode;
@@ -14,10 +13,19 @@ import lists.LinkedNode;
  */
 public class LinkedQueue<T> implements QueueContract<T> {
 
+    /**
+     * The queue's front node.
+     */
     private LinkedNode<T> front;
 
+    /**
+     * The queue's rear node.
+     */
     private LinkedNode<T> rear;
 
+    /**
+     * The queue's number of elements.
+     */
     private int count;
 
     /**
@@ -76,7 +84,7 @@ public class LinkedQueue<T> implements QueueContract<T> {
      * @return the examined element.
      */
     @Override
-    public T first(){
+    public T first() {
         if (this.isEmpty()) {
             throw new NoSuchElementException("Empty Queue");
         }

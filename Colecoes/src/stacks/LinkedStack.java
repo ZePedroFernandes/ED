@@ -2,6 +2,7 @@ package stacks;
 
 import exceptions.EmptyException;
 import contracts.StackADT;
+import exceptions.InvalidElementException;
 import lists.LinkedNode;
 
 /**
@@ -38,9 +39,9 @@ public class LinkedStack<T> implements StackADT<T> {
      * @param element to be added.
      */
     @Override
-    public void push(T element){
+    public void push(T element) {
         if (element == null) {
-            return;
+            throw new InvalidElementException("null elements are invalid");
         }
         LinkedNode<T> newHead = new LinkedNode<>(element);
         if (this.count == 0) {
@@ -52,10 +53,17 @@ public class LinkedStack<T> implements StackADT<T> {
         this.count++;
     }
 
+    /**
+     * Removes an element from the top of the stack. If the stack is empty an
+     * {@link EmptyException} is thrown.
+     *
+     * @return the element from the top of the stack
+     * @throws EmptyException if the stack is empty
+     */
     @Override
-    public T pop(){
+    public T pop() throws EmptyException {
         if (isEmpty()) {
-            return null;
+            throw new EmptyException("Empty Stack");
         }
         LinkedNode<T> popNode = this.top.getNext();
         this.top.setNext(popNode.getNext());
@@ -64,6 +72,12 @@ public class LinkedStack<T> implements StackADT<T> {
         return popNode.getElement();
     }
 
+    /**
+     * Returns the element in the top of the stack.
+     *
+     * @return the element from the top of the stack
+     * @throws EmptyException if the stack is empty
+     */
     @Override
     public T peek() throws EmptyException {
         if (isEmpty()) {
@@ -72,16 +86,31 @@ public class LinkedStack<T> implements StackADT<T> {
         return (this.top.getNext().getElement());
     }
 
+    /**
+     * Returns false if the stack is not empty, otherwise returns true.
+     *
+     * @return false if the stack is not empty, otherwise returns true
+     */
     @Override
     public boolean isEmpty() {
         return (this.count == 0);
     }
 
+    /**
+     * Returns the size of the stack.
+     *
+     * @return the size of the stack
+     */
     @Override
     public int size() {
         return this.count;
     }
 
+    /**
+     * Returns a string representation of the stack.
+     *
+     * @return a string representation of the stack
+     */
     @Override
     public String toString() {
         if (this.count == 0) {
@@ -95,7 +124,7 @@ public class LinkedStack<T> implements StackADT<T> {
             current = current.getNext();
             s += current.getElement().toString() + "\n";
         }
-        
+
         return s.substring(0, s.length() - 1);
     }
 }

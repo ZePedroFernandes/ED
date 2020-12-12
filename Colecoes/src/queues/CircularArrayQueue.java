@@ -1,31 +1,44 @@
 package queues;
 
 import contracts.QueueContract;
-import exceptions.EmptyException;
-import exceptions.InvalidElementException;
 import java.util.NoSuchElementException;
 
 /**
  * Represents a queue implemented with a Circular Array.
- * 
  *
  * @author Nome : José Pedro Fernandes Número: 8190239 Turma: 1
  * @param <T> Type of elements to be stored in the queue.
  */
 public class CircularArrayQueue<T> implements QueueContract<T> {
 
+    /**
+     * Array of the elements in the queue.
+     */
     private T[] elements;
 
+    /**
+     * Default queue capacity.
+     */
     private final int DEFAULT_CAPACITY = 10;
 
+    /**
+     * Number of elements in the queue.
+     */
     private int count;
 
+    /**
+     * The front index of the queue.
+     */
     private int front;
 
+    /**
+     * The rear index of the queue.
+     */
     private int rear;
 
     /**
-     * Constructs an instance of {@link CircularArrayQueue} with the default capacity (10).
+     * Constructs an instance of {@link CircularArrayQueue} with the default
+     * capacity (10).
      */
     public CircularArrayQueue() {
         this.elements = (T[]) new Object[DEFAULT_CAPACITY];
@@ -35,8 +48,9 @@ public class CircularArrayQueue<T> implements QueueContract<T> {
     }
 
     /**
-     * Constructs an instance of {@link CircularArrayQueue} with a specific capacity.
-     * 
+     * Constructs an instance of {@link CircularArrayQueue} with a specific
+     * capacity.
+     *
      * @param capacity initial capacity of the {@link CircularArrayQueue queue}.
      */
     public CircularArrayQueue(int capacity) {
@@ -67,7 +81,7 @@ public class CircularArrayQueue<T> implements QueueContract<T> {
      * @param element element to be added.
      */
     @Override
-    public void enqueue(T element){
+    public void enqueue(T element) {
         if (element == null) {
             throw new NullPointerException("Invalid element");
         }

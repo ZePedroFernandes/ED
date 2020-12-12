@@ -8,9 +8,9 @@ import stacks.LinkedStack;
 /**
  * This class repensents a queue that is implemented via 2 stacks. Whenever
  * there is the the need to add new elements to queue, the elements is added to
- * the input stack. In order to get this elements with the logic of a queue,
- * the elements in the input stack are transfered one by one to the output
- * stack, this way the order of the elements in the stack is inverted.
+ * the input stack. In order to get this elements with the logic of a queue, the
+ * elements in the input stack are transfered one by one to the output stack,
+ * this way the order of the elements in the stack is inverted.
  *
  * @author Nome : José Pedro Fernandes Número: 8190239 Turma: 1
  * @param <T> Type of the elements to be stored.
