@@ -5,7 +5,7 @@ import java.util.Iterator;
 
 /**
  * This interface represents a contract to create a list.
- * 
+ *
  * @author Nome : José Pedro Fernandes Número: 8190239 Turma: 1
  * @param <T> the type of elements in the list.
  */
@@ -82,7 +82,7 @@ public interface ListADT<T> extends Iterable<T> {
 
     /**
      * Returns a string representation of this list.
-     * 
+     *
      * @return a string representation of this list
      */
     @Override

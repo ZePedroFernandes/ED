@@ -47,7 +47,8 @@ public interface BinaryTreeADT<T> {
      *
      * @param targetElement the element being sought in the tree
      * @return a reference to the specified element
-     * @throws exceptions.ElementNotFoundException if the specified element is not found.
+     * @throws exceptions.ElementNotFoundException if the specified element is
+     * not found.
      */
     public T find(T targetElement) throws ElementNotFoundException;
 

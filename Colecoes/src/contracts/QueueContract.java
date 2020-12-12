@@ -5,7 +5,7 @@ import exceptions.InvalidElementException;
 
 /**
  * Represents the interface that must be used to implement a queue.
- * 
+ *
  * @author Nome : José Pedro Fernandes Número: 8190239 Turma: 1
  * @param <T> Type of elements to be stored in the queue.
  */
@@ -36,7 +36,8 @@ public interface QueueContract<T> {
     public T first() throws EmptyException;
 
     /**
-     * Determines if the queue is empty, returns true if so, otherwise returns false.
+     * Determines if the queue is empty, returns true if so, otherwise returns
+     * false.
      *
      * @return true if the queue is empty otherwise returns false
      */

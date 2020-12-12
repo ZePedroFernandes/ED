@@ -31,11 +31,6 @@ public abstract class DoubleLinkedList<T> implements ListADT<T>, Iterable<T> {
     protected int size;
 
     /**
-     * Value to use when an element isn't found.
-     */
-    private final int ELEMENT_NOT_FOUND = -1;
-
-    /**
      * Number of modifications since the creation of the list.
      */
     protected int modCount;
@@ -280,8 +275,8 @@ public abstract class DoubleLinkedList<T> implements ListADT<T>, Iterable<T> {
 
     /**
      * Inverts all elements in the {@link DoubleLinkedList list} and passes them
-     * to an array. Works recursively. For each iteration, the next element is passed
-     * to the last available position in the array.
+     * to an array. Works recursively. For each iteration, the next element is
+     * passed to the last available position in the array.
      *
      * @param array the array where the information will be stored
      * @param startNode the start node

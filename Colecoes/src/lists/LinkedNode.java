@@ -3,8 +3,8 @@ package lists;
 import java.util.Objects;
 
 /**
- * This class represents a node that will be used to form a LinkedList. It's
- * has an element and a reference to the next node.
+ * This class represents a node that will be used to form a LinkedList. It's has
+ * an element and a reference to the next node.
  *
  * @author Nome : José Pedro Fernandes Número: 8190239 Turma: 1
  * @param <T> the type of elements held in this collection
@@ -62,7 +62,7 @@ public class LinkedNode<T> {
     public T getElement() {
         return this.element;
     }
-    
+
     public void setElement(T element) {
         this.element = element;
     }

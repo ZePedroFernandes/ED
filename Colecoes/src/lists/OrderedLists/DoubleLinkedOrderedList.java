@@ -5,25 +5,35 @@ import exceptions.InvalidElementException;
 import nodes.DoubleLinkedNode;
 
 /**
+ * Represents an ordered Double Linked List
  *
  * @author Nome : José Pedro Fernandes Número: 8190239 Turma: 1
  * @param <T> The type of the elements to be stored.
  */
 public class DoubleLinkedOrderedList<T> extends DoubleLinkedList<T> {
 
+    /**
+     * Construct's an instance of {@link DoubleLinkedOrderedList}.
+     */
     public DoubleLinkedOrderedList() {
         super();
     }
 
-    public void add(T elem) throws InvalidElementException {
+    /**
+     * Adds an element to the {@link ArrayOrderedList} in the correct position.
+     *
+     * @param element the element to be added.
+     * @throws InvalidElementException if the element is invalid.
+     */
+    public void add(T element) throws InvalidElementException {
 
-        if (elem == null) {
+        if (element == null) {
             throw new InvalidElementException("null element");
         }
 
-        if (elem instanceof Comparable) {
-            Comparable<T> element = (Comparable) elem;
-            DoubleLinkedNode<T> newNode = new DoubleLinkedNode<>(elem);
+        if (element instanceof Comparable) {
+            Comparable<T> comparableElem = (Comparable) element;
+            DoubleLinkedNode<T> newNode = new DoubleLinkedNode<>(element);
             if (this.isEmpty()) {
                 this.head.setNext(newNode);
                 this.tail.setPrevious(newNode);
@@ -37,7 +47,7 @@ public class DoubleLinkedOrderedList<T> extends DoubleLinkedList<T> {
             DoubleLinkedNode<T> current = this.head.getNext();
 
             while (current.getElement() != null) {
-                if (element.compareTo(current.getElement()) <= 0) {
+                if (comparableElem.compareTo(current.getElement()) <= 0) {
                     current.getPrevious().setNext(newNode);
                     newNode.setPrevious(current.getPrevious());
                     current.setPrevious(newNode);
@@ -57,6 +67,13 @@ public class DoubleLinkedOrderedList<T> extends DoubleLinkedList<T> {
         }
     }
 
+    /**
+     * Returns an inverted string representation of the
+     * {@link DoubleLinkedOrderedList}.
+     *
+     * @return an inverted string representation of the
+     * {@link DoubleLinkedOrderedList}
+     */
     public String getInvertedList() {
         if (this.isEmpty()) {
             return null;

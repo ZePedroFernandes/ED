@@ -62,11 +62,11 @@ public class DoubleLinkedListOld<T> {
     }
 
     /**
-     * Returns true if the {@link DoubleLinkedListOld list} is empty or false if it
-     * is not.
+     * Returns true if the {@link DoubleLinkedListOld list} is empty or false if
+     * it is not.
      *
-     * @return true if the {@link DoubleLinkedListOld list} is empty or false if it
-     * is not.
+     * @return true if the {@link DoubleLinkedListOld list} is empty or false if
+     * it is not.
      */
     public boolean isEmpty() {
         return this.count == 0;
@@ -91,15 +91,15 @@ public class DoubleLinkedListOld<T> {
     }
 
     /**
-     * Removes the {@link DoubleLinkedListOld#head} of the List making the second
-     * element the new {@link DoubleLinkedListOld#head}. If the
+     * Removes the {@link DoubleLinkedListOld#head} of the List making the
+     * second element the new {@link DoubleLinkedListOld#head}. If the
      * {@link DoubleLinkedListOld list} is empty an {@link EmptyException} is
      * thrown. If the {@link DoubleLinkedListOld list} has one
      * {@link DoubleLinkedNode Node} both {@link DoubleLinkedListOld#head} and
      * {@link DoubleLinkedListOld#tail} are set to null.
      *
-     * @throws exceptions.EmptyException if the
-     * {@link DoubleLinkedNode List} is empty.
+     * @throws exceptions.EmptyException if the {@link DoubleLinkedNode List} is
+     * empty.
      */
     public void removeHead() throws EmptyException {
         if (this.isEmpty()) {
@@ -119,14 +119,14 @@ public class DoubleLinkedListOld<T> {
     /**
      * Removes the {@link DoubleLinkedListOld#tail} of the
      * {@link DoubleLinkedListOld list} making the penultimate element the new
-     * {@link DoubleLinkedListOld#tail}. If the {@link DoubleLinkedListOld list} is
-     * empty an {@link EmptyException} is thrown. If the
-     * {@link DoubleLinkedListOld list} has one {@link DoubleLinkedNode Node} both
-     * {@link DoubleLinkedListOld#head} and {@link DoubleLinkedListOld#tail} are set
-     * to null.
+     * {@link DoubleLinkedListOld#tail}. If the {@link DoubleLinkedListOld list}
+     * is empty an {@link EmptyException} is thrown. If the
+     * {@link DoubleLinkedListOld list} has one {@link DoubleLinkedNode Node}
+     * both {@link DoubleLinkedListOld#head} and
+     * {@link DoubleLinkedListOld#tail} are set to null.
      *
-     * @throws exceptions.EmptyException if the
-     * {@link DoubleLinkedNode List} is empty.
+     * @throws exceptions.EmptyException if the {@link DoubleLinkedNode List} is
+     * empty.
      */
     public void removeTail() throws EmptyException {
         if (this.isEmpty()) {
@@ -146,9 +146,9 @@ public class DoubleLinkedListOld<T> {
     /**
      * Removes a {@link DoubleLinkedNode Node} that contains the element given
      * as parameter. If the {@link DoubleLinkedNode List} is empty an
-     * {@link EmptyException} is thrown. If the
-     * {@link DoubleLinkedNode Node} isn´t in the {@link DoubleLinkedNode List}
-     * nothinh happens to the {@link DoubleLinkedNode List}.
+     * {@link EmptyException} is thrown. If the {@link DoubleLinkedNode Node}
+     * isn´t in the {@link DoubleLinkedNode List} nothinh happens to the
+     * {@link DoubleLinkedNode List}.
      *
      * @param element the element to be removed from the.
      * {@link DoubleLinkedNode List}.
@@ -223,7 +223,7 @@ public class DoubleLinkedListOld<T> {
      * @return an array with the specified size that represents the list.
      */
     private Object[] toArraySize(int start, int end) {
-        if(start > end){
+        if (start > end) {
             return null;
         }
         Object[] array = new Object[end - start];
@@ -280,7 +280,8 @@ public class DoubleLinkedListOld<T> {
      *
      * @param start the start position of the list to copy into the array.
      * @return an array representation of the list.
-     * @throws InvalidSizeException If start is greater than the number of elements.
+     * @throws InvalidSizeException If start is greater than the number of
+     * elements.
      */
     public Object[] toArrayFrom(int start) throws InvalidSizeException {
         if (start > this.count) {

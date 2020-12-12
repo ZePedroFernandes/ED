@@ -6,15 +6,25 @@ import exceptions.ElementNotFoundException;
 import nodes.DoubleLinkedNode;
 
 /**
+ * Represents a double linked list that is not ordered.
  *
  * @author Nome : José Pedro Fernandes Número: 8190239 Turma: 1
+ * @param <T> The typ of the elements in the list.
  */
 public class DoubleLinkedUnorderedList<T> extends DoubleLinkedList<T> implements UnorderedListContract<T> {
 
+    /**
+     * Construct's a {@link DoubleLinkedUnorderedList}.
+     */
     public DoubleLinkedUnorderedList() {
         super();
     }
 
+    /**
+     * Adds an element to the front of the list.
+     *
+     * @param element element to be added
+     */
     @Override
     public void addToFront(T element) {
         if (element == null) {
@@ -32,6 +42,11 @@ public class DoubleLinkedUnorderedList<T> extends DoubleLinkedList<T> implements
 
     }
 
+    /**
+     * Adds an element to the rear of the list.
+     *
+     * @param element element to be added
+     */
     @Override
     public void addToRear(T element) {
         if (element == null) {
@@ -46,6 +61,13 @@ public class DoubleLinkedUnorderedList<T> extends DoubleLinkedList<T> implements
         this.size++;
     }
 
+    /**
+     * Adds an element after a particular element in the list.
+     *
+     * @param element element to be added
+     * @param target target element
+     * @throws ElementNotFoundException if the target is not found
+     */
     @Override
     public void addAfter(T element, T target) throws ElementNotFoundException {
         if (element == null && target == null) {
