@@ -24,13 +24,14 @@ public class main {
         tree.addElement(10);
         tree.addElement(10);
         tree.addElement(10);
-//        tree.addElement(0);
-//        tree.addElement(-1);
-//        tree.addElement(-2);
-//        tree.addElement(8);
-//        tree.addElement(15);
-//        tree.addElement(15);
-//        tree.addElement(25);
+        tree.addElement(0);
+        tree.addElement(-1);
+        tree.addElement(-2);
+        tree.addElement(8);
+        tree.addElement(15);
+        tree.addElement(15);
+        tree.addElement(25);
+        tree.addElement(26);
 //        tree.removeAllOccurrences(15);
 //        tree.removeAllOccurrences(3);
 //        System.out.println(tree.findMax());
@@ -41,27 +42,23 @@ public class main {
 //        
 //        printPostOrder(tree);
 //        printLevelOrder(tree);
-
 //        tree.removeElement(10);
 //        tree.addElement(3);
 //        tree.addElement(2);
 //        tree.addElement(3);
-
         printLevelOrder(tree);
 
-        System.out.println("remover 10");
-        tree.removeElement(10);
-
+//        System.out.println("remover min");
+        int removed = tree.findMax();
+        System.out.println(removed);
         printLevelOrder(tree);
 
 //        System.out.println("remover 2");
 //        tree.removeAllOccurrences(2);
-
 //        printLevelOrder(tree);
-    }
+    }//Main
 
-    
-    public static <T> void printLevelOrder(ArrayBinarySearchTree<T> tree){
+    public static <T> void printLevelOrder(ArrayBinarySearchTree<T> tree) {
         System.out.print("Level Order: [");
         Iterator<T> itrLevelOrder = tree.iteratorLevelOrder();
         while (itrLevelOrder.hasNext()) {
