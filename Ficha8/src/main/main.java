@@ -1,12 +1,8 @@
 package main;
 
-import Colections.ArraySortingandSearching;
-import lists.DoubleLinkedListSearching;
 import car.Car;
 import exceptions.InvalidElementException;
-import lists.LinkedList;
 import lists.OrderedLists.DoubleLinkedOrderedList;
-import lists.LinkedNode;
 
 /**
  *
