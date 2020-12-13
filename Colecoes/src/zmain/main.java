@@ -21,7 +21,7 @@ public class main {
         tree.addElement(10);
         tree.addElement(30);
         tree.addElement(5);
-//        tree.addElement(4);
+        tree.addElement(4);
         tree.addElement(40);
 
         printLevelOrder(tree);
