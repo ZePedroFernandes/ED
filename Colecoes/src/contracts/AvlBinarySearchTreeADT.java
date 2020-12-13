@@ -27,17 +27,17 @@ public interface AvlBinarySearchTreeADT<T> extends BinarySearchTreeADT<T> {
     @Override
     public T removeElement(T targetElement) throws ElementNotFoundException;
     
-    /**
-     * Rotates a subTree to the right
-     * @param node root node of the subtree
-     */
-    public void rightRotation(AVLNode node);
-    
-    /**
-     * Rotates a subTree to the left.
-     * @param node root node of the subtree
-     */
-    public void leftRotation(AVLNode node);
-    
+//    /**
+//     * Rotates a subTree to the right
+//     * @param node root node of the subtree
+//     */
+//    public void rightRotation(AVLNode node);
+//    
+//    /**
+//     * Rotates a subTree to the left.
+//     * @param node root node of the subtree
+//     */
+//    public void leftRotation(AVLNode node);
+//    
 
 }

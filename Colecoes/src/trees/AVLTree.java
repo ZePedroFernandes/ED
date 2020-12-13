@@ -2,9 +2,6 @@ package trees;
 
 import contracts.AvlBinarySearchTreeADT;
 import exceptions.ElementNotFoundException;
-import java.util.Iterator;
-import lists.unorderedLists.ArrayUnorderedList;
-import queues.LinkedQueue;
 
 /**
  * This class represents a Linked Avl binary search tree;
@@ -12,11 +9,7 @@ import queues.LinkedQueue;
  * @author Nome : José Pedro Fernandes Número: 8190239 Turma: 1
  * @param <T>
  */
-public class AVLTree<T> implements AvlBinarySearchTreeADT<T> {
-
-    protected AVLNode<T> root;
-
-    protected int count;
+public class AVLTree<T> extends LinkedBinarySearchTree<T> implements AvlBinarySearchTreeADT<T> {
 
     public AVLTree(T element) {
         count = 0;
@@ -30,13 +23,13 @@ public class AVLTree<T> implements AvlBinarySearchTreeADT<T> {
 
     @Override
     public void addElement(T element) {
-        AVLNode<T> temp = new AVLNode<>(element);
+        BinaryTreeNode<T> temp = new AVLNode<>(element);
         Comparable<T> comparableElement = (Comparable<T>) element;
 
         if (isEmpty()) {
-            root = temp;
+            root = (AVLNode<T>)temp;
         } else {
-            AVLNode<T> current = root;
+            BinaryTreeNode<T> current = root;
             boolean added = false;
 
             while (!added) {
@@ -67,10 +60,10 @@ public class AVLTree<T> implements AvlBinarySearchTreeADT<T> {
      * @param parent the node's parent node
      * @param node the node to be removed.
      */
-    protected void removeNode(AVLNode<T> parent, AVLNode<T> node) {
+    protected void removeNode(BinaryTreeNode<T> parent, BinaryTreeNode<T> node) {
 
-        AVLNode<T> result = null;
-        AVLNode<T> updateNode = parent;
+        BinaryTreeNode<T> result = null;
+        BinaryTreeNode<T> updateNode = parent;
 
         if ((node.left == null) && (node.right == null)) {
             //O nodo pai irá ter que levar um update ao seu fator de balanceamento
@@ -84,8 +77,8 @@ public class AVLTree<T> implements AvlBinarySearchTreeADT<T> {
             updateNode = node.right;
             result = node.right;
         } else {
-            AVLNode<T> current = node.right;
-            AVLNode<T> parent2 = node;
+            BinaryTreeNode<T> current = node.right;
+            BinaryTreeNode<T> parent2 = node;
             while (current.left != null) {
                 parent2 = current;
                 current = current.left;
@@ -105,8 +98,8 @@ public class AVLTree<T> implements AvlBinarySearchTreeADT<T> {
             }
             result = current;
         }
-        if (parent == root) { //O elemento a substituir é o root.
-            root = result;
+        if (parent == root && node == root) { //O elemento a substituir é o root.
+            root = (AVLNode<T>)result;
         } else {
             if (node == parent.left) {
                 parent.left = result;
@@ -126,8 +119,8 @@ public class AVLTree<T> implements AvlBinarySearchTreeADT<T> {
                 removeNode(root, root);
                 count--;
             } else {
-                AVLNode<T> current;
-                AVLNode<T> parent = root;
+                BinaryTreeNode<T> current;
+                BinaryTreeNode<T> parent = root;
                 boolean found = false;
                 if (((Comparable) targetElement).compareTo(root.element) < 0) {
                     current = root.left;
@@ -163,18 +156,18 @@ public class AVLTree<T> implements AvlBinarySearchTreeADT<T> {
      *
      * @param node the node wich balancing factor will be updated.
      */
-    private void updateFactor(AVLNode<T> node) {
+    private void updateFactor(BinaryTreeNode<T> node) {
         if (node.left == null && node.right == null) {
-            node.balanceFactor = 0;
+            ((AVLNode<T>)node).balanceFactor = 0;
         } else if (node.left != null && node.right == null) {
-            node.balanceFactor = -(Math.abs(node.left.balanceFactor) + 1);
+            ((AVLNode<T>)node).balanceFactor = -(Math.abs(((AVLNode<T>) node.left).balanceFactor) + 1);
         } else if (node.left == null && node.right != null) {
-            node.balanceFactor = Math.abs(node.right.balanceFactor) + 1;
+            ((AVLNode<T>)node).balanceFactor = Math.abs(((AVLNode)node.right).balanceFactor) + 1;
         } else {
-            node.balanceFactor = this.getHeight(node.right) - this.getHeight(node.left);
+            ((AVLNode<T>)node).balanceFactor = this.getHeight(node.right) - this.getHeight(node.left);
         }
         if (node != root) {
-            AVLNode<T> parent = this.getParent(node);
+            BinaryTreeNode<T> parent = this.getParent(node);
             updateFactor(parent);
         }
     }
@@ -185,14 +178,14 @@ public class AVLTree<T> implements AvlBinarySearchTreeADT<T> {
      * @param node the node to calculate the height.
      * @return the height of the node.
      */
-    private int getHeight(AVLNode<T> node) {
+    private int getHeight(BinaryTreeNode<T> node) {
         if (node.left == null && node.right == null) {
             return 1;
         } else {
-            if (node.balanceFactor < 0) {
-                return (1 + this.getHeight(node.left));
+            if (((AVLNode<T>)node).balanceFactor < 0) {
+                return (1 + this.getHeight((AVLNode<T>)node.left));
             } else {
-                return (1 + this.getHeight(node.right));
+                return (1 + this.getHeight((AVLNode<T>)node.right));
             }
         }
     }
@@ -203,8 +196,8 @@ public class AVLTree<T> implements AvlBinarySearchTreeADT<T> {
      * @param node node to find the parent.
      * @return the node's parent.
      */
-    private AVLNode<T> getParent(AVLNode<T> node) {
-        AVLNode<T> parent = null;
+    private BinaryTreeNode<T> getParent(BinaryTreeNode<T> node) {
+        BinaryTreeNode<T> parent = null;
         boolean found = false;
 
         if (node != root) {
@@ -229,224 +222,12 @@ public class AVLTree<T> implements AvlBinarySearchTreeADT<T> {
         return parent;
     }
 
-    @Override
-    public void rightRotation(AVLNode node) {
+    public void rightRotation(BinaryTreeNode node) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
-    @Override
-    public void leftRotation(AVLNode node) {
+    public void leftRotation(BinaryTreeNode node) {
         throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    @Override
-    public void removeAllOccurrences(T targetElement) {
-        boolean stop = false;
-        while (!stop) {
-            try {
-                removeElement(targetElement);
-            } catch (ElementNotFoundException ex) {
-                stop = true;
-            }
-        }
-    }
-
-    @Override
-    public T removeMin() {
-        T element = null;
-        if (root.left == null) {
-            element = root.element;
-            root = root.right;
-        } else {
-            AVLNode<T> parent = root;
-            AVLNode<T> current = root.left;
-
-            while (current.left != null) {
-                parent = current;
-                current = current.left;
-            }
-            element = current.getElement();
-            removeNode(parent, current);
-//            parent.left = replacement(current);
-        }
-
-        return element;
-    }
-
-    @Override
-    public T removeMax() {
-        T element = null;
-        if (root.right == null) {
-            element = root.element;
-            root = root.left;
-        } else {
-            AVLNode<T> parent = root;
-            AVLNode<T> current = root.right;
-
-            while (current.right != null) {
-                parent = current;
-                current = current.right;
-            }
-            element = current.getElement();
-            removeNode(parent, current);
-//            parent.right = replacement(current);
-        }
-
-        return element;
-    }
-
-    @Override
-    public T findMin() {
-        T element = null;
-
-        AVLNode<T> current = root;
-        while (current.left != null) {
-            current = current.left;
-        }
-
-        element = current.element;
-
-        return element;
-    }
-
-    @Override
-    public T findMax() {
-        T element = null;
-
-        AVLNode<T> current = root;
-        while (current.right != null) {
-            current = current.right;
-        }
-
-        element = current.element;
-
-        return element;
-    }
-
-    @Override
-    public T getRoot() {
-        return this.root.element;
-    }
-
-    @Override
-    public boolean isEmpty() {
-        return (count == 0);
-    }
-
-    @Override
-    public int size() {
-        return count;
-    }
-
-    private AVLNode<T> findAgain(T targetElement, AVLNode<T> next) {
-        if (next == null) {
-            return null;
-        }
-
-        if (next.element.equals(targetElement)) {
-            return next;
-        }
-
-        AVLNode<T> tmp = findAgain(targetElement, next.left);
-
-        if (tmp == null) {
-            tmp = findAgain(targetElement, next.right);
-        }
-
-        return tmp;
-    }
-
-    @Override
-    public boolean contains(T targetElement) {
-        return (findAgain(targetElement, root) != null);
-    }
-
-    @Override
-    public T find(T targetElement) throws ElementNotFoundException {
-        AVLNode<T> current = findAgain(targetElement, root);
-
-        if (current == null) {
-            throw new ElementNotFoundException("binary tree");
-        }
-
-        return current.element;
-    }
-
-    protected void inOrder(AVLNode<T> node, ArrayUnorderedList<T> tmpList) {
-        if (node != null) {
-            inOrder(node.left, tmpList);
-            tmpList.addToRear(node.element);
-            inOrder(node.right, tmpList);
-        }
-    }
-
-    @Override
-    public Iterator<T> iteratorInOrder() {
-        ArrayUnorderedList<T> tmpList = new ArrayUnorderedList<>();
-        inOrder(root, tmpList);
-
-        return tmpList.iterator();
-    }
-
-    protected void preOrder(AVLNode<T> node, ArrayUnorderedList<T> tmpList) {
-        if (node != null) {
-            tmpList.addToRear(node.element);
-            preOrder(node.left, tmpList);
-            preOrder(node.right, tmpList);
-        }
-    }
-
-    @Override
-    public Iterator<T> iteratorPreOrder() {
-        ArrayUnorderedList<T> tmpList = new ArrayUnorderedList<>();
-        preOrder(root, tmpList);
-
-        return tmpList.iterator();
-    }
-
-    public void postOrder(AVLNode<T> node, ArrayUnorderedList<T> tmpList) {
-        if (node != null) {
-            postOrder(node.left, tmpList);
-            postOrder(node.right, tmpList);
-            tmpList.addToRear(node.element);
-        }
-    }
-
-    @Override
-    public Iterator<T> iteratorPostOrder() {
-        ArrayUnorderedList<T> tmpList = new ArrayUnorderedList<>();
-        postOrder(root, tmpList);
-
-        return tmpList.iterator();
-    }
-
-    public void levelOrder(ArrayUnorderedList<T> results) {
-        LinkedQueue<AVLNode<T>> nodes = new LinkedQueue<>();
-        AVLNode<T> element = null;
-        nodes.enqueue(root);
-
-        while (!nodes.isEmpty()) {
-            element = nodes.dequeue();
-
-            if (element != null) {
-                results.addToRear(element.element);
-                if (element.left != null) {
-                    nodes.enqueue(element.left);
-                }
-                if (element.right != null) {
-                    nodes.enqueue(element.right);
-                }
-            } else {
-                results.addToRear(null);
-            }
-        }
-    }
-
-    @Override
-    public Iterator<T> iteratorLevelOrder() {
-        ArrayUnorderedList<T> results = new ArrayUnorderedList<>();
-        levelOrder(results);
-        return results.iterator();
     }
 
 }
