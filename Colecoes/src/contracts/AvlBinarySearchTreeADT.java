@@ -1,7 +1,7 @@
 package contracts;
 
 import exceptions.ElementNotFoundException;
-import trees.AvlTreeNode;
+import trees.AVLNode;
 
 /**
  *
@@ -31,13 +31,13 @@ public interface AvlBinarySearchTreeADT<T> extends BinarySearchTreeADT<T> {
      * Rotates a subTree to the right
      * @param node root node of the subtree
      */
-    public void rightRotation(AvlTreeNode node);
+    public void rightRotation(AVLNode node);
     
     /**
      * Rotates a subTree to the left.
      * @param node root node of the subtree
      */
-    public void leftRotation(AvlTreeNode node);
+    public void leftRotation(AVLNode node);
     
 
 }

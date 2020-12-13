@@ -2,8 +2,6 @@ package trees;
 
 import contracts.BinaryTreeADT;
 import exceptions.ElementNotFoundException;
-import exceptions.EmptyException;
-import exceptions.InvalidElementException;
 import java.util.Iterator;
 import lists.unorderedLists.ArrayUnorderedList;
 import queues.LinkedQueue;

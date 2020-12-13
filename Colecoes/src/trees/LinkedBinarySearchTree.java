@@ -195,7 +195,7 @@ public class LinkedBinarySearchTree<T> extends LinkedBinaryTree<T> implements Bi
 
             while (current.left != null) {
                 parent = current;
-                current = current.getLeft();
+                current = current.left;
             }
             element = current.getElement();
             parent.left = replacement(current);
@@ -221,7 +221,7 @@ public class LinkedBinarySearchTree<T> extends LinkedBinaryTree<T> implements Bi
 
             while (current.right != null) {
                 parent = current;
-                current = current.getLeft();
+                current = current.right;
             }
             element = current.getElement();
             parent.right = replacement(current);
