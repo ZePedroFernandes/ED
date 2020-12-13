@@ -61,32 +61,60 @@ public class AVLTree<T> implements AvlBinarySearchTreeADT<T> {
         count++;
     }
 
-    protected AVLNode<T> replacement(AVLNode<T> node) {
+    /**
+     * Removes a node based on its parent.
+     *
+     * @param parent the node's parent node
+     * @param node the node to be removed.
+     */
+    protected void removeNode(AVLNode<T> parent, AVLNode<T> node) {
+
         AVLNode<T> result = null;
+        AVLNode<T> updateNode = parent;
 
         if ((node.left == null) && (node.right == null)) {
+            //O nodo pai irá ter que levar um update ao seu fator de balanceamento
             result = null;
         } else if ((node.left != null) && (node.right == null)) {
+            //O nodo node.left irá ter que levar um update ao seu fator de balanceamento
+            updateNode = node.left;
             result = node.left;
         } else if ((node.left == null) && (node.right != null)) {
+            //O nodo node.right irá ter que levar um update ao seu fator de balanceamento
+            updateNode = node.right;
             result = node.right;
         } else {
             AVLNode<T> current = node.right;
-            AVLNode<T> parent = node;
+            AVLNode<T> parent2 = node;
             while (current.left != null) {
-                parent = current;
+                parent2 = current;
                 current = current.left;
             }
             if (node.right == current) {
                 current.left = node.left;
+                //O nodo current irá ter que levar um update ao seu fator de balanceamento
+                updateNode = current;
             } else {
-                parent.left = current.right;
+                if (current.right != null) {
+                    updateNode = current.right;
+                }
+                //caso current.right == null, o nodo pai irá ter que levar um update ao seu fator de balanceamento
+                parent2.left = current.right;
                 current.right = node.right;
                 current.left = node.left;
             }
             result = current;
         }
-        return result;
+        if (parent == root) { //O elemento a substituir é o root.
+            root = result;
+        } else {
+            if (node == parent.left) {
+                parent.left = result;
+            } else {
+                parent.right = result;
+            }
+        }
+        updateFactor(updateNode);
     }
 
     @Override
@@ -95,7 +123,7 @@ public class AVLTree<T> implements AvlBinarySearchTreeADT<T> {
         if (!isEmpty()) {
             if (((Comparable) targetElement).equals(root.element)) {
                 result = root.element;
-                root = replacement(root);
+                removeNode(root, root);
                 count--;
             } else {
                 AVLNode<T> current;
@@ -112,12 +140,7 @@ public class AVLTree<T> implements AvlBinarySearchTreeADT<T> {
                         found = true;
                         count--;
                         result = current.element;
-
-                        if (current == parent.left) {
-                            parent.left = replacement(current);
-                        } else {
-                            parent.right = replacement(current);
-                        }
+                        removeNode(parent, current);
                     } else {
                         parent = current;
                         if (((Comparable) targetElement).compareTo(current.element) < 0) {
@@ -135,6 +158,11 @@ public class AVLTree<T> implements AvlBinarySearchTreeADT<T> {
         return result;
     }
 
+    /**
+     * Updates the balancing factor of a node.
+     *
+     * @param node the node wich balancing factor will be updated.
+     */
     private void updateFactor(AVLNode<T> node) {
         if (node.left == null && node.right == null) {
             node.balanceFactor = 0;
@@ -150,14 +178,20 @@ public class AVLTree<T> implements AvlBinarySearchTreeADT<T> {
             updateFactor(parent);
         }
     }
-    
-    private int getHeight(AVLNode<T> node){
-        if(node.left == null && node.right == null){
+
+    /**
+     * Gets the height of a node. (The number of descendants + 1).
+     *
+     * @param node the node to calculate the height.
+     * @return the height of the node.
+     */
+    private int getHeight(AVLNode<T> node) {
+        if (node.left == null && node.right == null) {
             return 1;
-        }else{
-            if(node.balanceFactor < 0){
+        } else {
+            if (node.balanceFactor < 0) {
                 return (1 + this.getHeight(node.left));
-            }else{
+            } else {
                 return (1 + this.getHeight(node.right));
             }
         }
@@ -232,7 +266,8 @@ public class AVLTree<T> implements AvlBinarySearchTreeADT<T> {
                 current = current.left;
             }
             element = current.getElement();
-            parent.left = replacement(current);
+            removeNode(parent, current);
+//            parent.left = replacement(current);
         }
 
         return element;
@@ -253,7 +288,8 @@ public class AVLTree<T> implements AvlBinarySearchTreeADT<T> {
                 current = current.right;
             }
             element = current.getElement();
-            parent.right = replacement(current);
+            removeNode(parent, current);
+//            parent.right = replacement(current);
         }
 
         return element;

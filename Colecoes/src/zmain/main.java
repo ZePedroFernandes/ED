@@ -3,7 +3,6 @@ package zmain;
 import exceptions.ElementNotFoundException;
 import java.util.Iterator;
 import trees.AVLTree;
-import trees.ArrayBinarySearchTree;
 
 /**
  *
@@ -19,14 +18,14 @@ public class main {
 
         tree.addElement(20);
         tree.addElement(10);
-        tree.addElement(30);
-        tree.addElement(5);
-        tree.addElement(4);
-        tree.addElement(40);
+        tree.addElement(10);
+        tree.addElement(10);
+        tree.addElement(10);
 
         printLevelOrder(tree);
 
-        tree.removeElement(20);
+        tree.removeMin();
+//        tree.removeElement(17);
         
         printLevelOrder(tree);
 
