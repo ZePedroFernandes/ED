@@ -1,7 +1,6 @@
 package zmain;
 
 import exceptions.ElementNotFoundException;
-import java.util.Iterator;
 import trees.AVLTree;
 import trees.TreePrinter;
 
@@ -21,7 +20,10 @@ public class main {
         tree.addElement(0);
         tree.addElement(10);
         tree.addElement(15);
-        tree.removeElement(0);
+        tree.addElement(15);
+        tree.addElement(15);
+        tree.addElement(15);
+        tree.removeAllOccurrences(15);
         
         TreePrinter.printLevelOrder(tree);
 

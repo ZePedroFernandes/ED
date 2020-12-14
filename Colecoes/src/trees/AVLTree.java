@@ -21,6 +21,13 @@ public class AVLTree<T> extends LinkedBinarySearchTree<T> implements AvlBinarySe
         root = new AVLNode<>();
     }
 
+    /**
+     * Adds an element to the tree. Alters the node balancing factor in the
+     * nodes that need that update. Balances the tree after adding if there is
+     * the need to.
+     *
+     * @param element element to be added to the tree.
+     */
     @Override
     public void addElement(T element) {
         BinaryTreeNode<T> temp = new AVLNode<>(element);
@@ -49,7 +56,7 @@ public class AVLTree<T> extends LinkedBinarySearchTree<T> implements AvlBinarySe
                     }
                 }
             }
-            balanceUp(current);
+            factorBalanceUp(current);
             balance(current);
         }
         count++;
@@ -57,7 +64,8 @@ public class AVLTree<T> extends LinkedBinarySearchTree<T> implements AvlBinarySe
     }
 
     /**
-     * Removes a node based on its parent.
+     * Removes a node based on its parent. Updates all necessary balancing
+     * factors. Balances the tree if needed.
      *
      * @param parent the node's parent node
      * @param node the node to be removed.
@@ -110,11 +118,17 @@ public class AVLTree<T> extends LinkedBinarySearchTree<T> implements AvlBinarySe
             } else {
                 parent.right = result;
             }
+            factorBalanceUp(updateNode);
+            balance(updateNode);
         }
-        balanceUp(updateNode);
-        balance(updateNode);
+
     }
 
+    /**
+     * Finds and removes an element from the tree.
+     *
+     * @param targetElement the element to be removed
+     */
     @Override
     public T removeElement(T targetElement) throws ElementNotFoundException {
         T result = null;
@@ -162,27 +176,26 @@ public class AVLTree<T> extends LinkedBinarySearchTree<T> implements AvlBinarySe
      *
      * @param node the node wich balancing factor will be updated.
      */
-    private void balanceUp(BinaryTreeNode<T> node) {
+    private void factorBalanceUp(BinaryTreeNode<T> node) {
         if (node != null) {
             ((AVLNode<T>) node).balanceFactor = this.getHeight(node.right) - this.getHeight(node.left);
-            balanceUp(this.getParent(node));
+            factorBalanceUp(this.getParent(node));
         }
     }
 
-    /**
-     * Updates the balancing factor of a node an the balancing node of it's
-     * child nodes.
-     *
-     * @param node the node wich balancing factor will be updated.
-     */
-    private void balanceDown(BinaryTreeNode<T> node) {
-        if (node != null) {
-            ((AVLNode<T>) node).balanceFactor = this.getHeight(node.right) - this.getHeight(node.left);
-            balanceUp(node.left);
-            balanceUp(node.right);
-        }
-    }
-
+//    /**
+//     * Updates the balancing factor of a node an the balancing factor of it's
+//     * childs.
+//     *
+//     * @param node the node wich balancing factor will be updated.
+//     */
+//    private void factorBalanceDown(BinaryTreeNode<T> node) {
+//        if (node != null) {
+//            ((AVLNode<T>) node).balanceFactor = this.getHeight(node.right) - this.getHeight(node.left);
+//            balanceUp(node.left);
+//            balanceUp(node.right);
+//        }
+//    }
     /**
      * Gets the height of a node. If the node is null the heihgt is -1 If the
      * node has no childs the height is 0 Else the height is 1 + the max height
@@ -200,14 +213,14 @@ public class AVLTree<T> extends LinkedBinarySearchTree<T> implements AvlBinarySe
         }
 
         return 1 + Math.max(this.getHeight(node.left), this.getHeight(node.right));
-
     }
 
     /**
-     * Given a node present in the tree, finds and returns it's parent.
+     * Given a node present in the tree, finds and returns it's parent. If the
+     * node is the root null is returned.
      *
      * @param node node to find the parent.
-     * @return the node's parent.
+     * @return the node's parent or null if the node is the root.
      */
     private BinaryTreeNode<T> getParent(BinaryTreeNode<T> node) {
         BinaryTreeNode<T> parent = null;
@@ -236,11 +249,13 @@ public class AVLTree<T> extends LinkedBinarySearchTree<T> implements AvlBinarySe
     }
 
     /**
-     * Returns a node it is unbalanced or the next unbalanced ascendent. If
-     * there are no unbalanced nodes returns null;
+     * Recursively searchs the tree from bottom to top, if the node is
+     * unbalanced that node is returned, if not the parent node is checked to
+     * see if that one is unbalanced and so on. If there are no unbalanced nodes
+     * returns null;
      *
      * @param node node to check balancing
-     * @return the unbalanced node or null if the node is balanced
+     * @return the unbalanced node or the next unbalanced ascending node .
      */
     private BinaryTreeNode<T> getUnbalancedNode(BinaryTreeNode<T> node) {
         if (node == null) {
@@ -260,6 +275,7 @@ public class AVLTree<T> extends LinkedBinarySearchTree<T> implements AvlBinarySe
      */
     private void balance(BinaryTreeNode<T> node) {
         BinaryTreeNode<T> unbalanced = getUnbalancedNode(node);
+
         if (unbalanced != null) {
             if (((AVLNode<T>) unbalanced).balanceFactor == -2) {
                 if (((AVLNode<T>) unbalanced.left).balanceFactor == 1) {
@@ -275,6 +291,11 @@ public class AVLTree<T> extends LinkedBinarySearchTree<T> implements AvlBinarySe
         }
     }
 
+    /**
+     * Performs a right roation in a specifc node.
+     *
+     * @param node the node to be rotated
+     */
     public void rightRotation(BinaryTreeNode<T> node) {
         BinaryTreeNode<T> parent = this.getParent(node);
         BinaryTreeNode<T> temp = node.left;
@@ -292,6 +313,11 @@ public class AVLTree<T> extends LinkedBinarySearchTree<T> implements AvlBinarySe
         }
     }
 
+    /**
+     * Performs a left roation in a specifc node.
+     *
+     * @param node the node to be rotated
+     */
     public void leftRotation(BinaryTreeNode<T> node) {
         BinaryTreeNode<T> parent = this.getParent(node);
         BinaryTreeNode<T> temp = node.right;

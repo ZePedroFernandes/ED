@@ -5,7 +5,7 @@ import exceptions.ElementNotFoundException;
 
 /**
  * Represents a binary search tree implemented using linked nodes
- * 
+ *
  * @author Nome : José Pedro Fernandes Número: 8190239 Turma: 1
  * @param <T>
  */
@@ -75,8 +75,8 @@ public class LinkedBinarySearchTree<T> extends LinkedBinaryTree<T> implements Bi
      *
      * @param targetElement the element to be removed from this tree
      * @return the element removed from this tree
-     * @throws exceptions.ElementNotFoundException if the element is not present
-     * in the tree.
+     * @throws ElementNotFoundException if the element is not present in the
+     * tree.
      */
     @Override
     public T removeElement(T targetElement) throws ElementNotFoundException {
@@ -177,7 +177,7 @@ public class LinkedBinarySearchTree<T> extends LinkedBinaryTree<T> implements Bi
             }
         }
     }
-    
+
     /**
      * Removes and returns the smallest element from this tree.
      *

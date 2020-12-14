@@ -125,23 +125,25 @@ public class LinkedBinaryTree<T> implements BinaryTreeADT<T> {
     }
 
     public void levelOrder(ArrayUnorderedList<T> results) {
-        LinkedQueue<BinaryTreeNode<T>> nodes = new LinkedQueue<>();
-        BinaryTreeNode<T> element = null;
-        nodes.enqueue(root);
+        if (!this.isEmpty()) {
+            LinkedQueue<BinaryTreeNode<T>> nodes = new LinkedQueue<>();
+            BinaryTreeNode<T> element = null;
+            nodes.enqueue(root);
 
-        while (!nodes.isEmpty()) {
-            element = nodes.dequeue();
+            while (!nodes.isEmpty()) {
+                element = nodes.dequeue();
 
-            if (element != null) {
-                results.addToRear(element.element);
-                if (element.left != null) {
-                    nodes.enqueue(element.left);
+                if (element != null) {
+                    results.addToRear(element.element);
+                    if (element.left != null) {
+                        nodes.enqueue(element.left);
+                    }
+                    if (element.right != null) {
+                        nodes.enqueue(element.right);
+                    }
+                } else {
+                    results.addToRear(null);
                 }
-                if (element.right != null) {
-                    nodes.enqueue(element.right);
-                }
-            } else {
-                results.addToRear(null);
             }
         }
     }

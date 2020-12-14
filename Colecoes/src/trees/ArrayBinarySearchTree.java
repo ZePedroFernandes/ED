@@ -40,6 +40,9 @@ public class ArrayBinarySearchTree<T> extends ArrayBinaryTree<T> implements Bina
         maxIndex = 0;
     }
 
+    /**
+     * Expands the array capacity by a factor of 2.
+     */
     private void expandCapacity() {
         T[] temp = this.tree;
         this.tree = (T[]) new Object[temp.length * 2];

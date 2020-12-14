@@ -135,9 +135,7 @@ public class ArrayBinaryTree<T> implements BinaryTreeADT<T> {
                     results.addToRear(tree[element]);
                     nodes.enqueue(2 * element + 1);
                     nodes.enqueue(2 * (element + 1));
-                } /*else {
-                    results.addToRear(null);
-                }*/
+                }
             }
         }
     }
