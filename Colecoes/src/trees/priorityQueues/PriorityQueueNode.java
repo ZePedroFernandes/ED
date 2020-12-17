@@ -1,4 +1,4 @@
-package trees.heaps;
+package trees.priorityQueues;
 
 import trees.BinaryTreeNode;
 
