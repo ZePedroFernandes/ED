@@ -1,6 +1,6 @@
 package trees;
 
-import contracts.BinarySearchTreeADT;
+import ADTs.BinarySearchTreeADT;
 import exceptions.ElementNotFoundException;
 
 /**

@@ -16,15 +16,17 @@ public class main {
     public static void main(String[] args) throws ElementNotFoundException {
         AVLTree<Integer> tree = new AVLTree<>();
 
-        tree.addElement(5);
-        tree.addElement(0);
         tree.addElement(10);
         tree.addElement(15);
-        tree.addElement(15);
-        tree.addElement(15);
-        tree.addElement(15);
+        tree.addElement(5);
+        tree.addElement(0);
+        tree.addElement(7);
+        tree.addElement(-2);
+        tree.addElement(-4);
+        TreePrinter.printLevelOrder(tree);
+
         tree.removeAllOccurrences(15);
-        
+
         TreePrinter.printLevelOrder(tree);
 
     }//Main

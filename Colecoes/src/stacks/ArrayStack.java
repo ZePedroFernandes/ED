@@ -2,7 +2,7 @@ package stacks;
 
 import exceptions.InvalidElementException;
 import exceptions.EmptyException;
-import contracts.StackADT;
+import ADTs.StackADT;
 
 /**
  * Represents a stack implemented via Array.

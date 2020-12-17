@@ -1,6 +1,6 @@
 package queues;
 
-import contracts.QueueContract;
+import ADTs.QueueContract;
 import exceptions.EmptyException;
 import exceptions.InvalidElementException;
 import stacks.LinkedStack;

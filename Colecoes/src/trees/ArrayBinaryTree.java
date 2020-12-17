@@ -1,6 +1,6 @@
 package trees;
 
-import contracts.BinaryTreeADT;
+import ADTs.BinaryTreeADT;
 import exceptions.ElementNotFoundException;
 import java.util.Iterator;
 import lists.unorderedLists.ArrayUnorderedList;

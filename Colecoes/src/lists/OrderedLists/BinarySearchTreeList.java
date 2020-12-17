@@ -1,6 +1,6 @@
 package lists.OrderedLists;
 
-import contracts.ListADT;
+import ADTs.ListADT;
 import exceptions.ElementNotFoundException;
 import exceptions.EmptyException;
 import exceptions.InvalidElementException;

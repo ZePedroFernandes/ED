@@ -1,6 +1,6 @@
 package lists;
 
-import contracts.ListADT;
+import ADTs.ListADT;
 import exceptions.EmptyException;
 import java.util.ConcurrentModificationException;
 import java.util.Iterator;

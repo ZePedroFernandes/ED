@@ -1,4 +1,4 @@
-package contracts;
+package ADTs;
 
 import exceptions.ElementNotFoundException;
 import trees.AVLNode;

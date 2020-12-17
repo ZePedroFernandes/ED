@@ -1,7 +1,7 @@
 package lists.unorderedLists;
 
 import lists.OrderedLists.ArrayList;
-import contracts.UnorderedListContract;
+import ADTs.UnorderedListContract;
 import exceptions.ElementNotFoundException;
 
 /**

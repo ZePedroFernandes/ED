@@ -1,7 +1,7 @@
 package lists.unorderedLists;
 
 import lists.DoubleLinkedList;
-import contracts.UnorderedListContract;
+import ADTs.UnorderedListContract;
 import exceptions.ElementNotFoundException;
 import nodes.DoubleLinkedNode;
 

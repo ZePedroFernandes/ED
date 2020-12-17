@@ -1,6 +1,6 @@
 package lists.OrderedLists;
 
-import contracts.ListADT;
+import ADTs.ListADT;
 import exceptions.EmptyException;
 import java.util.Iterator;
 import java.util.NoSuchElementException;

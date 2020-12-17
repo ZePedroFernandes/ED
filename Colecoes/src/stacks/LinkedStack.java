@@ -1,7 +1,7 @@
 package stacks;
 
 import exceptions.EmptyException;
-import contracts.StackADT;
+import ADTs.StackADT;
 import exceptions.InvalidElementException;
 import lists.LinkedNode;
 

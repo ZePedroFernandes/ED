@@ -1,4 +1,4 @@
-package contracts;
+package ADTs;
 
 import exceptions.EmptyException;
 import java.util.Iterator;

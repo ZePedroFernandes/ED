@@ -1,6 +1,6 @@
 package trees;
 
-import contracts.BinarySearchTreeADT;
+import ADTs.BinarySearchTreeADT;
 import exceptions.ElementNotFoundException;
 
 /**
@@ -244,7 +244,8 @@ public class ArrayBinarySearchTree<T> extends ArrayBinaryTree<T> implements Bina
         }
         result = tree[index];
         replace(index);
-
+        count--;
+        
         return result;
     }
 

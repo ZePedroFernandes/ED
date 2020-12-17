@@ -1,6 +1,6 @@
 package queues;
 
-import contracts.QueueContract;
+import ADTs.QueueContract;
 import java.util.NoSuchElementException;
 
 /**
