@@ -3,7 +3,8 @@ package trees;
 import ADTs.HeapADT;
 
 /**
- *
+ * This class represents a array implementation of a min Heap.
+ * 
  * @author Nome : José Pedro Fernandes Número: 8190239 Turma: 1
  * @param <T> the type of elements in the heap
  */
@@ -17,10 +18,10 @@ public class ArrayHeap<T> extends ArrayBinaryTree<T> implements HeapADT<T> {
 
     public ArrayHeap(T element) {
         super(element);
-        lastIndex = 0;
+        this.lastIndex = 0;
     }
 
-    private boolean hasNoSize() {
+    private boolean isFull() {
         return (this.tree.length == this.lastIndex + 1);
     }
 
@@ -35,7 +36,7 @@ public class ArrayHeap<T> extends ArrayBinaryTree<T> implements HeapADT<T> {
 
     private void addFirstElement(T element) {
         this.tree[0] = element;
-        lastIndex = 0;
+        this.lastIndex = 0;
     }
 
     private int findNextAvailableIndex() {
@@ -48,6 +49,11 @@ public class ArrayHeap<T> extends ArrayBinaryTree<T> implements HeapADT<T> {
         this.tree[secondIndex] = tmp;
     }
 
+    /**
+     * Reorders the heap in a ascending way. usefull when a new element is added.
+     * 
+     * @param index the index where the reordering will start.
+     */
     private void reorderUp(int index) {
         if (index <= 0) {
             return;
@@ -67,13 +73,13 @@ public class ArrayHeap<T> extends ArrayBinaryTree<T> implements HeapADT<T> {
         } else {
             int targetIndex = findNextAvailableIndex();
 
-            if (this.hasNoSize()) {
+            if (this.isFull()) {
                 this.expandSize();
             }
 
             this.tree[targetIndex] = element;
             this.reorderUp(targetIndex);
-            lastIndex = targetIndex;
+            this.lastIndex = targetIndex;
         }
         this.count++;
     }
@@ -168,13 +174,14 @@ public class ArrayHeap<T> extends ArrayBinaryTree<T> implements HeapADT<T> {
         this.tree[this.lastIndex] = null;
         this.reorderFromRoot();
         this.lastIndex--;
-
+        this.count--;
+        
         return removedElement;
     }
 
     @Override
     public T findMin() {
-        return this.tree[0];
+        return this.getRoot();
     }
 
 }
