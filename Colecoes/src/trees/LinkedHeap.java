@@ -23,8 +23,8 @@ public class LinkedHeap<T> extends LinkedBinaryTree<T> implements HeapADT<T> {
     @Override
     public void addElement(T obj) {
         HeapNode<T> node = new HeapNode<>(obj);
-        if (root == null) {
-            root = node;
+        if (this.root == null) {
+            this.root = node;
         } else {
             HeapNode<T> next_parent = getNextParentAdd();
             if (next_parent.left == null) {
@@ -34,9 +34,9 @@ public class LinkedHeap<T> extends LinkedBinaryTree<T> implements HeapADT<T> {
             }
             node.parent = next_parent;
         }
-        lastNode = node;
-        count++;
-        if (count > 1) {
+        this.lastNode = node;
+        this.count++;
+        if (this.count > 1) {
             heapifyAdd();
         }
     }
@@ -47,11 +47,11 @@ public class LinkedHeap<T> extends LinkedBinaryTree<T> implements HeapADT<T> {
      * @return the node that will be a parent of the new node
      */
     private HeapNode<T> getNextParentAdd() {
-        HeapNode<T> result = lastNode;
-        while ((result != root) && (result.parent.left != result)) {
+        HeapNode<T> result = this.lastNode;
+        while ((result != this.root) && (result.parent.left != result)) {
             result = result.parent;
         }
-        if (result != root) {
+        if (result != this.root) {
             if (result.parent.right == null) {
                 result = result.parent;
             } else {
@@ -73,7 +73,7 @@ public class LinkedHeap<T> extends LinkedBinaryTree<T> implements HeapADT<T> {
      */
     private void heapifyAdd() {
         T temp;
-        HeapNode<T> next = lastNode;
+        HeapNode<T> next = this.lastNode;
         temp = next.element;
         while ((next != root) && (((Comparable) temp).compareTo(next.parent.element) < 0)) {
             next.element = next.parent.element;
@@ -94,36 +94,36 @@ public class LinkedHeap<T> extends LinkedBinaryTree<T> implements HeapADT<T> {
         if (isEmpty()) {
             throw new EmptyCollectionException("Empty Heap");
         }
-        T minElement = root.element;
-        if (count == 1) {
-            root = null;
-            lastNode = null;
+        T minElement = this.root.element;
+        if (this.count == 1) {
+            this.root = null;
+            this.lastNode = null;
         } else {
             HeapNode<T> next_last = getNewLastNode();
-            if (lastNode.parent.left == lastNode) {
-                lastNode.parent.left = null;
+            if (this.lastNode.parent.left == this.lastNode) {
+                this.lastNode.parent.left = null;
             } else {
-                lastNode.parent.right = null;
+                this.lastNode.parent.right = null;
             }
-            root.element = lastNode.element;
-            lastNode = next_last;
+            this.root.element = this.lastNode.element;
+            this.lastNode = next_last;
             heapifyRemove();
         }
-        count--;
+        this.count--;
         return minElement;
     }
 
     /**
      * Returns the node that will be the new last node after a remove.
      *
-     * @return the node that willbe the new last node after a remove
+     * @return the node that will be the new last node after a remove
      */
     private HeapNode<T> getNewLastNode() {
-        HeapNode<T> result = lastNode;
-        while ((result != root) && (result.parent.left == result)) {
+        HeapNode<T> result = this.lastNode;
+        while ((result != this.root) && (result.parent.left == result)) {
             result = result.parent;
         }
-        if (result != root) {
+        if (result != this.root) {
             result = (HeapNode<T>) result.parent.left;
         }
         while (result.right != null) {
@@ -137,7 +137,7 @@ public class LinkedHeap<T> extends LinkedBinaryTree<T> implements HeapADT<T> {
      */
     private void heapifyRemove() {
         T temp;
-        HeapNode<T> node = (HeapNode<T>) root;
+        HeapNode<T> node = (HeapNode<T>) this.root;
         HeapNode<T> left = (HeapNode<T>) node.left;
         HeapNode<T> right = (HeapNode<T>) node.right;
         HeapNode<T> next;

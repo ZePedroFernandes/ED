@@ -1,5 +1,6 @@
 package trees.priorityQueues;
 
+import exceptions.EmptyCollectionException;
 import trees.ArrayHeap;
 
 /**
@@ -33,8 +34,9 @@ public class PriorityQueue<T> extends ArrayHeap<PriorityQueueNode<T>> {
      * returns a reference to it.
      *
      * @return a reference to the next highest priority element * in this queue
+     * @throws exceptions.EmptyCollectionException if the queue is empty.
      */
-    public T removeNext() {
+    public T removeNext() throws EmptyCollectionException{
         PriorityQueueNode<T> temp = (PriorityQueueNode<T>) super.removeMin();
         return temp.getElement();
     }
