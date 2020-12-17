@@ -1,4 +1,6 @@
-package trees;
+package trees.heaps;
+
+import trees.BinaryTreeNode;
 
 /**
  * This class represents a priority queue node.

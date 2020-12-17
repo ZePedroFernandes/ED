@@ -5,8 +5,8 @@ import java.util.Iterator;
 import trees.AVLTree;
 import trees.ArrayHeap;
 import trees.HeapNode;
-import trees.PriorityQueue;
-import trees.PriorityQueueNode;
+import trees.heaps.PriorityQueue;
+import trees.heaps.PriorityQueueNode;
 import trees.TreePrinter;
 
 /**

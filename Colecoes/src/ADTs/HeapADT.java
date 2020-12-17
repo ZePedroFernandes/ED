@@ -1,5 +1,7 @@
 package ADTs;
 
+import exceptions.EmptyCollectionException;
+
 /**
  *
  * @author Nome : José Pedro Fernandes Número: 8190239 Turma: 1
@@ -18,8 +20,9 @@ public interface HeapADT<T> extends BinaryTreeADT<T> {
      * Removes element with the lowest value from this heap.
      *
      * @return the element with the lowest value from this heap
+     * @throws EmptyCollectionException if the heap is empty
      */
-    public T removeMin();
+    public T removeMin() throws EmptyCollectionException;
 
     /**
      * Returns a reference to the element with the lowest value in this heap.

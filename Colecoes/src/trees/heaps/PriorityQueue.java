@@ -1,4 +1,6 @@
-package trees;
+package trees.heaps;
+
+import trees.ArrayHeap;
 
 /**
  * This class represents a priority queue implemented using the heap concept.

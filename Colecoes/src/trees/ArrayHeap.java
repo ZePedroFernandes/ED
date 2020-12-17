@@ -1,6 +1,8 @@
 package trees;
 
 import ADTs.HeapADT;
+import exceptions.EmptyCollectionException;
+import trees.ArrayBinaryTree;
 
 /**
  * This class represents a array implementation of a min Heap.
@@ -167,7 +169,11 @@ public class ArrayHeap<T> extends ArrayBinaryTree<T> implements HeapADT<T> {
     }
 
     @Override
-    public T removeMin() {
+    public T removeMin() throws EmptyCollectionException{
+        if(this.isEmpty()){
+            throw new EmptyCollectionException("Empty Heap");
+        }
+        
         T removedElement = this.tree[0];
 
         this.tree[0] = this.tree[lastIndex];
