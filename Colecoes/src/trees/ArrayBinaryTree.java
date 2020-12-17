@@ -17,7 +17,7 @@ public class ArrayBinaryTree<T> implements BinaryTreeADT<T> {
 
     protected T[] tree;
 
-    private final int CAPACITY = 2;
+    private final int CAPACITY = 7;
 
     public ArrayBinaryTree() {
         this.count = 0;

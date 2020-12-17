@@ -1,7 +1,10 @@
 package zmain;
 
 import exceptions.ElementNotFoundException;
+import java.util.Iterator;
 import trees.AVLTree;
+import trees.ArrayHeap;
+import trees.HeapNode;
 import trees.TreePrinter;
 
 /**
@@ -14,20 +17,50 @@ public class main {
      * @param args the command line arguments
      */
     public static void main(String[] args) throws ElementNotFoundException {
-        AVLTree<Integer> tree = new AVLTree<>();
+        ArrayHeap<Integer> heap = new ArrayHeap<>();
 
-        tree.addElement(10);
-        tree.addElement(15);
-        tree.addElement(5);
-        tree.addElement(0);
-        tree.addElement(7);
-        tree.addElement(-2);
-        tree.addElement(-4);
-        TreePrinter.printLevelOrder(tree);
+        heap.addElement(-10);
+        heap.addElement(-1);
+        heap.addElement(0);
+        heap.addElement(1);
+        heap.addElement(7);
+        heap.addElement(9);
+        heap.addElement(1);
+        heap.addElement(2);
 
-        tree.removeAllOccurrences(15);
+        TreePrinter.printLevelOrder(heap);
 
-        TreePrinter.printLevelOrder(tree);
+        heap.removeMin();
+
+        TreePrinter.printLevelOrder(heap);
+
+        heap.removeMin();
+
+        TreePrinter.printLevelOrder(heap);
+
+        heap.removeMin();
+
+        TreePrinter.printLevelOrder(heap);
+
+        heap.removeMin();
+
+        TreePrinter.printLevelOrder(heap);
+
+        heap.removeMin();
+
+        TreePrinter.printLevelOrder(heap);
+
+        heap.removeMin();
+
+        TreePrinter.printLevelOrder(heap);
+
+        heap.removeMin();
+
+        TreePrinter.printLevelOrder(heap);
+
+        heap.removeMin();
+
+        TreePrinter.printLevelOrder(heap);
 
     }//Main
 

@@ -1,5 +1,6 @@
 package trees;
 
+import ADTs.BinaryTreeADT;
 import java.util.Iterator;
 
 /**
@@ -8,7 +9,7 @@ import java.util.Iterator;
  */
 public abstract class TreePrinter {
 
-    public static <T> void printLevelOrder(LinkedBinaryTree<T> tree) {
+    public static <T> void printLevelOrder(BinaryTreeADT<T> tree) {
         System.out.print("Level Order: [");
         Iterator<T> itrLevelOrder = tree.iteratorLevelOrder();
         while (itrLevelOrder.hasNext()) {
@@ -20,7 +21,7 @@ public abstract class TreePrinter {
         System.out.println("]");
     }
 
-    public static <T> void printPreOrder(LinkedBinaryTree<T> tree) {
+    public static <T> void printPreOrder(BinaryTreeADT<T> tree) {
         System.out.print("Pre Order: [");
         Iterator<T> itrPreOrder = tree.iteratorPreOrder();
         while (itrPreOrder.hasNext()) {
@@ -32,7 +33,7 @@ public abstract class TreePrinter {
         System.out.println("]");
     }
 
-    public static <T> void printInOrder(LinkedBinaryTree<T> tree) {
+    public static <T> void printInOrder(BinaryTreeADT<T> tree) {
         System.out.print("In Order: [");
         Iterator<T> itrInOrder = tree.iteratorInOrder();
         while (itrInOrder.hasNext()) {
@@ -44,7 +45,7 @@ public abstract class TreePrinter {
         System.out.println("]");
     }
 
-    public static <T> void printPostOrder(LinkedBinaryTree<T> tree) {
+    public static <T> void printPostOrder(BinaryTreeADT<T> tree) {
         System.out.print("Post Order: [");
         Iterator<T> itrPostOrder = tree.iteratorPostOrder();
         while (itrPostOrder.hasNext()) {
