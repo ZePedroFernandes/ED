@@ -5,6 +5,8 @@ import java.util.Iterator;
 import trees.AVLTree;
 import trees.ArrayHeap;
 import trees.HeapNode;
+import trees.PriorityQueue;
+import trees.PriorityQueueNode;
 import trees.TreePrinter;
 
 /**
@@ -17,50 +19,50 @@ public class main {
      * @param args the command line arguments
      */
     public static void main(String[] args) throws ElementNotFoundException {
-        ArrayHeap<Integer> heap = new ArrayHeap<>();
-
-        heap.addElement(-10);
-        heap.addElement(-1);
-        heap.addElement(0);
-        heap.addElement(1);
-        heap.addElement(7);
-        heap.addElement(9);
-        heap.addElement(1);
-        heap.addElement(2);
-
-        TreePrinter.printLevelOrder(heap);
-
-        heap.removeMin();
-
-        TreePrinter.printLevelOrder(heap);
-
-        heap.removeMin();
-
-        TreePrinter.printLevelOrder(heap);
-
-        heap.removeMin();
-
-        TreePrinter.printLevelOrder(heap);
-
-        heap.removeMin();
-
-        TreePrinter.printLevelOrder(heap);
-
-        heap.removeMin();
-
-        TreePrinter.printLevelOrder(heap);
-
-        heap.removeMin();
-
-        TreePrinter.printLevelOrder(heap);
-
-        heap.removeMin();
-
-        TreePrinter.printLevelOrder(heap);
-
-        heap.removeMin();
-
-        TreePrinter.printLevelOrder(heap);
+//        ArrayHeap<Integer> heap = new ArrayHeap<>();
+//
+//        heap.addElement(-10);
+//        heap.addElement(-1);
+//        heap.addElement(0);
+//        heap.addElement(1);
+//        heap.addElement(7);
+//        heap.addElement(9);
+//        heap.addElement(1);
+//        heap.addElement(2);
+//
+//        TreePrinter.printLevelOrder(heap);
+//
+//        heap.removeMin();
+//
+//        TreePrinter.printLevelOrder(heap);
+//
+//        heap.removeMin();
+//
+//        TreePrinter.printLevelOrder(heap);
+//
+//        heap.removeMin();
+//
+//        TreePrinter.printLevelOrder(heap);
+//
+//        heap.removeMin();
+//
+//        TreePrinter.printLevelOrder(heap);
+//
+//        heap.removeMin();
+//
+//        TreePrinter.printLevelOrder(heap);
+//
+//        heap.removeMin();
+//
+//        TreePrinter.printLevelOrder(heap);
+//
+//        heap.removeMin();
+//
+//        TreePrinter.printLevelOrder(heap);
+//
+//        heap.removeMin();
+//
+//        TreePrinter.printLevelOrder(heap);
 
     }//Main
 

@@ -39,7 +39,7 @@ public class BinaryTreeNode<T> {
     }
 
     public T getElement() {
-        return element;
+        return this.element;
     }
 
 }
