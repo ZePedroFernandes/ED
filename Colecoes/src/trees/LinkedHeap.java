@@ -69,7 +69,7 @@ public class LinkedHeap<T> extends LinkedBinaryTree<T> implements HeapADT<T> {
     }
 
     /**
-     * * Reorders this heap after adding a node.
+     * Reorders this heap after adding a node.
      */
     private void heapifyAdd() {
         T temp;
