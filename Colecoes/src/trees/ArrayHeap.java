@@ -2,7 +2,6 @@ package trees;
 
 import ADTs.HeapADT;
 import exceptions.EmptyCollectionException;
-import trees.ArrayBinaryTree;
 
 /**
  * This class represents a array implementation of a min Heap.
