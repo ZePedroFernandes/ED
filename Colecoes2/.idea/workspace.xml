@@ -4,7 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6911c030-56a6-4be9-acde-6d3210b0b00b" name="Default Changelist" comment="" />
+    <list default="true" id="6911c030-56a6-4be9-acde-6d3210b0b00b" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../Colecoes/src/Graphs/GraphList.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Colecoes/src/Graphs/GraphList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Colecoes/src/zmain/main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Colecoes/src/zmain/main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Graphs/GraphList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Graphs/GraphList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Graphs/GraphMatrix.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Graphs/GraphMatrix.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/zmain/Tree_Tests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/zmain/main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/zmain/main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/GraphTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/GraphTest.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -23,6 +32,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$/.." value="main" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="ProjectId" id="1n4tx7AICqYrjIxh48Bzs3RBIPP" />
@@ -38,7 +52,20 @@
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.main">
+    <configuration name="main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="zmain.main" />
+      <module name="Colecoes2.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="zmain.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
@@ -76,6 +103,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Gradle.GraphTest" />
+        <item itemvalue="Application.main" />
+        <item itemvalue="Gradle.GraphTest" />
+        <item itemvalue="Gradle.GraphTest" />
+        <item itemvalue="Gradle.GraphTest" />
       </list>
     </recent_temporary>
   </component>
@@ -88,7 +119,7 @@
       <option name="presentableId" value="Default" />
       <updated>1610661434858</updated>
       <workItem from="1610661435983" duration="77000" />
-      <workItem from="1610661677363" duration="538000" />
+      <workItem from="1610661677363" duration="3544000" />
     </task>
     <task id="LOCAL-00001" summary="A">
       <created>1610662102143</created>
@@ -97,7 +128,14 @@
       <option name="project" value="LOCAL" />
       <updated>1610662102143</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Switch to IntelIJ">
+      <created>1610662393425</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1610662393425</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -114,6 +152,18 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="A" />
-    <option name="LAST_COMMIT_MESSAGE" value="A" />
+    <MESSAGE value="Switch to IntelIJ" />
+    <option name="LAST_COMMIT_MESSAGE" value="Switch to IntelIJ" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/zmain/main.java</url>
+          <line>34</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

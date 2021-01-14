@@ -2,6 +2,7 @@ package lists;
 
 import exceptions.InvalidElementException;
 import exceptions.EmptyException;
+
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
@@ -9,25 +10,23 @@ import java.util.NoSuchElementException;
  * This class represents a LinkedList. This List is composed by
  * {@link LinkedNode linked Nodes}.
  *
- * @author Nome : José Pedro Fernandes Número: 8190239 Turma: 1
  * @param <T> The tipe of node to be created.
+ * @author Nome : José Pedro Fernandes Número: 8190239 Turma: 1
  */
 public class LinkedList<T> {
-
-    /**
-     * List element counter.
-     */
-    private int count;
 
     /**
      * List's first Node.
      */
     public LinkedNode<T> head;
-
     /**
      * List's last Node.
      */
     public LinkedNode<T> tail;
+    /**
+     * List element counter.
+     */
+    private int count;
 
     /**
      * Construct's an instance of {@link LinkedList}
@@ -36,50 +35,11 @@ public class LinkedList<T> {
         this.count = 0;
     }
 
-    /**
-     * Provides an itrator the the {@link LinkedList}.
-     *
-     * @param <T> the type of elements present in the {@link LinkedList}
-     */
-    private class LinkedListIterator<T> implements Iterator<T> {
-
-        /**
-         * The iterator's cursor.
-         */
-        private LinkedNode<T> cursor;
-
-        /**
-         * Creates an instance of {@link LinkedListIterator}
-         */
-        public LinkedListIterator() {
-            this.cursor = (LinkedNode<T>) head;
-        }
-
-        /**
-         * Checks if there is a next element.
-         *
-         * @return true if there is a next element, else false
-         */
-        @Override
-        public boolean hasNext() {
-            return (this.cursor != null);
-        }
-
-        /**
-         * Returns the next element in the {@link LinkedList}.
-         *
-         * @return the next element in the {@link LinkedList}
-         */
-        @Override
-        public T next() {
-            if (!this.hasNext()) {
-                throw new NoSuchElementException();
-            }
-            T element = this.cursor.getElement();
-            this.cursor = this.cursor.getNext();
-            return element;
-        }
-
+    public LinkedList(T element) {
+        LinkedNode<T> node = new LinkedNode<>(element);
+        this.head = node;
+        this.tail = node;
+        this.count = 1;
     }
 
     /**
@@ -162,7 +122,7 @@ public class LinkedList<T> {
     /**
      * Recursively inverts the list.
      *
-     * @param current the current node
+     * @param current  the current node
      * @param previous the previous node
      */
     private void invert(LinkedNode<T> current, LinkedNode<T> previous) {
@@ -205,6 +165,52 @@ public class LinkedList<T> {
         }
 
         return s;
+    }
+
+    /**
+     * Provides an itrator the the {@link LinkedList}.
+     *
+     * @param <T> the type of elements present in the {@link LinkedList}
+     */
+    private class LinkedListIterator<T> implements Iterator<T> {
+
+        /**
+         * The iterator's cursor.
+         */
+        private LinkedNode<T> cursor;
+
+        /**
+         * Creates an instance of {@link LinkedListIterator}
+         */
+        public LinkedListIterator() {
+            this.cursor = (LinkedNode<T>) head;
+        }
+
+        /**
+         * Checks if there is a next element.
+         *
+         * @return true if there is a next element, else false
+         */
+        @Override
+        public boolean hasNext() {
+            return (this.cursor != null);
+        }
+
+        /**
+         * Returns the next element in the {@link LinkedList}.
+         *
+         * @return the next element in the {@link LinkedList}
+         */
+        @Override
+        public T next() {
+            if (!this.hasNext()) {
+                throw new NoSuchElementException();
+            }
+            T element = this.cursor.getElement();
+            this.cursor = this.cursor.getNext();
+            return element;
+        }
+
     }
 
 }

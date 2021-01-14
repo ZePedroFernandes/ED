@@ -58,9 +58,7 @@ public class GraphMatrix<T> implements GraphADT<T> {
 
         for (int i = 0; i < vertices.length; i++) {
 
-            for (int j = 0; j < vertices.length; j++) {
-                expandedMatrix[i][j] = adjMatrix[i][j];
-            }
+            System.arraycopy(adjMatrix[i], 0, expandedMatrix[i], 0, vertices.length);
 
             expandedVertices[i] = vertices[i];
         }
@@ -123,11 +121,11 @@ public class GraphMatrix<T> implements GraphADT<T> {
     }
 
     @Override
-    public Iterator iteratorBFS(T startVertex) {
+    public Iterator<T> iteratorBFS(T startVertex) {
         return iteratorBFS(getIndex(startVertex));
     }
 
-    public Iterator iteratorBFS(int startIndex) {
+    public Iterator<T> iteratorBFS(int startIndex) {
         Integer x;
         LinkedQueue<Integer> transversalQueue = new LinkedQueue<>();
         ArrayUnorderedList<T> resultList = new ArrayUnorderedList<>();
@@ -160,11 +158,11 @@ public class GraphMatrix<T> implements GraphADT<T> {
     }
 
     @Override
-    public Iterator iteratorDFS(T startVertex) {
+    public Iterator<T> iteratorDFS(T startVertex) {
         return iteratorDFS(getIndex(startVertex));
     }
 
-    public Iterator iteratorDFS(int startIndex) {
+    public Iterator<T> iteratorDFS(int startIndex) {
         Integer x;
         boolean found;
         LinkedStack<Integer> traversalStack = new LinkedStack<>();
@@ -207,11 +205,11 @@ public class GraphMatrix<T> implements GraphADT<T> {
     }
 
     @Override
-    public Iterator iteratorShortestPath(T startVertex, T targetVertex) {
+    public Iterator<T> iteratorShortestPath(T startVertex, T targetVertex) {
         return (iteratorShortestPath(getIndex(startVertex), getIndex(targetVertex)));
     }
 
-    public Iterator iteratorShortestPath(int startIndex, int targetIndex) {
+    public Iterator<T> iteratorShortestPath(int startIndex, int targetIndex) {
         Integer x;
         LinkedQueue<Integer> transversalQueue = new LinkedQueue<>();
         LinkedStack<Pair<Integer, Integer>> pairs = new LinkedStack<>();

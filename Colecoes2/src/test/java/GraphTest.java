@@ -1,5 +1,6 @@
 import Graphs.GraphMatrix;
 import Graphs.Vertex;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.Iterator;
@@ -15,12 +16,15 @@ public class GraphTest {
     static final Vertex F = new Vertex("F", 3);
     static final Vertex G = new Vertex("G", 3);
     static final Vertex H = new Vertex("H", 3);
-    static final Vertex I = new Vertex("I", 3);
-    static final Vertex J = new Vertex("J", 3);
-    static GraphMatrix<Vertex> graph = new GraphMatrix();
+    static GraphMatrix<Vertex> graph;
+
+    @BeforeEach
+    public void setUp() {
+        graph = new GraphMatrix<>();
+    }
 
     @Test
-    public void test_1(){
+    public void test_1() {
         graph.addVertex(A);
         graph.addVertex(B);
         graph.addVertex(C);
@@ -46,9 +50,78 @@ public class GraphTest {
 
         Iterator<Vertex> itr = graph.iteratorShortestPath(A, E);
 
+        assertEquals(A, itr.next());
+        assertEquals(B, itr.next());
+        assertEquals(C, itr.next());
+        assertEquals(E, itr.next());
+    }
+
+    @Test
+    public void test_2(){
+        graph.addVertex(A);
+
+        Iterator<Vertex> iterator = graph.iteratorShortestPath(A,A);
+
+        assertFalse(iterator.hasNext());
+    }
+
+    @Test
+    public void test_3(){
+        graph.addVertex(A);
+        graph.addVertex(B);
+
+        graph.addEdge(A,B);
+
+        Iterator<Vertex> itr = graph.iteratorShortestPath(A,B);
+
         assertEquals(A,itr.next());
         assertEquals(B,itr.next());
+    }
+
+    @Test
+    public void test_4(){
+        graph.addVertex(A);
+        graph.addVertex(B);
+        graph.addVertex(C);
+        graph.addVertex(D);
+        graph.addVertex(E);
+        graph.addVertex(F);
+
+        graph.addEdge(A,B);
+        graph.addEdge(A,C);
+        graph.addEdge(A,F);
+        graph.addEdge(C,D);
+        graph.addEdge(D,E);
+        graph.addEdge(E,F);
+
+        Iterator<Vertex> itr = graph.iteratorShortestPath(A,F);
+
+        assertEquals(A,itr.next());
+        assertEquals(F,itr.next());
+    }
+
+    @Test
+    public void test_5(){
+        graph.addVertex(A);
+        graph.addVertex(B);
+        graph.addVertex(C);
+        graph.addVertex(D);
+        graph.addVertex(E);
+        graph.addVertex(F);
+
+        graph.addEdge(A,B);
+        graph.addEdge(A,C);
+        //graph.addEdge(A,F);
+        graph.addEdge(C,D);
+        graph.addEdge(D,E);
+        graph.addEdge(E,F);
+
+        Iterator<Vertex> itr = graph.iteratorShortestPath(A,F);
+
+        assertEquals(A,itr.next());
         assertEquals(C,itr.next());
+        assertEquals(D,itr.next());
         assertEquals(E,itr.next());
+        assertEquals(F,itr.next());
     }
 }
