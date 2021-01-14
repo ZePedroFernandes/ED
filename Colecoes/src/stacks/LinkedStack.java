@@ -78,9 +78,9 @@ public class LinkedStack<T> implements StackADT<T> {
      * @throws EmptyException if the stack is empty
      */
     @Override
-    public T peek() throws EmptyException {
+    public T peek(){
         if (isEmpty()) {
-            throw new EmptyException("Empty Stack");
+            return null;
         }
         return (this.top.getNext().getElement());
     }

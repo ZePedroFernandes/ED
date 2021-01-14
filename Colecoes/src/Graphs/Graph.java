@@ -2,6 +2,9 @@ package Graphs;
 
 import ADTs.GraphADT;
 import java.util.Iterator;
+import lists.unorderedLists.ArrayUnorderedList;
+import queues.LinkedQueue;
+import stacks.LinkedStack;
 
 /**
  *
@@ -104,23 +107,103 @@ public class Graph<T> implements GraphADT<T> {
                 }
             }
             //Columes shifted
-
         }
     }
 
     @Override
     public void removeEdge(T vertex1, T vertex2) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        removeEdge(getIndex(vertex1), getIndex(vertex2));
+    }
+
+    public void removeEdge(int index1, int index2) {
+        if (indexIsValid(index1) && indexIsValid(index2)) {
+            adjMatrix[index1][index2] = false;
+            adjMatrix[index2][index1] = false;
+        }
     }
 
     @Override
     public Iterator iteratorBFS(T startVertex) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return iteratorBFS(getIndex(startVertex));
+    }
+
+    public Iterator iteratorBFS(int startIndex) {
+        Integer x;
+        LinkedQueue<Integer> transversalQueue = new LinkedQueue<>();
+        ArrayUnorderedList<T> resultList = new ArrayUnorderedList<>();
+
+        if (!indexIsValid(startIndex)) {
+            return resultList.iterator();
+        }
+
+        boolean[] visited = new boolean[this.numVertices];
+        for (int i = 0; i < numVertices; i++) {
+            visited[i] = false;
+        }
+
+        transversalQueue.enqueue(startIndex);
+        visited[startIndex] = true;
+
+        while (!transversalQueue.isEmpty()) {
+            x = transversalQueue.dequeue();
+            resultList.addToRear(vertices[x]);
+
+            for (int i = 0; i < numVertices; i++) {
+                if (adjMatrix[x][i] && !visited[i]) {
+                    transversalQueue.enqueue(i);
+                    visited[i] = true;
+                }
+            }
+        }
+
+        return resultList.iterator();
     }
 
     @Override
     public Iterator iteratorDFS(T startVertex) {
         throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    public Iterator iteratorDFS(int startIndex) {
+        Integer x;
+        boolean found;
+        LinkedStack<Integer> traversalStack = new LinkedStack<>();
+        ArrayUnorderedList<T> resultList = new ArrayUnorderedList<>();
+
+        if (!indexIsValid(startIndex)) {
+            return resultList.iterator();
+        }
+
+        boolean[] visited = new boolean[numVertices];
+
+        for (int i = 0; i < numVertices; i++) {
+            visited[i] = false;
+        }
+
+        traversalStack.push(startIndex);
+        resultList.addToRear(vertices[startIndex]);
+        visited[startIndex] = true;
+
+        while (!traversalStack.isEmpty()) {
+            x = traversalStack.peek();
+            found = false;
+            /**
+             * Find a vertex adjacent to x that has not been visited and push it
+             * on the stack
+             */
+            for (int i = 0; (i < numVertices) && !found; i++) {
+                if (adjMatrix[x][i] && !visited[i]) {
+                    traversalStack.push(i);
+                    resultList.addToRear(vertices[i]);
+                    visited[i] = true;
+                    found = true;
+                }
+            }
+            if (!found && !traversalStack.isEmpty()) {
+                traversalStack.pop();
+            }
+        }
+        return resultList.iterator();
     }
 
     @Override
@@ -130,7 +213,7 @@ public class Graph<T> implements GraphADT<T> {
 
     @Override
     public boolean isEmpty() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return this.numVertices == 0;
     }
 
     @Override
@@ -140,11 +223,51 @@ public class Graph<T> implements GraphADT<T> {
 
     @Override
     public int size() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return this.numVertices;
     }
 
     @Override
     public String toString() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        if (numVertices == 0) {
+            return "Graph is empty";
+        }
+
+        String result = new String("");
+
+        result += "Adjacency Matrix\n";
+        result += "----------------\n";
+        result += "index\t";
+
+        for (int i = 0; i < numVertices; i++) {
+            result += "" + i;
+            if (i < 10) {
+                result += " ";
+            }
+        }
+        result += "\n\n";
+
+        for (int i = 0; i < numVertices; i++) {
+            result += "" + i + "\t";
+
+            for (int j = 0; j < numVertices; j++) {
+                if (adjMatrix[i][j]) {
+                    result += "1 ";
+                } else {
+                    result += "0 ";
+                }
+            }
+            result += "\n";
+        }
+
+        result += "\n\nVertex Values";
+        result += "\n-------------\n";
+        result += "index\tvalue\n\n";
+
+        for (int i = 0; i < numVertices; i++) {
+            result += "" + i + "\t";
+            result += vertices[i].toString() + "\n";
+        }
+        result += "\n";
+        return result;
     }
 }
