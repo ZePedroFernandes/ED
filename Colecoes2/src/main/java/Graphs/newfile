@@ -1,0 +1,14 @@
+
+Array de booleans com os visitados
+Adicionar na queue o primeiro indice e marcar como visitado
+
+Enquanto não se encontrar o valor de destino ou a queue estiver vazia{
+    x = dequeue()
+    
+    for all non visited nodes{
+        os nós não visitados são guardados em forma de par numa stack;
+        marcar como visitado
+    }
+
+    adicionar à result list os pares corretos da stack que vão desde o destino até à origem
+}
