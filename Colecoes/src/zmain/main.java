@@ -1,6 +1,8 @@
 package zmain;
 
-import Graphs.Graph;
+import Graphs.GraphList;
+import Graphs.GraphMatrix;
+import Graphs.Vertex;
 import java.util.Iterator;
 import java.util.Objects;
 
@@ -14,74 +16,59 @@ public class main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Graph<Vertex> graph = new Graph();
-        Vertex vertex1 = new Vertex("A", 3);
-        Vertex vertex2 = new Vertex("B", 3);
-        Vertex vertex3 = new Vertex("C", 3);
-        Vertex vertex4 = new Vertex("D", 3);
-        Vertex vertex5 = new Vertex("E", 3);
-        Vertex vertex6 = new Vertex("F", 3);
-        Vertex vertex7 = new Vertex("G", 3);
-        Vertex vertex8 = new Vertex("H", 3);
-        Vertex vertex9 = new Vertex("I", 3);
-        Vertex vertex10 = new Vertex("J", 3);
+        GraphMatrix<Vertex> graph = new GraphMatrix();
+        
+        Vertex A = new Vertex("A", 3);
+        Vertex B = new Vertex("B", 3);
+        Vertex C = new Vertex("C", 3);
+        Vertex D = new Vertex("D", 3);
+        Vertex E = new Vertex("E", 3);
+        Vertex F = new Vertex("F", 3);
+        Vertex G = new Vertex("G", 3);
+        Vertex H = new Vertex("H", 3);
+        Vertex I = new Vertex("I", 3);
+        Vertex J = new Vertex("J", 3);
 
-        graph.addVertex(vertex1);
-        graph.addVertex(vertex2);
-        graph.addVertex(vertex3);
-        graph.addVertex(vertex4);
+        graph.addVertex(A);
+        graph.addVertex(B);
+        graph.addVertex(C);
+        graph.addVertex(D);
+        graph.addVertex(E);
+        graph.addVertex(F);
+        graph.addVertex(G);
+        graph.addVertex(H);
 
-        graph.addEdge(vertex1, vertex2);
-        graph.addEdge(vertex1, vertex3);
-        graph.addEdge(vertex3, vertex4);
-
-        Iterator itr = graph.iteratorBFS(vertex1);
-
-        while (itr.hasNext()) {
-            System.out.println(itr.next());
+        graph.addEdge(A, B);
+        graph.addEdge(A, F);
+        
+        graph.addEdge(B, C);
+        graph.addEdge(B, D);
+        graph.addEdge(F, G);
+        
+        graph.addEdge(C, D);
+        graph.addEdge(D, G);
+        
+        graph.addEdge(G, H);
+        graph.addEdge(C, E);
+        graph.addEdge(H, E);
+        
+        //DFS->A - B - C - D - G - F - H - E
+        //BFS->A - B - F - C - D - G - E - H
+//        
+//        Iterator itr = graph.iteratorBFS(A);
+//
+//        while (itr.hasNext()) {
+//            System.out.println(itr.next());
+//        }
+        Iterator<Vertex> itr = graph.iteratorShortestPath(A, E);
+        
+        while(itr.hasNext()){
+            System.out.print(itr.next());
+            if(itr.hasNext()){
+                System.out.print(" -> ");
+            }
         }
-
-        //System.out.println(graph.toString());
+        System.out.println("");
     }//Main
-
-}
-
-class Vertex {
-
-    String name;
-
-    int info;
-
-    public Vertex() {
-
-    }
-
-    public Vertex(String name, int info) {
-        this.name = name;
-        this.info = info;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Vertex other = (Vertex) obj;
-        if (!Objects.equals(this.name, other.name)) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "Vertex{" + "name=" + name + ", info=" + info + '}';
-    }
 
 }

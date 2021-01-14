@@ -10,7 +10,7 @@ import stacks.LinkedStack;
  *
  * @author Nome : José Pedro Fernandes Número: 8190239 Turma: 1
  */
-public class Graph<T> implements GraphADT<T> {
+public class GraphMatrix<T> implements GraphADT<T> {
 
     protected final int DEFAULT_CAPACITY = 10;
     protected int numVertices;   // number of vertices in the graph 
@@ -20,7 +20,7 @@ public class Graph<T> implements GraphADT<T> {
     /**
      * Creates an empty graph.
      */
-    public Graph() {
+    public GraphMatrix() {
         numVertices = 0;
         adjMatrix = new boolean[DEFAULT_CAPACITY][DEFAULT_CAPACITY];
         vertices = (T[]) (new Object[DEFAULT_CAPACITY]);
@@ -161,7 +161,7 @@ public class Graph<T> implements GraphADT<T> {
 
     @Override
     public Iterator iteratorDFS(T startVertex) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return iteratorDFS(getIndex(startVertex));
     }
 
     public Iterator iteratorDFS(int startIndex) {
@@ -208,7 +208,53 @@ public class Graph<T> implements GraphADT<T> {
 
     @Override
     public Iterator iteratorShortestPath(T startVertex, T targetVertex) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return (iteratorShortestPath(getIndex(startVertex), getIndex(targetVertex)));
+    }
+
+    public Iterator iteratorShortestPath(int startIndex, int targetIndex) {
+        Integer x;
+        LinkedQueue<Integer> transversalQueue = new LinkedQueue<>();
+        LinkedStack<Pair<Integer, Integer>> pairs = new LinkedStack<>();
+        ArrayUnorderedList<T> resultList = new ArrayUnorderedList<>();
+
+        if (!indexIsValid(startIndex) || !indexIsValid(targetIndex)) {
+            return resultList.iterator();
+        }
+
+        boolean[] visited = new boolean[this.numVertices];
+        for (int i = 0; i < numVertices; i++) {
+            visited[i] = false;
+        }
+
+        transversalQueue.enqueue(startIndex);
+        visited[startIndex] = true;
+        
+        while (!transversalQueue.isEmpty() && !transversalQueue.first().equals(targetIndex)) {
+            x = transversalQueue.dequeue();
+
+            for (int i = 0; i < numVertices; i++) {
+                if (adjMatrix[x][i] && !visited[i]) {
+                    transversalQueue.enqueue(i);
+                    pairs.push(new Pair<>(x,i));
+                    visited[i] = true;
+                }
+            }
+        }
+        Pair<Integer, Integer> pair;
+        Integer destination = targetIndex;
+        
+        while(destination != startIndex){
+            pair = pairs.pop();
+            if(pair.end.equals(destination)){
+                destination = pair.start;
+                resultList.addToFront(vertices[pair.start]);
+            }
+        }
+        if(!resultList.isEmpty()){
+            resultList.addToRear(vertices[targetIndex]);
+        }
+        
+        return resultList.iterator();
     }
 
     @Override
@@ -218,7 +264,36 @@ public class Graph<T> implements GraphADT<T> {
 
     @Override
     public boolean isConnected() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        Integer x;
+        LinkedQueue<Integer> transversalQueue = new LinkedQueue<>();
+
+        if (!isEmpty() && size() == 1) {
+            return true;
+        }
+
+        int connectedToFirstVertex = 1;
+        boolean[] visited = new boolean[this.numVertices];
+
+        for (int i = 0; i < numVertices; i++) {
+            visited[i] = false;
+        }
+
+        transversalQueue.enqueue(0);
+        visited[0] = true;
+
+        while (!transversalQueue.isEmpty()) {
+            x = transversalQueue.dequeue();
+
+            for (int i = 0; i < numVertices; i++) {
+                if (adjMatrix[x][i] && !visited[i]) {
+                    transversalQueue.enqueue(i);
+                    connectedToFirstVertex++;
+                    visited[i] = true;
+                }
+            }
+        }
+
+        return (connectedToFirstVertex == numVertices);
     }
 
     @Override
@@ -232,7 +307,7 @@ public class Graph<T> implements GraphADT<T> {
             return "Graph is empty";
         }
 
-        String result = new String("");
+        String result = "";
 
         result += "Adjacency Matrix\n";
         result += "----------------\n";
