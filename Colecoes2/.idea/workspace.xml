@@ -5,14 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6911c030-56a6-4be9-acde-6d3210b0b00b" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../Colecoes/src/Graphs/GraphList.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Colecoes/src/Graphs/GraphList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Colecoes/src/zmain/main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Colecoes/src/zmain/main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Graphs/GraphList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Graphs/GraphList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Graphs/GraphMatrix.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Graphs/GraphMatrix.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/zmain/Tree_Tests.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/zmain/main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/zmain/main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/GraphTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/GraphTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,6 +31,14 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
   </component>
   <component name="ProjectId" id="1n4tx7AICqYrjIxh48Bzs3RBIPP" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -119,7 +120,7 @@
       <option name="presentableId" value="Default" />
       <updated>1610661434858</updated>
       <workItem from="1610661435983" duration="77000" />
-      <workItem from="1610661677363" duration="3544000" />
+      <workItem from="1610661677363" duration="4402000" />
     </task>
     <task id="LOCAL-00001" summary="A">
       <created>1610662102143</created>
@@ -135,7 +136,14 @@
       <option name="project" value="LOCAL" />
       <updated>1610662393425</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Updates">
+      <created>1610665604607</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1610665604607</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -153,7 +161,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="A" />
     <MESSAGE value="Switch to IntelIJ" />
-    <option name="LAST_COMMIT_MESSAGE" value="Switch to IntelIJ" />
+    <MESSAGE value="Updates" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updates" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
