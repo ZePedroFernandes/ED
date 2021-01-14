@@ -20,14 +20,15 @@ public class GraphMatrix<T> implements GraphADT<T> {
     /**
      * Creates an empty graph.
      */
+    @SuppressWarnings("unchecked")
     public GraphMatrix() {
         numVertices = 0;
         adjMatrix = new boolean[DEFAULT_CAPACITY][DEFAULT_CAPACITY];
         vertices = (T[]) (new Object[DEFAULT_CAPACITY]);
     }
 
-    private boolean indexIsValid(int index) {
-        return ((index < numVertices) && (index >= 0));
+    private boolean isValidIndex(int index) {
+        return (index < numVertices) && (index >= 0);
     }
 
     private int getIndex(T targetVertex) {
@@ -38,32 +39,6 @@ public class GraphMatrix<T> implements GraphADT<T> {
         }
 
         return -1;
-    }
-
-    public void addEdge(int index1, int index2) {
-        if (indexIsValid(index1) && indexIsValid(index2)) {
-            adjMatrix[index1][index2] = true;
-            adjMatrix[index2][index1] = true;
-        }
-    }
-
-    @Override
-    public void addEdge(T vertex1, T vertex2) {
-        addEdge(getIndex(vertex1), getIndex(vertex2));
-    }
-
-    private void expandCapacity() {
-        T[] expandedVertices = (T[]) new Object[vertices.length * 2];
-        boolean[][] expandedMatrix = new boolean[vertices.length * 2][vertices.length * 2];
-
-        for (int i = 0; i < vertices.length; i++) {
-
-            System.arraycopy(adjMatrix[i], 0, expandedMatrix[i], 0, vertices.length);
-
-            expandedVertices[i] = vertices[i];
-        }
-        vertices = expandedVertices;
-        adjMatrix = expandedMatrix;
     }
 
     @Override
@@ -79,13 +54,40 @@ public class GraphMatrix<T> implements GraphADT<T> {
         numVertices++;
     }
 
+    public void addEdge(int index1, int index2) {
+        if (isValidIndex(index1) && isValidIndex(index2)) {
+            adjMatrix[index1][index2] = true;
+            adjMatrix[index2][index1] = true;
+        }
+    }
+
+    @Override
+    public void addEdge(T vertex1, T vertex2) {
+        addEdge(getIndex(vertex1), getIndex(vertex2));
+    }
+
+    @SuppressWarnings("unchecked")
+    private void expandCapacity() {
+        T[] expandedVertices = (T[]) new Object[vertices.length * 2];
+        boolean[][] expandedMatrix = new boolean[vertices.length * 2][vertices.length * 2];
+
+        for (int i = 0; i < vertices.length; i++) {
+
+            System.arraycopy(adjMatrix[i], 0, expandedMatrix[i], 0, vertices.length);
+
+            expandedVertices[i] = vertices[i];
+        }
+        vertices = expandedVertices;
+        adjMatrix = expandedMatrix;
+    }
+
     @Override
     public void removeVertex(T vertex) {
         removeVertex(getIndex(vertex));
     }
 
     public void removeVertex(int index) {
-        if (indexIsValid(index)) {
+        if (isValidIndex(index)) {
             this.numVertices--;
 
             for (int i = index; i < this.numVertices; i++) {
@@ -114,7 +116,7 @@ public class GraphMatrix<T> implements GraphADT<T> {
     }
 
     public void removeEdge(int index1, int index2) {
-        if (indexIsValid(index1) && indexIsValid(index2)) {
+        if (isValidIndex(index1) && isValidIndex(index2)) {
             adjMatrix[index1][index2] = false;
             adjMatrix[index2][index1] = false;
         }
@@ -130,7 +132,7 @@ public class GraphMatrix<T> implements GraphADT<T> {
         LinkedQueue<Integer> transversalQueue = new LinkedQueue<>();
         ArrayUnorderedList<T> resultList = new ArrayUnorderedList<>();
 
-        if (!indexIsValid(startIndex)) {
+        if (!isValidIndex(startIndex)) {
             return resultList.iterator();
         }
 
@@ -168,7 +170,7 @@ public class GraphMatrix<T> implements GraphADT<T> {
         LinkedStack<Integer> traversalStack = new LinkedStack<>();
         ArrayUnorderedList<T> resultList = new ArrayUnorderedList<>();
 
-        if (!indexIsValid(startIndex)) {
+        if (!isValidIndex(startIndex)) {
             return resultList.iterator();
         }
 
@@ -185,10 +187,7 @@ public class GraphMatrix<T> implements GraphADT<T> {
         while (!traversalStack.isEmpty()) {
             x = traversalStack.peek();
             found = false;
-            /**
-             * Find a vertex adjacent to x that has not been visited and push it
-             * on the stack
-             */
+
             for (int i = 0; (i < numVertices) && !found; i++) {
                 if (adjMatrix[x][i] && !visited[i]) {
                     traversalStack.push(i);
@@ -215,7 +214,7 @@ public class GraphMatrix<T> implements GraphADT<T> {
         LinkedStack<Pair<Integer, Integer>> pairs = new LinkedStack<>();
         ArrayUnorderedList<T> resultList = new ArrayUnorderedList<>();
 
-        if (!indexIsValid(startIndex) || !indexIsValid(targetIndex)) {
+        if (!isValidIndex(startIndex) || !isValidIndex(targetIndex)) {
             return resultList.iterator();
         }
 
@@ -299,48 +298,49 @@ public class GraphMatrix<T> implements GraphADT<T> {
         return this.numVertices;
     }
 
+
     @Override
     public String toString() {
         if (numVertices == 0) {
             return "Graph is empty";
         }
 
-        String result = "";
+        StringBuilder result = new StringBuilder();
 
-        result += "Adjacency Matrix\n";
-        result += "----------------\n";
-        result += "index\t";
+        result.append("Adjacency Matrix\n");
+        result.append("----------------\n");
+        result.append("index\t");
 
         for (int i = 0; i < numVertices; i++) {
-            result += "" + i;
+            result.append("").append(i);
             if (i < 10) {
-                result += " ";
+                result.append(" ");
             }
         }
-        result += "\n\n";
+        result.append("\n\n");
 
         for (int i = 0; i < numVertices; i++) {
-            result += "" + i + "\t";
+            result.append("").append(i).append("\t");
 
             for (int j = 0; j < numVertices; j++) {
                 if (adjMatrix[i][j]) {
-                    result += "1 ";
+                    result.append("1 ");
                 } else {
-                    result += "0 ";
+                    result.append("0 ");
                 }
             }
-            result += "\n";
+            result.append("\n");
         }
 
-        result += "\n\nVertex Values";
-        result += "\n-------------\n";
-        result += "index\tvalue\n\n";
+        result.append("\n\nVertex Values");
+        result.append("\n-------------\n");
+        result.append("index\tvalue\n\n");
 
         for (int i = 0; i < numVertices; i++) {
-            result += "" + i + "\t";
-            result += vertices[i].toString() + "\n";
+            result.append("").append(i).append("\t");
+            result.append(vertices[i].toString()).append("\n");
         }
-        result += "\n";
-        return result;
+        result.append("\n");
+        return result.toString();
     }
 }

@@ -46,9 +46,34 @@ public class GraphList<T> implements GraphADT<T> {
         numVertices++;
     }
 
+    private boolean isValidIndex(int index) {
+        return (index < numVertices) && (index >= 0);
+    }
+
+    private int getIndex(T vertex) {
+        for (int i = 0; i < numVertices; i++) {
+            if (vertices[i].equals(vertex)) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
     @Override
     public void removeVertex(T vertex) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        int index = getIndex(vertex);
+        removeVertex(index);
+
+    }
+
+    public void removeVertex(int index) {
+        if (isValidIndex(index)) {
+            for (int i = index; i < numVertices; i++) {
+                vertices[i] = vertices[i + 1];
+                adjList[i] = adjList[i + 1];
+            }
+            numVertices--;
+        }
     }
 
     @Override

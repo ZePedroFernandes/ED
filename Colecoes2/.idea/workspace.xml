@@ -5,7 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6911c030-56a6-4be9-acde-6d3210b0b00b" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Graphs/GraphList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Graphs/GraphList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Graphs/GraphMatrix.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Graphs/GraphMatrix.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,6 +50,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
@@ -120,7 +122,7 @@
       <option name="presentableId" value="Default" />
       <updated>1610661434858</updated>
       <workItem from="1610661435983" duration="77000" />
-      <workItem from="1610661677363" duration="4402000" />
+      <workItem from="1610661677363" duration="4685000" />
     </task>
     <task id="LOCAL-00001" summary="A">
       <created>1610662102143</created>
@@ -143,7 +145,14 @@
       <option name="project" value="LOCAL" />
       <updated>1610665604607</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Updates">
+      <created>1610666153071</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1610666153071</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
