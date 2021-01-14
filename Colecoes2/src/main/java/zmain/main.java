@@ -1,0 +1,39 @@
+package zmain;
+
+import Graphs.GraphList;
+import Graphs.GraphMatrix;
+import Graphs.Vertex;
+
+import java.util.Iterator;
+
+/**
+ * @author Nome : José Pedro Fernandes Número: 8190239 Turma: 1
+ */
+public class main {
+    static final Vertex A = new Vertex("A", 3);
+    static final Vertex B = new Vertex("B", 3);
+    static final Vertex C = new Vertex("C", 3);
+    static final Vertex D = new Vertex("D", 3);
+    static final Vertex E = new Vertex("E", 3);
+    static final Vertex F = new Vertex("F", 3);
+    static final Vertex G = new Vertex("G", 3);
+    static final Vertex H = new Vertex("H", 3);
+    static final Vertex I = new Vertex("I", 3);
+    static final Vertex J = new Vertex("J", 3);
+
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+
+        GraphList<Vertex> graphList = new GraphList();
+        graphList.addVertex(A);
+        graphList.addVertex(B);
+        graphList.addVertex(C);
+
+        System.out.println("");
+
+    }//Main
+
+}
