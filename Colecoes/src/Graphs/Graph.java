@@ -7,7 +7,21 @@ import java.util.Iterator;
  *
  * @author Nome : José Pedro Fernandes Número: 8190239 Turma: 1
  */
-public class GraphAdjacencyMatrix<T> implements GraphADT<T> {
+public class Graph<T> implements GraphADT<T> {
+
+    protected final int DEFAULT_CAPACITY = 10;
+    protected int numVertices;   // number of vertices in the graph 
+    protected boolean[][] adjMatrix;   // adjacency matrix 
+    protected T[] vertices;   // values of vertices
+
+    /**
+     * * Creates an empty graph.
+     */
+    public Graph {
+        numVertices = 0;
+        this.adjMatrix = new boolean[DEFAULT_CAPACITY][DEFAULT_CAPACITY];
+        this.vertices = (T[]) (new Object[DEFAULT_CAPACITY]);
+    }
 
     @Override
     public void addVertex(T vertex) {
