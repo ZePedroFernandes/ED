@@ -18,15 +18,15 @@ public class LinkedList<T> {
     /**
      * List's first Node.
      */
-    public LinkedNode<T> head;
+    protected LinkedNode<T> head;
     /**
      * List's last Node.
      */
-    public LinkedNode<T> tail;
+    protected LinkedNode<T> tail;
     /**
      * List element counter.
      */
-    private int count;
+    protected int count;
 
     /**
      * Construct's an instance of {@link LinkedList}

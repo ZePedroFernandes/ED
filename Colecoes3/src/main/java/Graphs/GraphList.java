@@ -4,6 +4,7 @@ import ADTs.GraphADT;
 
 import java.util.Iterator;
 
+import exceptions.EmptyException;
 import lists.LinkedList;
 
 /**
@@ -13,7 +14,7 @@ import lists.LinkedList;
 public class GraphList<T> implements GraphADT<T> {
 
     protected final int DEFAUL_CAPACITY = 2;
-    protected LinkedList<T>[] adjList;
+    protected LinkedList<Integer>[] adjList;
     protected int numVertices;
     protected T[] vertices;
 
@@ -27,7 +28,7 @@ public class GraphList<T> implements GraphADT<T> {
     @SuppressWarnings("unchecked")
     private void expandCapacity() {
         T[] largerVertices = (T[]) new Object[vertices.length * 2];
-        LinkedList<T>[] largerAdjList = new LinkedList[vertices.length * 2];
+        LinkedList<Integer>[] largerAdjList = new LinkedList[vertices.length * 2];
 
         System.arraycopy(vertices, 0, largerVertices, 0, numVertices);
         System.arraycopy(adjList, 0, largerAdjList, 0, numVertices);
@@ -42,7 +43,7 @@ public class GraphList<T> implements GraphADT<T> {
             expandCapacity();
         }
         vertices[numVertices] = vertex;
-        adjList[numVertices] = new LinkedList<>(vertex);
+        adjList[numVertices] = new LinkedList<>();
         numVertices++;
     }
 
@@ -78,12 +79,29 @@ public class GraphList<T> implements GraphADT<T> {
 
     @Override
     public void addEdge(T vertex1, T vertex2) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        this.addEdge(getIndex(vertex1), getIndex(vertex2));
+    }
+
+    protected void addEdge(int index1, int index2) {
+        if (this.isValidIndex(index1) && this.isValidIndex(index2)) {
+            this.adjList[index1].add(index2);
+            this.adjList[index2].add(index1);
+        }
     }
 
     @Override
     public void removeEdge(T vertex1, T vertex2) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        removeEdge(getIndex(vertex1),getIndex(vertex2));
+    }
+
+    protected void removeEdge(int vertex1, int vertex2) {
+        if (isValidIndex(vertex1) && isValidIndex(vertex2)) {
+            try {
+                this.adjList[vertex1].remove(vertex2);
+                this.adjList[vertex2].remove(vertex1);
+            } catch (EmptyException ignored) {
+            }
+        }
     }
 
     @Override
@@ -114,6 +132,46 @@ public class GraphList<T> implements GraphADT<T> {
     @Override
     public int size() {
         return numVertices;
+    }
+
+
+    @Override
+    public String toString() {
+        if (numVertices == 0) {
+            return "Graph is empty";
+        }
+        String s = "\nVertex Values\n";
+        s += "-------------------------------\n";
+        s += "index\tvalue\n\n";
+
+        for (int i = 0; i < this.numVertices - 1; i++) {
+            s += i + "\t\t" + this.vertices[i].toString() + "\n";
+        }
+        s += (this.numVertices - 1) + "\t\t" + this.vertices[this.numVertices - 1].toString() + "\n\n";
+
+        s += "-------------------------------\n";
+        s += "-------------------------------\n";
+        s += "\nAdjencyList\n";
+        s += "-------------------------------\n";
+
+        for (int i = 0; i < this.numVertices - 1; i++) {
+            s += i;
+            Iterator itr = this.adjList[i].iterator();
+            while (itr.hasNext()) {
+                s += " -> " + itr.next();
+            }
+
+            s += "\n";
+        }
+
+        s += (this.numVertices - 1);
+        Iterator itr = this.adjList[this.numVertices - 1].iterator();
+        while (itr.hasNext()) {
+            s += " -> " + itr.next();
+        }
+        s += "\n";
+
+        return s;
     }
 
 }

@@ -27,12 +27,32 @@ public class main {
      */
     public static void main(String[] args) {
 
-        GraphList<Vertex> graphList = new GraphList();
-        graphList.addVertex(A);
-        graphList.addVertex(B);
-        graphList.addVertex(C);
+        GraphList<Vertex> graph = new GraphList();
 
+        graph.addVertex(A);
+        graph.addVertex(B);
+        graph.addVertex(C);
+        graph.addVertex(D);
+        graph.addVertex(E);
+        graph.addVertex(F);
+        graph.addVertex(G);
+        graph.addVertex(H);
 
+        graph.addEdge(A, B);
+        graph.addEdge(A, F);
+
+        graph.addEdge(B, C);
+        graph.addEdge(B, D);
+        graph.addEdge(F, G);
+
+        graph.addEdge(C, D);
+        graph.addEdge(D, G);
+
+        graph.addEdge(G, H);
+        graph.addEdge(C, E);
+        graph.addEdge(H, E);
+
+        System.out.println(graph);
 
     }//Main
 

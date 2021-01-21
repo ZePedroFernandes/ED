@@ -208,8 +208,9 @@ public class GraphMatrix<T> implements GraphADT<T> {
 
     @Override
     public Iterator iteratorShortestPath(T startVertex, T targetVertex) {
-        return (iteratorShortestPath2(getIndex(startVertex), getIndex(targetVertex)));
+        return (iteratorShortestPath(getIndex(startVertex), getIndex(targetVertex)));
     }
+/*
 
     public Iterator iteratorShortestPath(int startIndex, int targetIndex) {
         Integer x;
@@ -256,10 +257,10 @@ public class GraphMatrix<T> implements GraphADT<T> {
 
         return resultList.iterator();
     }
+*/
 
-    public Iterator iteratorShortestPath2(int startIndex, int targetIndex) {
+    public Iterator iteratorShortestPath(int startIndex, int targetIndex) {
         int index = startIndex;
-        int[] pathLength = new int[numVertices];
         int[] predecessor = new int[numVertices];
         LinkedQueue<Integer> traversalQueue = new LinkedQueue<>();
         ArrayUnorderedList<T> resultList = new ArrayUnorderedList<>();
@@ -276,19 +277,13 @@ public class GraphMatrix<T> implements GraphADT<T> {
 
         traversalQueue.enqueue(startIndex);
         visited[startIndex] = true;
-        pathLength[startIndex] = 0;
         predecessor[startIndex] = -1;
 
         while (!traversalQueue.isEmpty() && (index != targetIndex)) {
             index = (traversalQueue.dequeue());
 
-            /**
-             * Update the pathLength for each unvisited vertex adjacent to the
-             * vertex at the current index.
-             */
             for (int i = 0; i < numVertices; i++) {
                 if (adjMatrix[index][i] && !visited[i]) {
-                    pathLength[i] = pathLength[index] + 1;
                     predecessor[i] = index;
                     traversalQueue.enqueue(i);
                     visited[i] = true;
