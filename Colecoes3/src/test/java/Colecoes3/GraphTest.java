@@ -1,3 +1,5 @@
+package Colecoes3;
+
 import Graphs.GraphMatrix;
 import Graphs.Vertex;
 import org.junit.jupiter.api.BeforeEach;

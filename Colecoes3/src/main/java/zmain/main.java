@@ -32,7 +32,7 @@ public class main {
         graphList.addVertex(B);
         graphList.addVertex(C);
 
-        System.out.println("");
+
 
     }//Main
 

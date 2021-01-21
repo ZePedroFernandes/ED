@@ -33,7 +33,7 @@ dependencies {
 
 application {
     // Define the main class for the application.
-    mainClassName = 'Colecoes2.App'
+    mainClassName = 'Colecoes3.App'
 }
 
 test {
