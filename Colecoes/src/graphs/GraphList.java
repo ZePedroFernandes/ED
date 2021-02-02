@@ -18,14 +18,12 @@ public class GraphList<T> implements GraphADT<T> {
     protected int numVertices;
     protected T[] vertices;
 
-    @SuppressWarnings("unchecked")
     public GraphList() {
         this.adjList = new LinkedList[DEFAUL_CAPACITY];
         this.numVertices = 0;
         this.vertices = (T[]) new Object[DEFAUL_CAPACITY];
     }
 
-    @SuppressWarnings("unchecked")
     private void expandCapacity() {
         T[] largerVertices = (T[]) new Object[vertices.length * 2];
         LinkedList<Integer>[] largerAdjList = new LinkedList[vertices.length * 2];

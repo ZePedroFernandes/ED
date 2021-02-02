@@ -40,6 +40,11 @@ public class GraphMatrix<T> implements GraphADT<T> {
         return -1;
     }
 
+    @Override
+    public void addEdge(T vertex1, T vertex2) {
+        addEdge(getIndex(vertex1), getIndex(vertex2));
+    }
+
     public void addEdge(int index1, int index2) {
         if (indexIsValid(index1) && indexIsValid(index2)) {
             adjMatrix[index1][index2] = true;
@@ -48,8 +53,15 @@ public class GraphMatrix<T> implements GraphADT<T> {
     }
 
     @Override
-    public void addEdge(T vertex1, T vertex2) {
-        addEdge(getIndex(vertex1), getIndex(vertex2));
+    public void removeEdge(T vertex1, T vertex2) {
+        removeEdge(getIndex(vertex1), getIndex(vertex2));
+    }
+
+    public void removeEdge(int index1, int index2) {
+        if (indexIsValid(index1) && indexIsValid(index2)) {
+            adjMatrix[index1][index2] = false;
+            adjMatrix[index2][index1] = false;
+        }
     }
 
     private void expandCapacity() {
@@ -107,18 +119,6 @@ public class GraphMatrix<T> implements GraphADT<T> {
                 }
             }
             //Columes shifted
-        }
-    }
-
-    @Override
-    public void removeEdge(T vertex1, T vertex2) {
-        removeEdge(getIndex(vertex1), getIndex(vertex2));
-    }
-
-    public void removeEdge(int index1, int index2) {
-        if (indexIsValid(index1) && indexIsValid(index2)) {
-            adjMatrix[index1][index2] = false;
-            adjMatrix[index2][index1] = false;
         }
     }
 
@@ -187,10 +187,7 @@ public class GraphMatrix<T> implements GraphADT<T> {
         while (!traversalStack.isEmpty()) {
             x = traversalStack.peek();
             found = false;
-            /**
-             * Find a vertex adjacent to x that has not been visited and push it
-             * on the stack
-             */
+
             for (int i = 0; (i < numVertices) && !found; i++) {
                 if (adjMatrix[x][i] && !visited[i]) {
                     traversalStack.push(i);
@@ -210,9 +207,8 @@ public class GraphMatrix<T> implements GraphADT<T> {
     public Iterator iteratorShortestPath(T startVertex, T targetVertex) {
         return (iteratorShortestPath(getIndex(startVertex), getIndex(targetVertex)));
     }
-/*
 
-    public Iterator iteratorShortestPath(int startIndex, int targetIndex) {
+    public Iterator iteratorShortestPath2(int startIndex, int targetIndex) {
         Integer x;
         LinkedQueue<Integer> transversalQueue = new LinkedQueue<>();
         LinkedStack<Pair<Integer, Integer>> pairs = new LinkedStack<>();
@@ -257,7 +253,6 @@ public class GraphMatrix<T> implements GraphADT<T> {
 
         return resultList.iterator();
     }
-*/
 
     public Iterator iteratorShortestPath(int startIndex, int targetIndex) {
         int index = startIndex;
@@ -290,7 +285,7 @@ public class GraphMatrix<T> implements GraphADT<T> {
                 }
             }
         }
-        if (index != targetIndex) // no path must have been found
+        if (index != targetIndex) // there is no possible path
         {
             return resultList.iterator();
         }

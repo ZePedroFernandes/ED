@@ -1,8 +1,8 @@
 package zmain;
 
-import Graphs.GraphList;
-import Graphs.GraphMatrix;
-import Graphs.Vertex;
+import graphs.GraphList;
+import graphs.GraphMatrix;
+import graphs.Vertex;
 
 import java.util.Iterator;
 
