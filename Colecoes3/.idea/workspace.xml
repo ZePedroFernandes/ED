@@ -5,10 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="df7ec861-631f-4fc3-ad9f-f1d320cf5e98" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/test/java/Colecoes3/GraphListTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Colecoes/src/graphs/GraphList.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Colecoes/src/graphs/GraphList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Colecoes/src/graphs/GraphMatrix.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Colecoes/src/graphs/GraphMatrix.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Colecoes/src/zmain/main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Colecoes/src/zmain/main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.6.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.6.1/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.6.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.6.1/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.6.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.6.1/fileHashes/fileHashes.bin" afterDir="false" />
@@ -20,22 +17,16 @@
       <change beforePath="$PROJECT_DIR$/.gradle/6.6.1/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.6.1/javaCompile/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Graphs/GraphList.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Graphs/GraphList.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/lists/LinkedList$LinkedListIterator.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/lists/LinkedList$LinkedListIterator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/lists/LinkedList.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/lists/LinkedList.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/zmain/main.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/zmain/main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/test/Colecoes3/GraphTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/Colecoes3.GraphTest.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/test/Colecoes3/GraphListTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/test/Colecoes3/GraphListTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/test/Colecoes3/GraphMatrixTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/test/Colecoes3/GraphMatrixTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/Colecoes3.LinkedListTest.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/tests/test/classes/Colecoes3.LinkedListTest.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/reports/tests/test/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/tests/test/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/reports/tests/test/packages/Colecoes3.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/tests/test/packages/Colecoes3.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-Colecoes3.GraphTest.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-Colecoes3.LinkedListTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/build/test-results/test/TEST-Colecoes3.LinkedListTest.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/test-results/test/binary/results.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/test-results/test/binary/results.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/source-classes-mapping.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/source-classes-mapping.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/tmp/compileTestJava/source-classes-mapping.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileTestJava/source-classes-mapping.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Graphs/GraphList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Graphs/GraphList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Graphs/GraphMatrix.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Graphs/GraphMatrix.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/zmain/main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/zmain/main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/Colecoes3/GraphTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Colecoes3/GraphMatrixTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/Colecoes3/GraphListTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Colecoes3/GraphListTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/Colecoes3/GraphMatrixTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Colecoes3/GraphMatrixTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -234,7 +225,7 @@
       <workItem from="1611250606447" duration="89000" />
       <workItem from="1611828303663" duration="4000" />
       <workItem from="1612280126922" duration="236000" />
-      <workItem from="1612281210941" duration="5102000" />
+      <workItem from="1612281210941" duration="7257000" />
     </task>
     <task id="LOCAL-00001" summary="COMMIT">
       <created>1611240345626</created>

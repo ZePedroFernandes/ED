@@ -9,6 +9,7 @@ import lists.LinkedList;
 import lists.OrderedLists.ArrayList;
 import lists.unorderedLists.ArrayUnorderedList;
 import queues.LinkedQueue;
+import stacks.LinkedStack;
 
 /**
  * @param <T> the type of the vertices
@@ -144,7 +145,39 @@ public class GraphList<T> implements GraphADT<T> {
 
     @Override
     public Iterator<T> iteratorDFS(T startVertex) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return iteratorDFS(getIndex(startVertex));
+    }
+
+    public Iterator<T> iteratorDFS(int startIndex) {
+        LinkedStack<Integer> transversalQueue = new LinkedStack<>();
+        ArrayUnorderedList<T> resultList = new ArrayUnorderedList<>();
+
+        if (!isValidIndex(startIndex)) {
+            return resultList.iterator(); // Return statment
+        }
+
+        boolean[] visited = new boolean[numVertices];
+
+        for (int i = 0; i < numVertices; i++) {
+            visited[i] = false;
+        }
+        Integer x = startIndex;
+        transversalQueue.push(x);
+        visited[x] = true;
+
+        while (!transversalQueue.isEmpty()) {
+            x = transversalQueue.pop();
+
+            for (int i = 0; i < this.numVertices; i++) {
+                if (!visited[i] && this.adjList[x].contains(i)) {
+                    transversalQueue.push(i);
+                    visited[i] = true;
+                    resultList.addToRear(this.vertices[x]);
+                }
+            }
+        }
+
+        return resultList.iterator();
     }
 
     @Override
