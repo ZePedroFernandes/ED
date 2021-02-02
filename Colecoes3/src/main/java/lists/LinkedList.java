@@ -103,6 +103,21 @@ public class LinkedList<T> {
         }
     }
 
+    public boolean contains(T element) {
+        return this.contains(head, element);
+    }
+
+    protected boolean contains(LinkedNode<T> node, T element) {
+        if (node == null) {
+            return false;
+        }
+        if (node.element.equals(element)) {
+            return true;
+        }
+
+        return this.contains(node.getNext(), element);
+    }
+
     /**
      * Returns an iterator of the {@link LinkedList}.
      *
@@ -122,7 +137,7 @@ public class LinkedList<T> {
     /**
      * Recursively inverts the list.
      *
-     * @param current  the current node
+     * @param current the current node
      * @param previous the previous node
      */
     private void invert(LinkedNode<T> current, LinkedNode<T> previous) {

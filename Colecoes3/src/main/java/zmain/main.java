@@ -27,7 +27,7 @@ public class main {
      */
     public static void main(String[] args) {
 
-        GraphList<Vertex> graph = new GraphList();
+        GraphMatrix<Vertex> graph = new GraphMatrix();
 
         graph.addVertex(A);
         graph.addVertex(B);
@@ -52,7 +52,7 @@ public class main {
         graph.addEdge(C, E);
         graph.addEdge(H, E);
 
-        System.out.println(graph);
+        System.out.println(graph.toString());
 
     }//Main
 

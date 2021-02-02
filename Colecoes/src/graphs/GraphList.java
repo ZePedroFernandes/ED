@@ -6,6 +6,9 @@ import java.util.Iterator;
 
 import exceptions.EmptyException;
 import lists.LinkedList;
+import lists.OrderedLists.ArrayList;
+import lists.unorderedLists.ArrayUnorderedList;
+import queues.LinkedQueue;
 
 /**
  * @param <T> the type of the vertices
@@ -13,7 +16,7 @@ import lists.LinkedList;
  */
 public class GraphList<T> implements GraphADT<T> {
 
-    protected final int DEFAUL_CAPACITY = 2;
+    protected final int DEFAUL_CAPACITY = 4;
     protected LinkedList<Integer>[] adjList;
     protected int numVertices;
     protected T[] vertices;
@@ -46,7 +49,7 @@ public class GraphList<T> implements GraphADT<T> {
     }
 
     private boolean isValidIndex(int index) {
-        return (index < numVertices) && (index >= 0);
+        return ((index < numVertices) && (index >= 0));
     }
 
     private int getIndex(T vertex) {
@@ -89,7 +92,7 @@ public class GraphList<T> implements GraphADT<T> {
 
     @Override
     public void removeEdge(T vertex1, T vertex2) {
-        removeEdge(getIndex(vertex1),getIndex(vertex2));
+        removeEdge(getIndex(vertex1), getIndex(vertex2));
     }
 
     protected void removeEdge(int vertex1, int vertex2) {
@@ -104,7 +107,37 @@ public class GraphList<T> implements GraphADT<T> {
 
     @Override
     public Iterator<T> iteratorBFS(T startVertex) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return this.iteratorBFS(getIndex(startVertex));
+    }
+    
+    public Iterator<T> iteratorBFS(int startIndex) {
+        LinkedQueue<Integer> transversalQueue = new LinkedQueue<>();
+        ArrayUnorderedList<T> resultList = new ArrayUnorderedList<>();
+        
+        if(!isValidIndex(startIndex)){
+            return resultList.iterator(); // Return statment
+        }
+        
+        boolean[] visited = new boolean[numVertices];
+        
+        for(int i = 0; i < numVertices; i++){
+            visited[i] = false;
+        }
+        Integer x = startIndex;
+        transversalQueue.enqueue(x);
+        visited[x] = true;
+        
+        while(!transversalQueue.isEmpty()){
+            x = transversalQueue.dequeue();
+            resultList.addToRear(this.vertices[x]);
+            
+            for(int i = 0; i < this.numVertices; i++){
+                
+            }
+            
+        }
+        
+        
     }
 
     @Override
@@ -131,7 +164,6 @@ public class GraphList<T> implements GraphADT<T> {
     public int size() {
         return numVertices;
     }
-
 
     @Override
     public String toString() {

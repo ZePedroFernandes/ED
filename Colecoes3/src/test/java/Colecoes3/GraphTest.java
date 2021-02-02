@@ -25,7 +25,7 @@ public class GraphTest {
         graph = new GraphMatrix<>();
     }
 
-    public void setDefaultGraph(){
+    public void setDefaultGraph() {
         graph.addVertex(A);
         graph.addVertex(B);
         graph.addVertex(C);
@@ -84,29 +84,29 @@ public class GraphTest {
     }
 
     @Test
-    public void test_2(){
+    public void test_2() {
         graph.addVertex(A);
 
-        Iterator<Vertex> iterator = graph.iteratorShortestPath(A,A);
+        Iterator<Vertex> iterator = graph.iteratorShortestPath(A, A);
 
         assertFalse(iterator.hasNext());
     }
 
     @Test
-    public void test_3(){
+    public void test_3() {
         graph.addVertex(A);
         graph.addVertex(B);
 
-        graph.addEdge(A,B);
+        graph.addEdge(A, B);
 
-        Iterator<Vertex> itr = graph.iteratorShortestPath(A,B);
+        Iterator<Vertex> itr = graph.iteratorShortestPath(A, B);
 
-        assertEquals(A,itr.next());
-        assertEquals(B,itr.next());
+        assertEquals(A, itr.next());
+        assertEquals(B, itr.next());
     }
 
     @Test
-    public void test_4(){
+    public void test_4() {
         graph.addVertex(A);
         graph.addVertex(B);
         graph.addVertex(C);
@@ -114,21 +114,21 @@ public class GraphTest {
         graph.addVertex(E);
         graph.addVertex(F);
 
-        graph.addEdge(A,B);
-        graph.addEdge(A,C);
-        graph.addEdge(A,F);
-        graph.addEdge(C,D);
-        graph.addEdge(D,E);
-        graph.addEdge(E,F);
+        graph.addEdge(A, B);
+        graph.addEdge(A, C);
+        graph.addEdge(A, F);
+        graph.addEdge(C, D);
+        graph.addEdge(D, E);
+        graph.addEdge(E, F);
 
-        Iterator<Vertex> itr = graph.iteratorShortestPath(A,F);
+        Iterator<Vertex> itr = graph.iteratorShortestPath(A, F);
 
-        assertEquals(A,itr.next());
-        assertEquals(F,itr.next());
+        assertEquals(A, itr.next());
+        assertEquals(F, itr.next());
     }
 
     @Test
-    public void test_5(){
+    public void test_5() {
         graph.addVertex(A);
         graph.addVertex(B);
         graph.addVertex(C);
@@ -136,26 +136,126 @@ public class GraphTest {
         graph.addVertex(E);
         graph.addVertex(F);
 
-        graph.addEdge(A,B);
-        graph.addEdge(A,C);
+        graph.addEdge(A, B);
+        graph.addEdge(A, C);
         //graph.addEdge(A,F);
-        graph.addEdge(C,D);
-        graph.addEdge(D,E);
-        graph.addEdge(E,F);
+        graph.addEdge(C, D);
+        graph.addEdge(D, E);
+        graph.addEdge(E, F);
 
-        Iterator<Vertex> itr = graph.iteratorShortestPath(A,F);
+        Iterator<Vertex> itr = graph.iteratorShortestPath(A, F);
 
-        assertEquals(A,itr.next());
-        assertEquals(C,itr.next());
-        assertEquals(D,itr.next());
-        assertEquals(E,itr.next());
-        assertEquals(F,itr.next());
+        assertEquals(A, itr.next());
+        assertEquals(C, itr.next());
+        assertEquals(D, itr.next());
+        assertEquals(E, itr.next());
+        assertEquals(F, itr.next());
     }
 
     @Test
-    public void test_ShortestPathLength(){
+    public void test_ShortestPathLength_1() {
         this.setDefaultGraph();
 
-        assertEquals(1,graph.);
+        assertEquals(1, graph.shortestPathLength(A, B));
+        assertEquals(1, graph.shortestPathLength(0, 1));
     }
+
+    @Test
+    public void test_ShortestPathLength_2() {
+        this.setDefaultGraph();
+
+        assertEquals(2, graph.shortestPathLength(A, C));
+    }
+
+    @Test
+    public void test_ShortestPathLength_2_1() {
+        this.setDefaultGraph();
+
+        assertEquals(2, graph.shortestPathLength(0, 2));
+    }
+
+    @Test
+    public void test_ShortestPathLength_3() {
+        this.setDefaultGraph();
+
+        assertEquals(2, graph.shortestPathLength(A, D));
+    }
+
+    @Test
+    public void test_ShortestPathLength_3_1() {
+        this.setDefaultGraph();
+
+        assertEquals(2, graph.shortestPathLength(0, 3));
+    }
+
+    @Test
+    public void test_ShortestPathLength_4() {
+        this.setDefaultGraph();
+
+        assertEquals(3, graph.shortestPathLength(A, E));
+    }
+
+    @Test
+    public void test_ShortestPathLength_4_1() {
+        this.setDefaultGraph();
+
+        assertEquals(3, graph.shortestPathLength(0, 4));
+    }
+
+    @Test
+    public void test_ShortestPathLength_5_1() {
+        this.setDefaultGraph();
+
+        assertEquals(3, graph.shortestPathLength(A, H));
+    }
+
+    @Test
+    public void test_ShortestPathLength_5() {
+        this.setDefaultGraph();
+
+        assertEquals(3, graph.shortestPathLength(0, 7));
+    }
+
+    @Test
+    public void test_ShortestPathLength_6() {
+        this.setDefaultGraph();
+
+        assertEquals(2, graph.shortestPathLength(A, G));
+    }
+
+    @Test
+    public void test_ShortestPathLength_6_1() {
+        this.setDefaultGraph();
+
+        assertEquals(2, graph.shortestPathLength(0, 6));
+    }
+
+    @Test
+    public void test_ShortestPathLength_7() {
+        this.setDefaultGraph();
+
+        assertEquals(3, graph.shortestPathLength(E, F));
+    }
+
+    @Test
+    public void test_ShortestPathLength_7_1() {
+        this.setDefaultGraph();
+
+        assertEquals(3, graph.shortestPathLength(4, 5));
+    }
+
+    @Test
+    public void test_ShortestPathLength_8() {
+        this.setDefaultGraph();
+
+        assertEquals(2, graph.shortestPathLength(C, H));
+    }
+
+    @Test
+    public void test_ShortestPathLength_8_1() {
+        this.setDefaultGraph();
+
+        assertEquals(2, graph.shortestPathLength(2, 7));
+    }
+
 }

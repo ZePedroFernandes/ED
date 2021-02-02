@@ -1,0 +1,6 @@
+
+Se o indice for inválido retornar
+
+Array de booleans para determinar se já foi visitado
+Queue para guardar os indices dos vértices enquanto se coloca os vértices na lista de resultados
+ResultList iterator

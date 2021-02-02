@@ -6,7 +6,14 @@
   <component name="ChangeListManager">
     <list default="true" id="df7ec861-631f-4fc3-ad9f-f1d320cf5e98" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/../Colecoes/src/graphs/GraphMatrix.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Colecoes/src/graphs/GraphMatrix.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/Colecoes3.GraphTest.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/tests/test/classes/Colecoes3.GraphTest.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/tests/test/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/packages/Colecoes3.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/tests/test/packages/Colecoes3.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-Colecoes3.GraphTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/build/test-results/test/TEST-Colecoes3.GraphTest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/binary/results.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/test-results/test/binary/results.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/source-classes-mapping.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/source-classes-mapping.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/Colecoes3/GraphTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Colecoes3/GraphTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -36,12 +43,6 @@
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
                 <item name="Colecoes3" type="f1a62948:ProjectNode" />
                 <item name="Tasks" type="e4a08cd1:TasksNode" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="Colecoes3" type="f1a62948:ProjectNode" />
-                <item name="Tasks" type="e4a08cd1:TasksNode" />
-                <item name="build" type="c8890929:TasksNode$1" />
               </path>
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
@@ -141,9 +142,31 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
+    <configuration name="GraphTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="--tests &quot;Colecoes3.GraphTest&quot;" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Gradle.Colecoes3 [test]" />
+        <item itemvalue="Gradle.GraphTest" />
         <item itemvalue="Application.main" />
         <item itemvalue="Gradle.Colecoes3 [build]" />
       </list>
@@ -161,7 +184,7 @@
       <workItem from="1611250606447" duration="89000" />
       <workItem from="1611828303663" duration="4000" />
       <workItem from="1612280126922" duration="236000" />
-      <workItem from="1612281210941" duration="319000" />
+      <workItem from="1612281210941" duration="3018000" />
     </task>
     <task id="LOCAL-00001" summary="COMMIT">
       <created>1611240345626</created>
