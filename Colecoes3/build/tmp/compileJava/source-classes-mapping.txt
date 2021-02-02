@@ -1,0 +1,111 @@
+lists/OrderedLists/ArrayList.java
+ lists.OrderedLists.ArrayList
+ lists.OrderedLists.ArrayList$ArrayListIterator
+trees/ArrayHeap.java
+ trees.ArrayHeap
+lists/OrderedLists/BinarySearchTreeList.java
+ lists.OrderedLists.BinarySearchTreeList
+lists/unorderedLists/DoubleLinkedUnorderedList.java
+ lists.unorderedLists.DoubleLinkedUnorderedList
+lists/DoubleLinkedList.java
+ lists.DoubleLinkedList
+ lists.DoubleLinkedList$DoubleLinkedListIterator
+exceptions/EmptyException.java
+ exceptions.EmptyException
+queues/DoubleStackQueue.java
+ queues.DoubleStackQueue
+exceptions/ElementNotFoundException.java
+ exceptions.ElementNotFoundException
+trees/AVLNode.java
+ trees.AVLNode
+Graphs/Vertex.java
+ Graphs.Vertex
+lists/OrderedLists/DoubleLinkedOrderedList.java
+ lists.OrderedLists.DoubleLinkedOrderedList
+ADTs/NetworkADT.java
+ ADTs.NetworkADT
+lists/OrderedLists/testes.java
+ lists.OrderedLists.testes
+trees/LinkedBinarySearchTree.java
+ trees.LinkedBinarySearchTree
+stacks/LinkedStack.java
+ stacks.LinkedStack
+ADTs/GraphADT.java
+ ADTs.GraphADT
+ADTs/StackADT.java
+ ADTs.StackADT
+trees/LinkedBinaryTree.java
+ trees.LinkedBinaryTree
+lists/OrderedLists/ArrayOrderedList.java
+ lists.OrderedLists.ArrayOrderedList
+ADTs/HeapADT.java
+ ADTs.HeapADT
+lists/OrderedLists/DoubleLinkedOrderedListArrayable.java
+ lists.OrderedLists.DoubleLinkedOrderedListArrayable
+trees/priorityQueues/PriorityQueue.java
+ trees.priorityQueues.PriorityQueue
+ADTs/AvlBinarySearchTreeADT.java
+ ADTs.AvlBinarySearchTreeADT
+Graphs/Pair.java
+ Graphs.Pair
+exceptions/InvalidElementException.java
+ exceptions.InvalidElementException
+ADTs/ListADT.java
+ ADTs.ListADT
+trees/BinaryTreeNode.java
+ trees.BinaryTreeNode
+ADTs/BinarySearchTreeADT.java
+ ADTs.BinarySearchTreeADT
+ADTs/UnorderedListContract.java
+ ADTs.UnorderedListContract
+trees/TreePrinter.java
+ trees.TreePrinter
+trees/LinkedHeap.java
+ trees.LinkedHeap
+nodes/DoubleLinkedNode.java
+ nodes.DoubleLinkedNode
+lists/LinkedNode.java
+ lists.LinkedNode
+exceptions/InvalidSizeException.java
+ exceptions.InvalidSizeException
+trees/ArrayHeap2.java
+ trees.ArrayHeap2
+queues/CircularArrayQueue.java
+ queues.CircularArrayQueue
+trees/ArrayBinaryTree.java
+ trees.ArrayBinaryTree
+trees/HeapNode.java
+ trees.HeapNode
+queues/LinkedQueue.java
+ queues.LinkedQueue
+exceptions/EmptyCollectionException.java
+ exceptions.EmptyCollectionException
+trees/AVLTree.java
+ trees.AVLTree
+stacks/ArrayStack.java
+ stacks.ArrayStack
+ADTs/BinaryTreeADT.java
+ ADTs.BinaryTreeADT
+trees/ArrayBinarySearchTree.java
+ trees.ArrayBinarySearchTree
+lists/DoubleLinkedListOld.java
+ lists.DoubleLinkedListOld
+lists/LinkedListSentinel.java
+ lists.LinkedListSentinel
+lists/unorderedLists/ArrayUnorderedList.java
+ lists.unorderedLists.ArrayUnorderedList
+ADTs/QueueContract.java
+ ADTs.QueueContract
+trees/priorityQueues/PriorityQueueNode.java
+ trees.priorityQueues.PriorityQueueNode
+lists/LinkedList.java
+ lists.LinkedList
+ lists.LinkedList$LinkedListIterator
+lists/LinkedListSearchingAndSorting.java
+ lists.LinkedListSearchingAndSorting
+Graphs/GraphMatrix.java
+ Graphs.GraphMatrix
+Graphs/GraphList.java
+ Graphs.GraphList
+zmain/main.java
+ zmain.main
