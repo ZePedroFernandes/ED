@@ -103,9 +103,9 @@ lists/LinkedListSearchingAndSorting.java
 lists/LinkedList.java
  lists.LinkedList
  lists.LinkedList$LinkedListIterator
-graphs/GraphMatrix.java
- graphs.GraphMatrix
-graphs/GraphList.java
- graphs.GraphList
 zmain/main.java
  zmain.main
+graphs/GraphList.java
+ graphs.GraphList
+graphs/GraphMatrix.java
+ graphs.GraphMatrix

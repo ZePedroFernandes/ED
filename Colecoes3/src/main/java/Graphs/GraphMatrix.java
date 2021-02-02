@@ -254,7 +254,7 @@ public class GraphMatrix<T> implements GraphADT<T> {
         return resultList.iterator();
     }
 
-    public Iterator iteratorShortestPath(int startIndex, int targetIndex) {
+    public Iterator<T> iteratorShortestPath(int startIndex, int targetIndex) {
         int index = startIndex;
         int[] predecessor = new int[numVertices];
         LinkedQueue<Integer> traversalQueue = new LinkedQueue<>();
@@ -290,16 +290,16 @@ public class GraphMatrix<T> implements GraphADT<T> {
             return resultList.iterator();
         }
 
-        LinkedStack<T> stack = new LinkedStack<>();
+        LinkedStack<Integer> stack = new LinkedStack<>();
         index = targetIndex;
-        stack.push(vertices[index]);
+        stack.push(index);
         do {
             index = predecessor[index];
-            stack.push(vertices[index]);
+            stack.push(index);
         } while (index != startIndex);
 
         while (!stack.isEmpty()) {
-            resultList.addToRear((stack.pop()));
+            resultList.addToRear(vertices[(stack.pop())]);
         }
 
         return resultList.iterator();

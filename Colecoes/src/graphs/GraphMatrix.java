@@ -123,11 +123,11 @@ public class GraphMatrix<T> implements GraphADT<T> {
     }
 
     @Override
-    public Iterator iteratorBFS(T startVertex) {
+    public Iterator<T> iteratorBFS(T startVertex) {
         return iteratorBFS(getIndex(startVertex));
     }
 
-    public Iterator iteratorBFS(int startIndex) {
+    public Iterator<T> iteratorBFS(int startIndex) {
         Integer x;
         LinkedQueue<Integer> transversalQueue = new LinkedQueue<>();
         ArrayUnorderedList<T> resultList = new ArrayUnorderedList<>();
@@ -160,11 +160,11 @@ public class GraphMatrix<T> implements GraphADT<T> {
     }
 
     @Override
-    public Iterator iteratorDFS(T startVertex) {
+    public Iterator<T> iteratorDFS(T startVertex) {
         return iteratorDFS(getIndex(startVertex));
     }
 
-    public Iterator iteratorDFS(int startIndex) {
+    public Iterator<T> iteratorDFS(int startIndex) {
         Integer x;
         boolean found;
         LinkedStack<Integer> traversalStack = new LinkedStack<>();
@@ -204,11 +204,11 @@ public class GraphMatrix<T> implements GraphADT<T> {
     }
 
     @Override
-    public Iterator iteratorShortestPath(T startVertex, T targetVertex) {
+    public Iterator<T> iteratorShortestPath(T startVertex, T targetVertex) {
         return (iteratorShortestPath(getIndex(startVertex), getIndex(targetVertex)));
     }
 
-    public Iterator iteratorShortestPath2(int startIndex, int targetIndex) {
+    public Iterator<T> iteratorShortestPath2(int startIndex, int targetIndex) {
         Integer x;
         LinkedQueue<Integer> transversalQueue = new LinkedQueue<>();
         LinkedStack<Pair<Integer, Integer>> pairs = new LinkedStack<>();
@@ -254,7 +254,7 @@ public class GraphMatrix<T> implements GraphADT<T> {
         return resultList.iterator();
     }
 
-    public Iterator iteratorShortestPath(int startIndex, int targetIndex) {
+    public Iterator<T> iteratorShortestPath(int startIndex, int targetIndex) {
         int index = startIndex;
         int[] predecessor = new int[numVertices];
         LinkedQueue<Integer> traversalQueue = new LinkedQueue<>();
@@ -290,16 +290,16 @@ public class GraphMatrix<T> implements GraphADT<T> {
             return resultList.iterator();
         }
 
-        LinkedStack<T> stack = new LinkedStack<>();
+        LinkedStack<Integer> stack = new LinkedStack<>();
         index = targetIndex;
-        stack.push(vertices[index]);
+        stack.push(index);
         do {
             index = predecessor[index];
-            stack.push(vertices[index]);
+            stack.push(index);
         } while (index != startIndex);
 
         while (!stack.isEmpty()) {
-            resultList.addToRear((stack.pop()));
+            resultList.addToRear(vertices[(stack.pop())]);
         }
 
         return resultList.iterator();
