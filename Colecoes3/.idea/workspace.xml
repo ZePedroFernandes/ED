@@ -4,7 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="df7ec861-631f-4fc3-ad9f-f1d320cf5e98" name="Default Changelist" comment="" />
+    <list default="true" id="df7ec861-631f-4fc3-ad9f-f1d320cf5e98" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitattributes" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/Colecoes3.GraphTest.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/tests/test/classes/Colecoes3.GraphTest.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/tests/test/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/packages/Colecoes3.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/tests/test/packages/Colecoes3.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-Colecoes3.GraphTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/build/test-results/test/TEST-Colecoes3.GraphTest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/binary/results.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/test-results/test/binary/results.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/source-classes-mapping.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/source-classes-mapping.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileTestJava/source-classes-mapping.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileTestJava/source-classes-mapping.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/Colecoes3/GraphTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Colecoes3/GraphTest.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -68,7 +81,7 @@
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$USER_HOME$/Desktop/Repositorio TP2 ESII/lei_esii2021_tp2_grupoa" />
   </component>
-  <component name="RunManager" selected="Application.main">
+  <component name="RunManager" selected="Gradle.Colecoes3 [test]">
     <configuration name="main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="zmain.main" />
       <module name="Colecoes3.main" />
@@ -78,6 +91,17 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -126,8 +150,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.main" />
         <item itemvalue="Gradle.Colecoes3 [test]" />
+        <item itemvalue="Application.main" />
         <item itemvalue="Gradle.Colecoes3 [build]" />
       </list>
     </recent_temporary>
@@ -143,6 +167,7 @@
       <workItem from="1611239838889" duration="5747000" />
       <workItem from="1611250606447" duration="89000" />
       <workItem from="1611828303663" duration="4000" />
+      <workItem from="1612280126922" duration="236000" />
     </task>
     <task id="LOCAL-00001" summary="COMMIT">
       <created>1611240345626</created>

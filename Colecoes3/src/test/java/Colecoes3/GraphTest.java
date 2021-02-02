@@ -1,7 +1,7 @@
 package Colecoes3;
 
-import Graphs.GraphMatrix;
-import Graphs.Vertex;
+import graphs.GraphMatrix;
+import graphs.Vertex;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

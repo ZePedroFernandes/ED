@@ -18,8 +18,8 @@ exceptions/ElementNotFoundException.java
  exceptions.ElementNotFoundException
 trees/AVLNode.java
  trees.AVLNode
-Graphs/Vertex.java
- Graphs.Vertex
+lists/LinkedListSearchingAndSorting.java
+ lists.LinkedListSearchingAndSorting
 lists/OrderedLists/DoubleLinkedOrderedList.java
  lists.OrderedLists.DoubleLinkedOrderedList
 ADTs/NetworkADT.java
@@ -46,8 +46,9 @@ trees/priorityQueues/PriorityQueue.java
  trees.priorityQueues.PriorityQueue
 ADTs/AvlBinarySearchTreeADT.java
  ADTs.AvlBinarySearchTreeADT
-Graphs/Pair.java
- Graphs.Pair
+lists/LinkedList.java
+ lists.LinkedList
+ lists.LinkedList$LinkedListIterator
 exceptions/InvalidElementException.java
  exceptions.InvalidElementException
 ADTs/ListADT.java
@@ -98,14 +99,13 @@ ADTs/QueueContract.java
  ADTs.QueueContract
 trees/priorityQueues/PriorityQueueNode.java
  trees.priorityQueues.PriorityQueueNode
-lists/LinkedList.java
- lists.LinkedList
- lists.LinkedList$LinkedListIterator
-lists/LinkedListSearchingAndSorting.java
- lists.LinkedListSearchingAndSorting
-Graphs/GraphMatrix.java
- Graphs.GraphMatrix
-Graphs/GraphList.java
- Graphs.GraphList
+graphs/GraphMatrix.java
+ graphs.GraphMatrix
+graphs/Vertex.java
+ graphs.Vertex
+graphs/Pair.java
+ graphs.Pair
+graphs/GraphList.java
+ graphs.GraphList
 zmain/main.java
  zmain.main
