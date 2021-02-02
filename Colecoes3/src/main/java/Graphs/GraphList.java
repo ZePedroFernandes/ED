@@ -109,35 +109,37 @@ public class GraphList<T> implements GraphADT<T> {
     public Iterator<T> iteratorBFS(T startVertex) {
         return this.iteratorBFS(getIndex(startVertex));
     }
-    
+
     public Iterator<T> iteratorBFS(int startIndex) {
         LinkedQueue<Integer> transversalQueue = new LinkedQueue<>();
         ArrayUnorderedList<T> resultList = new ArrayUnorderedList<>();
-        
-        if(!isValidIndex(startIndex)){
+
+        if (!isValidIndex(startIndex)) {
             return resultList.iterator(); // Return statment
         }
-        
+
         boolean[] visited = new boolean[numVertices];
-        
-        for(int i = 0; i < numVertices; i++){
+
+        for (int i = 0; i < numVertices; i++) {
             visited[i] = false;
         }
         Integer x = startIndex;
         transversalQueue.enqueue(x);
         visited[x] = true;
-        
-        while(!transversalQueue.isEmpty()){
+
+        while (!transversalQueue.isEmpty()) {
             x = transversalQueue.dequeue();
             resultList.addToRear(this.vertices[x]);
-            
-            for(int i = 0; i < this.numVertices; i++){
-                
+
+            for (int i = 0; i < this.numVertices; i++) {
+                if (!visited[i] && this.adjList[x].contains(i)) {
+                    transversalQueue.enqueue(i);
+                    visited[i] = true;
+                }
             }
-            
         }
-        
-        
+
+        return resultList.iterator();
     }
 
     @Override

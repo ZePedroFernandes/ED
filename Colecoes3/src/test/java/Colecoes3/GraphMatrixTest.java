@@ -9,7 +9,7 @@ import java.util.Iterator;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class GraphTest {
+public class GraphMatrixTest {
     static final Vertex A = new Vertex("A", 3);
     static final Vertex B = new Vertex("B", 3);
     static final Vertex C = new Vertex("C", 3);

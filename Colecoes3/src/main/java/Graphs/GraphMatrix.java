@@ -305,6 +305,10 @@ public class GraphMatrix<T> implements GraphADT<T> {
         return resultList.iterator();
     }
 
+    public int shortestPathLength(T vertex1, T vertex2){
+        return (shortestPathLength(getIndex(vertex1), getIndex(vertex2)));
+    }
+    
     public int shortestPathLength(int startIndex, int targetIndex) {
         if(!indexIsValid(startIndex) || !indexIsValid(targetIndex)){
             return 0;

@@ -5,16 +5,37 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="df7ec861-631f-4fc3-ad9f-f1d320cf5e98" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/test/java/Colecoes3/GraphListTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Colecoes/src/graphs/GraphList.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Colecoes/src/graphs/GraphList.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Colecoes/src/graphs/GraphMatrix.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Colecoes/src/graphs/GraphMatrix.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Colecoes/src/zmain/main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Colecoes/src/zmain/main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.6.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.6.1/executionHistory/executionHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.6.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.6.1/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.6.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.6.1/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.6.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.6.1/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.6.1/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.6.1/fileHashes/resourceHashesCache.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.6.1/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.6.1/javaCompile/classAnalysis.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.6.1/javaCompile/jarAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.6.1/javaCompile/jarAnalysis.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.6.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.6.1/javaCompile/javaCompile.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.6.1/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.6.1/javaCompile/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/Colecoes3.GraphTest.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/tests/test/classes/Colecoes3.GraphTest.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Graphs/GraphList.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Graphs/GraphList.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/lists/LinkedList$LinkedListIterator.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/lists/LinkedList$LinkedListIterator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/lists/LinkedList.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/lists/LinkedList.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/zmain/main.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/zmain/main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/test/Colecoes3/GraphTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/Colecoes3.GraphTest.html" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/build/reports/tests/test/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/tests/test/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/reports/tests/test/packages/Colecoes3.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/tests/test/packages/Colecoes3.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-Colecoes3.GraphTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/build/test-results/test/TEST-Colecoes3.GraphTest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-Colecoes3.GraphTest.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/build/test-results/test/binary/results.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/test-results/test/binary/results.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/source-classes-mapping.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/source-classes-mapping.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/Colecoes3/GraphTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Colecoes3/GraphTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileTestJava/source-classes-mapping.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileTestJava/source-classes-mapping.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Graphs/GraphList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Graphs/GraphList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Graphs/GraphMatrix.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Graphs/GraphMatrix.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/zmain/main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/zmain/main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/Colecoes3/GraphTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Colecoes3/GraphMatrixTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,6 +78,13 @@
       </state>
     </system>
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
@@ -71,7 +99,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/Repositorio TP2 ESII/lei_esii2021_tp2_grupoa" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/ESII/lei_esii2021_tp2_grupoa" />
   </component>
   <component name="RunManager" selected="Gradle.Colecoes3 [test]">
     <configuration name="main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -100,27 +128,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Colecoes3 [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value="build" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <method v="2" />
-    </configuration>
     <configuration name="Colecoes3 [test]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -138,6 +145,27 @@
         <option name="vmOptions" />
       </ExternalSystemSettings>
       <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="GraphListTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="--tests &quot;Colecoes3.GraphListTest&quot;" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
       <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
@@ -163,12 +191,34 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
+    <configuration name="LinkedListTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="--tests &quot;Colecoes3.LinkedListTest&quot; --stacktrace" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Gradle.Colecoes3 [test]" />
+        <item itemvalue="Gradle.GraphListTest" />
+        <item itemvalue="Gradle.LinkedListTest" />
         <item itemvalue="Gradle.GraphTest" />
         <item itemvalue="Application.main" />
-        <item itemvalue="Gradle.Colecoes3 [build]" />
       </list>
     </recent_temporary>
   </component>
@@ -184,7 +234,7 @@
       <workItem from="1611250606447" duration="89000" />
       <workItem from="1611828303663" duration="4000" />
       <workItem from="1612280126922" duration="236000" />
-      <workItem from="1612281210941" duration="3018000" />
+      <workItem from="1612281210941" duration="5102000" />
     </task>
     <task id="LOCAL-00001" summary="COMMIT">
       <created>1611240345626</created>
@@ -219,5 +269,8 @@
     <MESSAGE value="COMMIT" />
     <MESSAGE value="update" />
     <option name="LAST_COMMIT_MESSAGE" value="update" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/Colecoes3$LinkedListTest.ic" NAME="LinkedListTest Coverage Results" MODIFIED="1612288072872" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>

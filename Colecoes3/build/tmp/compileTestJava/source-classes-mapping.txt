@@ -1,2 +1,6 @@
-Colecoes3/GraphTest.java
- Colecoes3.GraphTest
+Colecoes3/LinkedListTest.java
+ Colecoes3.LinkedListTest
+Colecoes3/GraphMatrixTest.java
+ Colecoes3.GraphMatrixTest
+Colecoes3/GraphListTest.java
+ Colecoes3.GraphListTest
