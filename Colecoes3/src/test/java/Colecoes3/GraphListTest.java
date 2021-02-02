@@ -51,6 +51,75 @@ public class GraphListTest {
     }
 
     @Test
+    public void test_connected_1(){
+        setDefaultGraph();
+        assertTrue(graph.isConnected());
+    }
+
+    @Test
+    public void test_connected_2(){
+        assertFalse(graph.isConnected());
+    }
+
+    @Test
+    public void test_connected_3(){
+        graph.addVertex(A);
+        assertTrue(graph.isConnected());
+    }
+
+    @Test
+    public void test_connected_4(){
+        graph.addVertex(A);
+        graph.addVertex(B);
+        assertFalse(graph.isConnected());
+    }
+
+    @Test
+    public void test_connected_5(){
+        graph.addVertex(A);
+        graph.addVertex(B);
+        graph.addEdge(A,B);
+        graph.addVertex(C);
+        assertFalse(graph.isConnected());
+    }
+
+    @Test
+    public void test_connected_6(){
+        graph.addVertex(A);
+        graph.addVertex(B);
+        graph.addEdge(A,B);
+        assertTrue(graph.isConnected());
+    }
+
+    @Test
+    public void test_connected_7(){
+        graph.addVertex(A);
+        graph.addVertex(B);
+        graph.addVertex(C);
+        graph.addVertex(D);
+        graph.addVertex(E);
+        graph.addVertex(F);
+        graph.addVertex(G);
+        graph.addVertex(H);
+
+        graph.addEdge(A, B);
+        //graph.addEdge(A, F);
+
+        graph.addEdge(B, C);
+        graph.addEdge(B, D);
+        graph.addEdge(F, G);
+
+        graph.addEdge(C, D);
+        //graph.addEdge(D, G);
+
+        graph.addEdge(G, H);
+        graph.addEdge(C, E);
+        //graph.addEdge(H, E);
+
+        assertFalse(graph.isConnected());
+    }
+
+    @Test
     public void test_BFS_1() {
         setDefaultGraph();
         Iterator<Vertex> itr = graph.iteratorBFS(A);
@@ -164,14 +233,14 @@ public class GraphListTest {
 
     public String getDFSActualString(Vertex vertex){
         Iterator<Vertex> itr = graph.iteratorDFS(vertex);
-        String actual = "";
+        StringBuilder actual = new StringBuilder();
         while (itr.hasNext()) {
-            actual += itr.next().getName();
+            actual.append(itr.next().getName());
             if (itr.hasNext()) {
-                actual += "->";
+                actual.append("->");
             }
         }
-        return actual;
+        return actual.toString();
     }
 
     @Test

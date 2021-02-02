@@ -1,10 +1,7 @@
 package zmain;
 
-import graphs.GraphList;
-import graphs.GraphMatrix;
+import graphs.Graph;
 import graphs.Vertex;
-
-import java.util.Iterator;
 
 /**
  * @author Nome : José Pedro Fernandes Número: 8190239 Turma: 1
@@ -20,14 +17,15 @@ public class main {
     static final Vertex H = new Vertex("H", 3);
     static final Vertex I = new Vertex("I", 3);
     static final Vertex J = new Vertex("J", 3);
-
+    static protected int[][] adjMatrix = new int[1][10];
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
 
-        GraphMatrix<Vertex> graph = new GraphMatrix();
+
+        Graph<Vertex> graph = new Graph<>();
 
         graph.addVertex(A);
         graph.addVertex(B);
@@ -37,8 +35,10 @@ public class main {
         graph.addVertex(F);
         graph.addVertex(G);
         graph.addVertex(H);
+        graph.addVertex(I);
+        graph.addVertex(J);
 
-        graph.addEdge(A, B);
+        /*graph.addEdge(A, B);
         graph.addEdge(A, F);
 
         graph.addEdge(B, C);
@@ -50,14 +50,13 @@ public class main {
 
         graph.addEdge(G, H);
         graph.addEdge(C, E);
-        graph.addEdge(H, E);
+        graph.addEdge(H, E);*/
 
-        Iterator<Vertex> itr = graph.iteratorShortestPath(A,E);
-        
-        while(itr.hasNext()){
-            System.out.println(itr.next());
-        }
 
+        graph.addEdge(J,A);
+        graph.removeVertex(I);
+
+        System.out.println(graph.toString());
     }//Main
 
 }

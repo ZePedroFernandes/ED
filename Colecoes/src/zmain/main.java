@@ -27,7 +27,7 @@ public class main {
      */
     public static void main(String[] args) {
 
-        GraphList<Vertex> graph = new GraphList();
+        GraphMatrix<Vertex> graph = new GraphMatrix<>();
 
         graph.addVertex(A);
         graph.addVertex(B);
@@ -52,11 +52,8 @@ public class main {
         graph.addEdge(C, E);
         graph.addEdge(H, E);
 
-        Iterator<Vertex> itr = graph.iteratorBFS(A);
-        
-        while(itr.hasNext()){
-            System.out.println(itr.next());
-        }
+        boolean found = graph.isConnected();
+        System.out.println(found);
 
     }//Main
 

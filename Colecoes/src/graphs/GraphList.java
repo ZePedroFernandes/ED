@@ -149,11 +149,11 @@ public class GraphList<T> implements GraphADT<T> {
     }
 
     public Iterator<T> iteratorDFS(int startIndex) {
-        LinkedStack<Integer> transversalQueue = new LinkedStack<>();
+        LinkedStack<Integer> traversalStack = new LinkedStack<>();
         ArrayUnorderedList<T> resultList = new ArrayUnorderedList<>();
 
         if (!isValidIndex(startIndex)) {
-            return resultList.iterator(); // Return statment
+            return resultList.iterator(); // Return statement
         }
 
         boolean[] visited = new boolean[numVertices];
@@ -162,18 +162,26 @@ public class GraphList<T> implements GraphADT<T> {
             visited[i] = false;
         }
         Integer x = startIndex;
-        transversalQueue.push(x);
+        boolean found;
+        traversalStack.push(x);
+        resultList.addToRear(this.vertices[startIndex]);
         visited[x] = true;
 
-        while (!transversalQueue.isEmpty()) {
-            x = transversalQueue.pop();
+        while (!traversalStack.isEmpty()) {
+            x = traversalStack.peek();
+            found = false;
 
-            for (int i = 0; i < this.numVertices; i++) {
+            for (int i = 0; i < this.numVertices && !found; i++) {
                 if (!visited[i] && this.adjList[x].contains(i)) {
-                    transversalQueue.push(i);
+                    traversalStack.push(i);
+                    resultList.addToRear(this.vertices[i]);
                     visited[i] = true;
-                    resultList.addToRear(this.vertices[x]);
+                    found = true;
                 }
+            }
+
+            if (!found && !traversalStack.isEmpty()) {
+                traversalStack.pop();
             }
         }
 
@@ -182,7 +190,53 @@ public class GraphList<T> implements GraphADT<T> {
 
     @Override
     public Iterator<T> iteratorShortestPath(T startVertex, T targetVertex) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return iteratorShortestPath(this.getIndex(startVertex), this.getIndex(targetVertex));
+    }
+
+    public Iterator<T> iteratorShortestPath(int startIndex, int targetIndex) {
+        int index = startIndex;
+        int[] predecessor = new int[numVertices];
+        LinkedQueue<Integer> traversalQueue = new LinkedQueue<>();
+        ArrayUnorderedList<T> resultList = new ArrayUnorderedList<>();
+
+        if (!isValidIndex(startIndex) || !isValidIndex(targetIndex)
+                || (startIndex == targetIndex)) {
+            return resultList.iterator();
+        }
+
+        boolean[] visited = new boolean[numVertices];
+        for (int i = 0; i < numVertices; i++) {
+            visited[i] = false;
+        }
+
+        traversalQueue.enqueue(startIndex);
+        visited[startIndex] = true;
+        predecessor[startIndex] = -1;
+
+        while (!traversalQueue.isEmpty() && (index != targetIndex)) {
+            index = (traversalQueue.dequeue());
+
+            for (int i = 0; i < numVertices; i++) {
+                if (!visited[i] && this.adjList[index].contains(i)) {
+                    predecessor[i] = index;
+                    traversalQueue.enqueue(i);
+                    visited[i] = true;
+                }
+            }
+        }
+        if (index != targetIndex) // there is no possible path
+        {
+            return resultList.iterator();
+        }
+
+        resultList.addToFront(vertices[index]);
+
+        while(index != startIndex) {
+            index = predecessor[index];
+            resultList.addToFront(vertices[index]);
+        }
+
+        return resultList.iterator();
     }
 
     @Override
@@ -192,7 +246,40 @@ public class GraphList<T> implements GraphADT<T> {
 
     @Override
     public boolean isConnected() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        Integer index;
+        LinkedQueue<Integer> transversalQueue = new LinkedQueue<>();
+
+        if (!isEmpty()) {
+            return false;
+        }
+
+        if (this.size() == 1) {
+            return true;
+        }
+
+        int connectedToFirstVertex = 1;
+        boolean[] visited = new boolean[this.numVertices];
+
+        for (int i = 0; i < numVertices; i++) {
+            visited[i] = false;
+        }
+
+        transversalQueue.enqueue(0);
+        visited[0] = true;
+
+        while (!transversalQueue.isEmpty()) {
+            index = transversalQueue.dequeue();
+
+            for (int i = 0; i < numVertices; i++) {
+                if (!visited[i] && this.adjList[index].contains(i)) {
+                    transversalQueue.enqueue(i);
+                    connectedToFirstVertex++;
+                    visited[i] = true;
+                }
+            }
+        }
+
+        return (connectedToFirstVertex == numVertices);
     }
 
     @Override
@@ -205,38 +292,38 @@ public class GraphList<T> implements GraphADT<T> {
         if (numVertices == 0) {
             return "Graph is empty";
         }
-        String s = "\nVertex Values\n";
-        s += "-------------------------------\n";
-        s += "index\tvalue\n\n";
+        StringBuilder s = new StringBuilder("\nVertex Values\n");
+        s.append("-------------------------------\n");
+        s.append("index\tvalue\n\n");
 
         for (int i = 0; i < this.numVertices - 1; i++) {
-            s += i + "\t\t" + this.vertices[i].toString() + "\n";
+            s.append(i).append("\t\t").append(this.vertices[i].toString()).append("\n");
         }
-        s += (this.numVertices - 1) + "\t\t" + this.vertices[this.numVertices - 1].toString() + "\n\n";
+        s.append(this.numVertices - 1).append("\t\t").append(this.vertices[this.numVertices - 1].toString()).append("\n\n");
 
-        s += "-------------------------------\n";
-        s += "-------------------------------\n";
-        s += "\nAdjencyList\n";
-        s += "-------------------------------\n";
+        s.append("-------------------------------\n");
+        s.append("-------------------------------\n");
+        s.append("\nAdjencyList\n");
+        s.append("-------------------------------\n");
 
         for (int i = 0; i < this.numVertices - 1; i++) {
-            s += i;
-            Iterator itr = this.adjList[i].iterator();
+            s.append(i);
+            Iterator<Integer> itr = this.adjList[i].iterator();
             while (itr.hasNext()) {
-                s += " -> " + itr.next();
+                s.append(" -> ").append(itr.next());
             }
 
-            s += "\n";
+            s.append("\n");
         }
 
-        s += (this.numVertices - 1);
-        Iterator itr = this.adjList[this.numVertices - 1].iterator();
+        s.append(this.numVertices - 1);
+        Iterator<Integer> itr = this.adjList[this.numVertices - 1].iterator();
         while (itr.hasNext()) {
-            s += " -> " + itr.next();
+            s.append(" -> ").append(itr.next());
         }
-        s += "\n";
+        s.append("\n");
 
-        return s;
+        return s.toString();
     }
 
 }

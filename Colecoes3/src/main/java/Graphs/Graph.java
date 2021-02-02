@@ -11,7 +11,7 @@ import stacks.LinkedStack;
 /**
  * @author Nome : José Pedro Fernandes Número: 8190239 Turma: 1
  */
-public class GraphMatrix<T> implements GraphADT<T> {
+public class Graph<T> implements GraphADT<T> {
 
     protected final int DEFAULT_CAPACITY = 10;
     protected int numVertices;   // number of vertices in the graph 
@@ -21,48 +21,10 @@ public class GraphMatrix<T> implements GraphADT<T> {
     /**
      * Creates an empty graph.
      */
-    public GraphMatrix() {
+    public Graph() {
         numVertices = 0;
         adjMatrix = new boolean[DEFAULT_CAPACITY][DEFAULT_CAPACITY];
         vertices = (T[]) (new Object[DEFAULT_CAPACITY]);
-    }
-
-    private boolean indexIsValid(int index) {
-        return ((index < numVertices) && (index >= 0));
-    }
-
-    private int getIndex(T targetVertex) {
-        for (int i = 0; i < numVertices; i++) {
-            if (this.vertices[i].equals(targetVertex)) {
-                return i;
-            }
-        }
-
-        return -1;
-    }
-
-    @Override
-    public void addEdge(T vertex1, T vertex2) {
-        addEdge(getIndex(vertex1), getIndex(vertex2));
-    }
-
-    public void addEdge(int index1, int index2) {
-        if (indexIsValid(index1) && indexIsValid(index2)) {
-            adjMatrix[index1][index2] = true;
-            adjMatrix[index2][index1] = true;
-        }
-    }
-
-    @Override
-    public void removeEdge(T vertex1, T vertex2) {
-        removeEdge(getIndex(vertex1), getIndex(vertex2));
-    }
-
-    public void removeEdge(int index1, int index2) {
-        if (indexIsValid(index1) && indexIsValid(index2)) {
-            adjMatrix[index1][index2] = false;
-            adjMatrix[index2][index1] = false;
-        }
     }
 
     private void expandCapacity() {
@@ -94,46 +56,76 @@ public class GraphMatrix<T> implements GraphADT<T> {
         numVertices++;
     }
 
+    private boolean isValidIndex(int index) {
+        return ((index < numVertices) && (index >= 0));
+    }
+
+    private int getIndex(T targetVertex) {
+        for (int i = 0; i < numVertices; i++) {
+            if (this.vertices[i].equals(targetVertex)) {
+                return i;
+            }
+        }
+
+        return -1;
+    }
+
     @Override
     public void removeVertex(T vertex) {
         removeVertex(getIndex(vertex));
     }
 
     public void removeVertex(int index) {
-        if (indexIsValid(index)) {
+        if (isValidIndex(index)) {
             this.numVertices--;
-
-            for (int i = index; i < this.numVertices; i++) {
+            for (int i = index; i < numVertices; i++) {
                 this.vertices[i] = this.vertices[i + 1];
             }
 
-            for (int i = index; i < this.numVertices; i++) {
-                for (int j = 0; j <= this.numVertices; j++) {
-                    adjMatrix[i][j] = adjMatrix[i + 1][j];
+            for(int i = index; i < numVertices; i++){
+                for(int j = 0; j < numVertices; j++){
+                    this.adjMatrix[i][j] = this.adjMatrix[i+1][j];
+                    this.adjMatrix[j][i] = this.adjMatrix[j][i+1];
                 }
             }
-            //Lines shifted
-
-            for (int i = index; i < this.numVertices; i++) {
-                for (int j = 0; j < this.numVertices; j++) {
-                    adjMatrix[j][i] = adjMatrix[j][i + 1];
-                }
-            }
-            //Columes shifted
         }
     }
 
     @Override
-    public Iterator iteratorBFS(T startVertex) {
+    public void addEdge(T vertex1, T vertex2) {
+        addEdge(getIndex(vertex1), getIndex(vertex2));
+    }
+
+    public void addEdge(int index1, int index2) {
+        if (isValidIndex(index1) && isValidIndex(index2)) {
+            adjMatrix[index1][index2] = true;
+            adjMatrix[index2][index1] = true;
+        }
+    }
+
+    @Override
+    public void removeEdge(T vertex1, T vertex2) {
+        removeEdge(getIndex(vertex1), getIndex(vertex2));
+    }
+
+    public void removeEdge(int index1, int index2) {
+        if (isValidIndex(index1) && isValidIndex(index2)) {
+            adjMatrix[index1][index2] = false;
+            adjMatrix[index2][index1] = false;
+        }
+    }
+
+    @Override
+    public Iterator<T> iteratorBFS(T startVertex) {
         return iteratorBFS(getIndex(startVertex));
     }
 
-    public Iterator iteratorBFS(int startIndex) {
+    public Iterator<T> iteratorBFS(int startIndex) {
         Integer x;
         LinkedQueue<Integer> transversalQueue = new LinkedQueue<>();
         ArrayUnorderedList<T> resultList = new ArrayUnorderedList<>();
 
-        if (!indexIsValid(startIndex)) {
+        if (!isValidIndex(startIndex)) {
             return resultList.iterator();
         }
 
@@ -161,17 +153,17 @@ public class GraphMatrix<T> implements GraphADT<T> {
     }
 
     @Override
-    public Iterator iteratorDFS(T startVertex) {
+    public Iterator<T> iteratorDFS(T startVertex) {
         return iteratorDFS(getIndex(startVertex));
     }
 
-    public Iterator iteratorDFS(int startIndex) {
+    public Iterator<T> iteratorDFS(int startIndex) {
         Integer x;
         boolean found;
         LinkedStack<Integer> traversalStack = new LinkedStack<>();
         ArrayUnorderedList<T> resultList = new ArrayUnorderedList<>();
 
-        if (!indexIsValid(startIndex)) {
+        if (!isValidIndex(startIndex)) {
             return resultList.iterator();
         }
 
@@ -205,17 +197,17 @@ public class GraphMatrix<T> implements GraphADT<T> {
     }
 
     @Override
-    public Iterator iteratorShortestPath(T startVertex, T targetVertex) {
+    public Iterator<T> iteratorShortestPath(T startVertex, T targetVertex) {
         return (iteratorShortestPath(getIndex(startVertex), getIndex(targetVertex)));
     }
 
-    public Iterator iteratorShortestPath2(int startIndex, int targetIndex) {
+    /*public Iterator<T> iteratorShortestPath2(int startIndex, int targetIndex) {
         Integer x;
         LinkedQueue<Integer> transversalQueue = new LinkedQueue<>();
         LinkedStack<Pair<Integer, Integer>> pairs = new LinkedStack<>();
         ArrayUnorderedList<T> resultList = new ArrayUnorderedList<>();
 
-        if (!indexIsValid(startIndex) || !indexIsValid(targetIndex)) {
+        if (!isValidIndex(startIndex) || !isValidIndex(targetIndex)) {
             return resultList.iterator();
         }
 
@@ -254,14 +246,14 @@ public class GraphMatrix<T> implements GraphADT<T> {
 
         return resultList.iterator();
     }
-
+*/
     public Iterator<T> iteratorShortestPath(int startIndex, int targetIndex) {
         int index = startIndex;
         int[] predecessor = new int[numVertices];
         LinkedQueue<Integer> traversalQueue = new LinkedQueue<>();
         ArrayUnorderedList<T> resultList = new ArrayUnorderedList<>();
 
-        if (!indexIsValid(startIndex) || !indexIsValid(targetIndex)
+        if (!isValidIndex(startIndex) || !isValidIndex(targetIndex)
                 || (startIndex == targetIndex)) {
             return resultList.iterator();
         }
@@ -286,8 +278,7 @@ public class GraphMatrix<T> implements GraphADT<T> {
                 }
             }
         }
-        if (index != targetIndex) // there is no possible path
-        {
+        if (index != targetIndex) { // there is no possible path
             return resultList.iterator();
         }
 
@@ -306,7 +297,7 @@ public class GraphMatrix<T> implements GraphADT<T> {
     }
 
     public int shortestPathLength(int startIndex, int targetIndex) {
-        if (!indexIsValid(startIndex) || !indexIsValid(targetIndex)) {
+        if (!isValidIndex(startIndex) || !isValidIndex(targetIndex)) {
             return 0;
         }
 
@@ -337,7 +328,11 @@ public class GraphMatrix<T> implements GraphADT<T> {
         Integer x;
         LinkedQueue<Integer> transversalQueue = new LinkedQueue<>();
 
-        if (!isEmpty() && size() == 1) {
+        if (isEmpty()) {
+            return false;
+        }
+
+        if (this.size() == 1) {
             return true;
         }
 
@@ -377,42 +372,44 @@ public class GraphMatrix<T> implements GraphADT<T> {
             return "Graph is empty";
         }
 
-        String result = "";
+        StringBuilder result = new StringBuilder();
 
-        result += "Adjacency Matrix\n";
-        result += "----------------\n";
-        result += "index\t";
+        result.append("Adjacency Matrix\n");
+        result.append("----------------\n");
+        result.append("Index\t");
 
         for (int i = 0; i < numVertices; i++) {
-            result += "" + i;
+            result.append(i);
             if (i < 10) {
-                result += " ";
+                result.append(" ");
             }
         }
-        result += "\n\n";
+        result.append("\n\n");
 
         for (int i = 0; i < numVertices; i++) {
-            result += "" + i + "\t";
+            result.append("  ").append(i).append("\t\t");
 
             for (int j = 0; j < numVertices; j++) {
                 if (adjMatrix[i][j]) {
-                    result += "1 ";
+                    result.append("1 ");
                 } else {
-                    result += "0 ";
+                    result.append("0 ");
                 }
             }
-            result += "\n";
+            result.append("\n");
         }
 
-        result += "\n\nVertex Values";
-        result += "\n-------------\n";
-        result += "index\tvalue\n\n";
+        result.append("\n\nVertex Values");
+        result.append("\n-------------\n");
+        result.append("Index\ttoString\n\n");
 
         for (int i = 0; i < numVertices; i++) {
-            result += "" + i + "\t";
-            result += vertices[i].toString() + "\n";
+            result.append(i).append("\t\t");
+            result.append(vertices[i].toString());
+            if(i < numVertices - 1){
+                result.append("\n");
+            }
         }
-        result += "\n";
-        return result;
+        return result.toString();
     }
 }
