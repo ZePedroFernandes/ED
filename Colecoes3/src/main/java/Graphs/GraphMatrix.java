@@ -305,6 +305,18 @@ public class GraphMatrix<T> implements GraphADT<T> {
         return resultList.iterator();
     }
 
+    public int shortestPathLength(int startIndex, int targetIndex) {
+        Iterator<T> itr = this.iteratorShortestPath(startIndex, targetIndex);
+        int size = 0;
+
+        while (itr.hasNext()) {
+            size++;
+            itr.next();
+        }
+
+        return size;
+    }
+
     @Override
     public boolean isEmpty() {
         return this.numVertices == 0;

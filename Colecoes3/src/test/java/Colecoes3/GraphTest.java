@@ -25,6 +25,31 @@ public class GraphTest {
         graph = new GraphMatrix<>();
     }
 
+    public void setDefaultGraph(){
+        graph.addVertex(A);
+        graph.addVertex(B);
+        graph.addVertex(C);
+        graph.addVertex(D);
+        graph.addVertex(E);
+        graph.addVertex(F);
+        graph.addVertex(G);
+        graph.addVertex(H);
+
+        graph.addEdge(A, B);
+        graph.addEdge(A, F);
+
+        graph.addEdge(B, C);
+        graph.addEdge(B, D);
+        graph.addEdge(F, G);
+
+        graph.addEdge(C, D);
+        graph.addEdge(D, G);
+
+        graph.addEdge(G, H);
+        graph.addEdge(C, E);
+        graph.addEdge(H, E);
+    }
+
     @Test
     public void test_1() {
         graph.addVertex(A);
@@ -125,5 +150,12 @@ public class GraphTest {
         assertEquals(D,itr.next());
         assertEquals(E,itr.next());
         assertEquals(F,itr.next());
+    }
+
+    @Test
+    public void test_ShortestPathLength(){
+        this.setDefaultGraph();
+
+        assertEquals(1,graph.);
     }
 }
