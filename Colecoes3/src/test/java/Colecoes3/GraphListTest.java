@@ -119,120 +119,17 @@ public class GraphListTest {
         assertFalse(graph.isConnected());
     }
 
-    @Test
-    public void test_BFS_1() {
-        setDefaultGraph();
-        Iterator<Vertex> itr = graph.iteratorBFS(A);
-        assertEquals(A, itr.next());
-        assertEquals(B, itr.next());
-        assertEquals(F, itr.next());
-        assertEquals(C, itr.next());
-        assertEquals(D, itr.next());
-        assertEquals(G, itr.next());
-        assertEquals(E, itr.next());
-        assertEquals(H, itr.next());
+    private String getBFSActualString(Vertex vertex) {
+        Iterator<Vertex> itr = graph.iteratorBFS(vertex);
+        return buildString(itr);
     }
 
-    @Test
-    public void test_BFS_2() {
-        setDefaultGraph();
-        Iterator<Vertex> itr = graph.iteratorBFS(B);
-        assertEquals(B, itr.next());
-        assertEquals(A, itr.next());
-        assertEquals(C, itr.next());
-        assertEquals(D, itr.next());
-        assertEquals(F, itr.next());
-        assertEquals(E, itr.next());
-        assertEquals(G, itr.next());
-        assertEquals(H, itr.next());
-    }
-
-    @Test
-    public void test_BFS_3() {
-        setDefaultGraph();
-        Iterator<Vertex> itr = graph.iteratorBFS(C);
-        assertEquals(C, itr.next());
-        assertEquals(B, itr.next());
-        assertEquals(D, itr.next());
-        assertEquals(E, itr.next());
-        assertEquals(A, itr.next());
-        assertEquals(G, itr.next());
-        assertEquals(H, itr.next());
-        assertEquals(F, itr.next());
-    }
-
-    @Test
-    public void test_BFS_4() {
-        setDefaultGraph();
-        Iterator<Vertex> itr = graph.iteratorBFS(D);
-        assertEquals(D, itr.next());
-        assertEquals(B, itr.next());
-        assertEquals(C, itr.next());
-        assertEquals(G, itr.next());
-        assertEquals(A, itr.next());
-        assertEquals(E, itr.next());
-        assertEquals(F, itr.next());
-        assertEquals(H, itr.next());
-    }
-
-    @Test
-    public void test_BFS_5() {
-        setDefaultGraph();
-        Iterator<Vertex> itr = graph.iteratorBFS(E);
-        assertEquals(E, itr.next());
-        assertEquals(C, itr.next());
-        assertEquals(H, itr.next());
-        assertEquals(B, itr.next());
-        assertEquals(D, itr.next());
-        assertEquals(G, itr.next());
-        assertEquals(A, itr.next());
-        assertEquals(F, itr.next());
-    }
-
-    @Test
-    public void test_BFS_6() {
-        setDefaultGraph();
-        Iterator<Vertex> itr = graph.iteratorBFS(F);
-        assertEquals(F, itr.next());
-        assertEquals(A, itr.next());
-        assertEquals(G, itr.next());
-        assertEquals(B, itr.next());
-        assertEquals(D, itr.next());
-        assertEquals(H, itr.next());
-        assertEquals(C, itr.next());
-        assertEquals(E, itr.next());
-    }
-
-    @Test
-    public void test_BFS_7() {
-        setDefaultGraph();
-        Iterator<Vertex> itr = graph.iteratorBFS(G);
-        assertEquals(G, itr.next());
-        assertEquals(D, itr.next());
-        assertEquals(F, itr.next());
-        assertEquals(H, itr.next());
-        assertEquals(B, itr.next());
-        assertEquals(C, itr.next());
-        assertEquals(A, itr.next());
-        assertEquals(E, itr.next());
-    }
-
-    @Test
-    public void test_BFS_8() {
-        setDefaultGraph();
-        Iterator<Vertex> itr = graph.iteratorBFS(H);
-        assertEquals(H, itr.next());
-        assertEquals(E, itr.next());
-        assertEquals(G, itr.next());
-        assertEquals(C, itr.next());
-        assertEquals(D, itr.next());
-        assertEquals(F, itr.next());
-        assertEquals(B, itr.next());
-        assertEquals(A, itr.next());
-    }
-
-    public String getDFSActualString(Vertex vertex){
+    private String getDFSActualString(Vertex vertex) {
         Iterator<Vertex> itr = graph.iteratorDFS(vertex);
+        return buildString(itr);
+    }
+
+    private String buildString(Iterator<Vertex> itr) {
         StringBuilder actual = new StringBuilder();
         while (itr.hasNext()) {
             actual.append(itr.next().getName());
@@ -241,6 +138,70 @@ public class GraphListTest {
             }
         }
         return actual.toString();
+    }
+
+    @Test
+    public void test_BFS_1() {
+        setDefaultGraph();
+        String actual = getBFSActualString(A);
+        String expected = "A->B->F->C->D->G->E->H";
+        assertEquals(expected,actual);
+    }
+
+    @Test
+    public void test_BFS_2() {
+        setDefaultGraph();
+        String actual = getBFSActualString(B);
+        String expected = "B->A->C->D->F->E->G->H";
+        assertEquals(expected,actual);
+    }
+
+    @Test
+    public void test_BFS_3() {
+        setDefaultGraph();
+        String actual = getBFSActualString(C);
+        String expected = "C->B->D->E->A->G->H->F";
+        assertEquals(expected,actual);
+    }
+
+    @Test
+    public void test_BFS_4() {
+        setDefaultGraph();
+        String actual = getBFSActualString(D);
+        String expected = "D->B->C->G->A->E->F->H";
+        assertEquals(expected,actual);
+    }
+
+    @Test
+    public void test_BFS_5() {
+        setDefaultGraph();
+        String actual = getBFSActualString(E);
+        String expected = "E->C->H->B->D->G->A->F";
+        assertEquals(expected,actual);
+    }
+
+    @Test
+    public void test_BFS_6() {
+        setDefaultGraph();
+        String actual = getBFSActualString(F);
+        String expected = "F->A->G->B->D->H->C->E";
+        assertEquals(expected,actual);
+    }
+
+    @Test
+    public void test_BFS_7() {
+        setDefaultGraph();
+        String actual = getBFSActualString(G);
+        String expected = "G->D->F->H->B->C->A->E";
+        assertEquals(expected,actual);
+    }
+
+    @Test
+    public void test_BFS_8() {
+        setDefaultGraph();
+        String actual = getBFSActualString(H);
+        String expected = "H->E->G->C->D->F->B->A";
+        assertEquals(expected,actual);
     }
 
     @Test

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Colecoes3.NetworkTest" tests="16" skipped="0" failures="0" errors="0" timestamp="2021-02-02T23:25:27" hostname="ZEPEDRO" time="0.048">
+  <properties/>
+  <testcase name="test_BFS_1()" classname="Colecoes3.NetworkTest" time="0.023"/>
+  <testcase name="test_BFS_2()" classname="Colecoes3.NetworkTest" time="0.0"/>
+  <testcase name="test_BFS_3()" classname="Colecoes3.NetworkTest" time="0.001"/>
+  <testcase name="test_BFS_4()" classname="Colecoes3.NetworkTest" time="0.001"/>
+  <testcase name="test_BFS_5()" classname="Colecoes3.NetworkTest" time="0.001"/>
+  <testcase name="test_BFS_6()" classname="Colecoes3.NetworkTest" time="0.001"/>
+  <testcase name="test_BFS_7()" classname="Colecoes3.NetworkTest" time="0.001"/>
+  <testcase name="test_BFS_8()" classname="Colecoes3.NetworkTest" time="0.0"/>
+  <testcase name="test_DFS_1()" classname="Colecoes3.NetworkTest" time="0.002"/>
+  <testcase name="test_DFS_2()" classname="Colecoes3.NetworkTest" time="0.001"/>
+  <testcase name="test_DFS_3()" classname="Colecoes3.NetworkTest" time="0.0"/>
+  <testcase name="test_DFS_4()" classname="Colecoes3.NetworkTest" time="0.001"/>
+  <testcase name="test_DFS_5()" classname="Colecoes3.NetworkTest" time="0.001"/>
+  <testcase name="test_DFS_6()" classname="Colecoes3.NetworkTest" time="0.0"/>
+  <testcase name="test_DFS_7()" classname="Colecoes3.NetworkTest" time="0.001"/>
+  <testcase name="test_DFS_8()" classname="Colecoes3.NetworkTest" time="0.002"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

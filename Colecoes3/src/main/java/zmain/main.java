@@ -1,7 +1,10 @@
 package zmain;
 
 import graphs.Graph;
+import graphs.Network;
 import graphs.Vertex;
+
+import java.util.Iterator;
 
 /**
  * @author Nome : José Pedro Fernandes Número: 8190239 Turma: 1
@@ -17,46 +20,47 @@ public class main {
     static final Vertex H = new Vertex("H", 3);
     static final Vertex I = new Vertex("I", 3);
     static final Vertex J = new Vertex("J", 3);
-    static protected int[][] adjMatrix = new int[1][10];
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
 
+        Network<Vertex> network = new Network<>();
 
-        Graph<Vertex> graph = new Graph<>();
+        network.addVertex(A);
+        network.addVertex(B);
+        network.addVertex(C);
+        network.addVertex(D);
+        network.addVertex(E);
+        network.addVertex(F);
+        network.addVertex(G);
+        network.addVertex(H);
+        network.addVertex(I);
+        network.addVertex(J);
 
-        graph.addVertex(A);
-        graph.addVertex(B);
-        graph.addVertex(C);
-        graph.addVertex(D);
-        graph.addVertex(E);
-        graph.addVertex(F);
-        graph.addVertex(G);
-        graph.addVertex(H);
-        graph.addVertex(I);
-        graph.addVertex(J);
+        network.addEdge(A, B,1);
+        network.addEdge(A, F,2);
 
-        /*graph.addEdge(A, B);
-        graph.addEdge(A, F);
+        network.addEdge(B, C,3);
+        network.addEdge(B, D,4);
+        network.addEdge(F, G,5);
 
-        graph.addEdge(B, C);
-        graph.addEdge(B, D);
-        graph.addEdge(F, G);
+        network.addEdge(C, D,6);
+        network.addEdge(D, G,7);
 
-        graph.addEdge(C, D);
-        graph.addEdge(D, G);
-
-        graph.addEdge(G, H);
-        graph.addEdge(C, E);
-        graph.addEdge(H, E);*/
+        network.addEdge(G, H,8);
+        network.addEdge(C, E,9);
+        network.addEdge(H, E,10);
 
 
-        graph.addEdge(J,A);
-        graph.removeVertex(I);
+        Iterator<Vertex> itr = network.iteratorBFS(A);
 
-        System.out.println(graph.toString());
+        while(itr.hasNext()){
+            System.out.println(itr.next());
+        }
+
+
     }//Main
 
 }
