@@ -180,7 +180,7 @@ public class GraphList<T> implements GraphADT<T> {
                 }
             }
 
-            if(!found && !traversalStack.isEmpty()){
+            if (!found && !traversalStack.isEmpty()) {
                 traversalStack.pop();
             }
         }
@@ -190,7 +190,53 @@ public class GraphList<T> implements GraphADT<T> {
 
     @Override
     public Iterator<T> iteratorShortestPath(T startVertex, T targetVertex) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return iteratorShortestPath(this.getIndex(startVertex), this.getIndex(targetVertex));
+    }
+
+    public Iterator<T> iteratorShortestPath(int startIndex, int targetIndex) {
+        int index = startIndex;
+        int[] predecessor = new int[numVertices];
+        LinkedQueue<Integer> traversalQueue = new LinkedQueue<>();
+        ArrayUnorderedList<T> resultList = new ArrayUnorderedList<>();
+
+        if (!isValidIndex(startIndex) || !isValidIndex(targetIndex)
+                || (startIndex == targetIndex)) {
+            return resultList.iterator();
+        }
+
+        boolean[] visited = new boolean[numVertices];
+        for (int i = 0; i < numVertices; i++) {
+            visited[i] = false;
+        }
+
+        traversalQueue.enqueue(startIndex);
+        visited[startIndex] = true;
+        predecessor[startIndex] = -1;
+
+        while (!traversalQueue.isEmpty() && (index != targetIndex)) {
+            index = (traversalQueue.dequeue());
+
+            for (int i = 0; i < numVertices; i++) {
+                if (!visited[i] && this.adjList[index].contains(i)) {
+                    predecessor[i] = index;
+                    traversalQueue.enqueue(i);
+                    visited[i] = true;
+                }
+            }
+        }
+        if (index != targetIndex) // there is no possible path
+        {
+            return resultList.iterator();
+        }
+
+        resultList.addToFront(vertices[index]);
+
+        while(index != startIndex) {
+            index = predecessor[index];
+            resultList.addToFront(vertices[index]);
+        }
+
+        return resultList.iterator();
     }
 
     @Override

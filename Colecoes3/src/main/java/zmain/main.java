@@ -27,7 +27,7 @@ public class main {
      */
     public static void main(String[] args) {
 
-        GraphList<Vertex> graph = new GraphList();
+        GraphMatrix<Vertex> graph = new GraphMatrix();
 
         graph.addVertex(A);
         graph.addVertex(B);
@@ -52,7 +52,7 @@ public class main {
         graph.addEdge(C, E);
         graph.addEdge(H, E);
 
-        Iterator<Vertex> itr = graph.iteratorBFS(A);
+        Iterator<Vertex> itr = graph.iteratorShortestPath(A,E);
         
         while(itr.hasNext()){
             System.out.println(itr.next());

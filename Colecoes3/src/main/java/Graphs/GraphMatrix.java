@@ -1,13 +1,14 @@
 package graphs;
 
 import ADTs.GraphADT;
+
 import java.util.Iterator;
+
 import lists.unorderedLists.ArrayUnorderedList;
 import queues.LinkedQueue;
 import stacks.LinkedStack;
 
 /**
- *
  * @author Nome : José Pedro Fernandes Número: 8190239 Turma: 1
  */
 public class GraphMatrix<T> implements GraphADT<T> {
@@ -290,39 +291,34 @@ public class GraphMatrix<T> implements GraphADT<T> {
             return resultList.iterator();
         }
 
-        LinkedStack<Integer> stack = new LinkedStack<>();
-        index = targetIndex;
-        stack.push(index);
-        do {
-            index = predecessor[index];
-            stack.push(index);
-        } while (index != startIndex);
+        resultList.addToFront(vertices[index]);
 
-        while (!stack.isEmpty()) {
-            resultList.addToRear(vertices[(stack.pop())]);
+        while (index != startIndex) {
+            index = predecessor[index];
+            resultList.addToFront(vertices[index]);
         }
 
         return resultList.iterator();
     }
 
-    public int shortestPathLength(T vertex1, T vertex2){
+    public int shortestPathLength(T vertex1, T vertex2) {
         return (shortestPathLength(getIndex(vertex1), getIndex(vertex2)));
     }
-    
+
     public int shortestPathLength(int startIndex, int targetIndex) {
-        if(!indexIsValid(startIndex) || !indexIsValid(targetIndex)){
+        if (!indexIsValid(startIndex) || !indexIsValid(targetIndex)) {
             return 0;
         }
-        
+
         Iterator<T> itr = this.iteratorShortestPath(startIndex, targetIndex);
         int size = 0;
-        
-        if(!itr.hasNext()){
+
+        if (!itr.hasNext()) {
             return 0;
         }
-        
+
         itr.next();
-        
+
         while (itr.hasNext()) {
             size++;
             itr.next();

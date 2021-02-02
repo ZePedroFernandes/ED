@@ -237,4 +237,106 @@ public class GraphListTest {
         String expected = "H->E->C->B->A->F->G->D";
         assertEquals(expected,actual);
     }
+
+    @Test
+    public void test_shortestPath_1() {
+        graph.addVertex(A);
+        graph.addVertex(B);
+        graph.addVertex(C);
+        graph.addVertex(D);
+        graph.addVertex(E);
+        graph.addVertex(F);
+        graph.addVertex(G);
+        graph.addVertex(H);
+
+        graph.addEdge(A, B);
+        graph.addEdge(A, F);
+
+        graph.addEdge(B, C);
+        graph.addEdge(B, D);
+        graph.addEdge(F, G);
+
+        graph.addEdge(C, D);
+        graph.addEdge(D, G);
+
+        graph.addEdge(G, H);
+        graph.addEdge(C, E);
+        graph.addEdge(H, E);
+
+        Iterator<Vertex> itr = graph.iteratorShortestPath(A, E);
+
+        assertEquals(A, itr.next());
+        assertEquals(B, itr.next());
+        assertEquals(C, itr.next());
+        assertEquals(E, itr.next());
+    }
+
+    @Test
+    public void test_shortestPath_2() {
+        graph.addVertex(A);
+
+        Iterator<Vertex> iterator = graph.iteratorShortestPath(A, A);
+
+        assertFalse(iterator.hasNext());
+    }
+
+    @Test
+    public void test_shortestPath_3() {
+        graph.addVertex(A);
+        graph.addVertex(B);
+
+        graph.addEdge(A, B);
+
+        Iterator<Vertex> itr = graph.iteratorShortestPath(A, B);
+
+        assertEquals(A, itr.next());
+        assertEquals(B, itr.next());
+    }
+
+    @Test
+    public void test_shortestPath_4() {
+        graph.addVertex(A);
+        graph.addVertex(B);
+        graph.addVertex(C);
+        graph.addVertex(D);
+        graph.addVertex(E);
+        graph.addVertex(F);
+
+        graph.addEdge(A, B);
+        graph.addEdge(A, C);
+        graph.addEdge(A, F);
+        graph.addEdge(C, D);
+        graph.addEdge(D, E);
+        graph.addEdge(E, F);
+
+        Iterator<Vertex> itr = graph.iteratorShortestPath(A, F);
+
+        assertEquals(A, itr.next());
+        assertEquals(F, itr.next());
+    }
+
+    @Test
+    public void test_shortestPath_5() {
+        graph.addVertex(A);
+        graph.addVertex(B);
+        graph.addVertex(C);
+        graph.addVertex(D);
+        graph.addVertex(E);
+        graph.addVertex(F);
+
+        graph.addEdge(A, B);
+        graph.addEdge(A, C);
+        //graph.addEdge(A,F);
+        graph.addEdge(C, D);
+        graph.addEdge(D, E);
+        graph.addEdge(E, F);
+
+        Iterator<Vertex> itr = graph.iteratorShortestPath(A, F);
+
+        assertEquals(A, itr.next());
+        assertEquals(C, itr.next());
+        assertEquals(D, itr.next());
+        assertEquals(E, itr.next());
+        assertEquals(F, itr.next());
+    }
 }
