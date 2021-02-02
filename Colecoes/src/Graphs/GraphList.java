@@ -17,7 +17,7 @@ public class GraphList<T> implements GraphADT<T> {
     protected T[] vertices;
 
     public GraphList() {
-        this.adjList = (LinkedList<T>[]) new Object[DEFAUL_CAPACITY];
+        this.adjList = new LinkedList[DEFAUL_CAPACITY];
         this.numVertices = 0;
         this.vertices = (T[]) new Object[DEFAUL_CAPACITY];
     }
