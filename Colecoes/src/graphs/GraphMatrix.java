@@ -1,4 +1,4 @@
-package Graphs;
+package graphs;
 
 import ADTs.GraphADT;
 import java.util.Iterator;
@@ -210,6 +210,7 @@ public class GraphMatrix<T> implements GraphADT<T> {
     public Iterator iteratorShortestPath(T startVertex, T targetVertex) {
         return (iteratorShortestPath(getIndex(startVertex), getIndex(targetVertex)));
     }
+/*
 
     public Iterator iteratorShortestPath(int startIndex, int targetIndex) {
         Integer x;
@@ -228,32 +229,84 @@ public class GraphMatrix<T> implements GraphADT<T> {
 
         transversalQueue.enqueue(startIndex);
         visited[startIndex] = true;
-        
+
         while (!transversalQueue.isEmpty() && !transversalQueue.first().equals(targetIndex)) {
             x = transversalQueue.dequeue();
 
             for (int i = 0; i < numVertices; i++) {
                 if (adjMatrix[x][i] && !visited[i]) {
                     transversalQueue.enqueue(i);
-                    pairs.push(new Pair<>(x,i));
+                    pairs.push(new Pair<>(x, i));
                     visited[i] = true;
                 }
             }
         }
         Pair<Integer, Integer> pair;
         Integer destination = targetIndex;
-        
-        while(destination != startIndex){
+
+        while (destination != startIndex) {
             pair = pairs.pop();
-            if(pair.end.equals(destination)){
+            if (pair.end.equals(destination)) {
                 destination = pair.start;
                 resultList.addToFront(vertices[pair.start]);
             }
         }
-        if(!resultList.isEmpty()){
+        if (!resultList.isEmpty()) {
             resultList.addToRear(vertices[targetIndex]);
         }
-        
+
+        return resultList.iterator();
+    }
+*/
+
+    public Iterator iteratorShortestPath(int startIndex, int targetIndex) {
+        int index = startIndex;
+        int[] predecessor = new int[numVertices];
+        LinkedQueue<Integer> traversalQueue = new LinkedQueue<>();
+        ArrayUnorderedList<T> resultList = new ArrayUnorderedList<>();
+
+        if (!indexIsValid(startIndex) || !indexIsValid(targetIndex)
+                || (startIndex == targetIndex)) {
+            return resultList.iterator();
+        }
+
+        boolean[] visited = new boolean[numVertices];
+        for (int i = 0; i < numVertices; i++) {
+            visited[i] = false;
+        }
+
+        traversalQueue.enqueue(startIndex);
+        visited[startIndex] = true;
+        predecessor[startIndex] = -1;
+
+        while (!traversalQueue.isEmpty() && (index != targetIndex)) {
+            index = (traversalQueue.dequeue());
+
+            for (int i = 0; i < numVertices; i++) {
+                if (adjMatrix[index][i] && !visited[i]) {
+                    predecessor[i] = index;
+                    traversalQueue.enqueue(i);
+                    visited[i] = true;
+                }
+            }
+        }
+        if (index != targetIndex) // no path must have been found
+        {
+            return resultList.iterator();
+        }
+
+        LinkedStack<T> stack = new LinkedStack<>();
+        index = targetIndex;
+        stack.push(vertices[index]);
+        do {
+            index = predecessor[index];
+            stack.push(vertices[index]);
+        } while (index != startIndex);
+
+        while (!stack.isEmpty()) {
+            resultList.addToRear((stack.pop()));
+        }
+
         return resultList.iterator();
     }
 

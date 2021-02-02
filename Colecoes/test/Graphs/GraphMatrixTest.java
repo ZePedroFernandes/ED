@@ -1,5 +1,7 @@
 package Graphs;
 
+import graphs.GraphMatrix;
+import graphs.Vertex;
 import static Graphs.GraphMatrixTest.A;
 import static Graphs.GraphMatrixTest.B;
 import static Graphs.GraphMatrixTest.C;
