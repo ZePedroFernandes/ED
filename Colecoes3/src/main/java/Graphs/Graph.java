@@ -198,7 +198,12 @@ public class Graph<T> implements GraphADT<T> {
 
     @Override
     public Iterator<T> iteratorShortestPath(T startVertex, T targetVertex) {
-        return (iteratorShortestPath(getIndex(startVertex), getIndex(targetVertex)));
+        Iterator<Integer> indices = iteratorShortestPathIndices(getIndex(startVertex),getIndex(targetVertex));
+        ArrayUnorderedList<T> resultList = new ArrayUnorderedList<>();
+        while(indices.hasNext()){
+            resultList.addToRear(vertices[indices.next()]);
+        }
+        return resultList.iterator();
     }
 
     /*public Iterator<T> iteratorShortestPath2(int startIndex, int targetIndex) {
@@ -247,11 +252,11 @@ public class Graph<T> implements GraphADT<T> {
         return resultList.iterator();
     }
 */
-    public Iterator<T> iteratorShortestPath(int startIndex, int targetIndex) {
+    public Iterator<Integer> iteratorShortestPathIndices(int startIndex, int targetIndex) {
         int index = startIndex;
         int[] predecessor = new int[numVertices];
         LinkedQueue<Integer> traversalQueue = new LinkedQueue<>();
-        ArrayUnorderedList<T> resultList = new ArrayUnorderedList<>();
+        ArrayUnorderedList<Integer> resultList = new ArrayUnorderedList<>();
 
         if (!isValidIndex(startIndex) || !isValidIndex(targetIndex)
                 || (startIndex == targetIndex)) {
@@ -282,11 +287,11 @@ public class Graph<T> implements GraphADT<T> {
             return resultList.iterator();
         }
 
-        resultList.addToFront(vertices[index]);
+        resultList.addToFront(index);
 
         while (index != startIndex) {
             index = predecessor[index];
-            resultList.addToFront(vertices[index]);
+            resultList.addToFront(index);
         }
 
         return resultList.iterator();
@@ -301,7 +306,7 @@ public class Graph<T> implements GraphADT<T> {
             return 0;
         }
 
-        Iterator<T> itr = this.iteratorShortestPath(startIndex, targetIndex);
+        Iterator<Integer> itr = this.iteratorShortestPathIndices(startIndex, targetIndex);
         int size = 0;
 
         if (!itr.hasNext()) {

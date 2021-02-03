@@ -233,6 +233,24 @@ public class GraphTest {
     }
 
     @Test
+    public void test_6(){
+        graph.addVertex(A);
+        graph.addVertex(B);
+        graph.addVertex(C);
+        graph.addVertex(D);
+        graph.addVertex(E);
+        graph.addVertex(F);
+
+        graph.addEdge(A, B);
+        graph.addEdge(A, C);
+
+        Iterator<Vertex> itr = graph.iteratorShortestPath(A,E);
+        Iterator<Vertex> itr2 = graph.iteratorShortestPath(C,E);
+        assertFalse(itr.hasNext());
+        assertFalse(itr2.hasNext());
+    }
+
+    @Test
     public void test_ShortestPathLength_1() {
         this.setDefaultGraph();
 

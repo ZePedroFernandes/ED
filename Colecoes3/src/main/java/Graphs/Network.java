@@ -248,15 +248,20 @@ public class Network<T> extends Graph<T> implements NetworkADT<T> {
      */
     @Override
     public Iterator<T> iteratorShortestPath(T startVertex, T targetVertex) {
-        return iteratorShortestPath(getIndex(startVertex), getIndex(targetVertex));
+        Iterator<Integer> indices = iteratorShortestPathIndices(getIndex(startVertex), getIndex(targetVertex));
+        ArrayUnorderedList<T> resultList = new ArrayUnorderedList<>();
+        while (indices.hasNext()) {
+            resultList.addToRear(vertices[indices.next()]);
+        }
+        return resultList.iterator();
     }
 
-    public Iterator<T> iteratorShortestPath(int startIndex, int targetIndex) {
+    public Iterator<Integer> iteratorShortestPathIndices(int startIndex, int targetIndex) {
         int index;
         double weight;
         int[] predecessor = new int[numVertices];
         LinkedHeap<Double> traversalMinHeap = new LinkedHeap<>();
-        ArrayUnorderedList<T> resultList =
+        ArrayUnorderedList<Integer> resultList =
                 new ArrayUnorderedList<>();
         LinkedStack<Integer> stack = new LinkedStack<Integer>();
 
@@ -328,14 +333,13 @@ public class Network<T> extends Graph<T> implements NetworkADT<T> {
         } while (index != startIndex);
 
         while (!stack.isEmpty())
-            resultList.addToRear(vertices[(stack.pop())]);
+            resultList.addToRear((stack.pop()));
 
         return resultList.iterator();
     }
 
     protected int getIndexOfAdjVertexWithWeightOf(boolean[] visited,
-                                                  double[] pathWeight, double weight)
-    {
+                                                  double[] pathWeight, double weight) {
         for (int i = 0; i < numVertices; i++)
             if ((pathWeight[i] == weight) && !visited[i])
                 for (int j = 0; j < numVertices; j++)
@@ -418,7 +422,23 @@ public class Network<T> extends Graph<T> implements NetworkADT<T> {
      */
     @Override
     public double shortestPathWeight(T vertex1, T vertex2) {
-        return 0;
+        Iterator<Integer> indices = iteratorShortestPathIndices(getIndex(vertex1), getIndex(vertex2));
+        double result = 0;
+
+        if (!indices.hasNext()) {
+            return result;
+        }
+
+        Integer index1;
+        Integer index2 = indices.next();
+
+        while (indices.hasNext()) {
+            index1 = index2;
+            index2 = indices.next();
+            result += adjMatrix[index1][index2];
+        }
+
+        return result;
     }
 
     public String toString() {
