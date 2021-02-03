@@ -36,7 +36,7 @@ public class Network<T> extends Graph<T> implements NetworkADT<T> {
         this.adjMatrix = expandedMatrix;
     }
 
-    private boolean isValidIndex(int index) {
+    private boolean indexIsValid(int index) {
         return ((index < numVertices) && (index >= 0));
     }
 
@@ -82,7 +82,7 @@ public class Network<T> extends Graph<T> implements NetworkADT<T> {
     }
 
     public void removeVertex(int index) {
-        if (isValidIndex(index)) {
+        if (indexIsValid(index)) {
             this.numVertices--;
             if (numVertices - index >= 0)
                 System.arraycopy(this.vertices, index + 1, this.vertices, index, numVertices - index);
@@ -120,7 +120,7 @@ public class Network<T> extends Graph<T> implements NetworkADT<T> {
     }
 
     protected void addEdge(int index1, int index2, double weight) {
-        if (isValidIndex(index1) && isValidIndex(index2)) {
+        if (indexIsValid(index1) && indexIsValid(index2)) {
             this.adjMatrix[index1][index2] = weight;
             this.adjMatrix[index2][index1] = weight;
         }
@@ -138,7 +138,7 @@ public class Network<T> extends Graph<T> implements NetworkADT<T> {
     }
 
     public void removeEdge(int index1, int index2) {
-        if (isValidIndex(index1) && isValidIndex(index2)) {
+        if (indexIsValid(index1) && indexIsValid(index2)) {
             this.adjMatrix[index1][index2] = Double.POSITIVE_INFINITY;
             this.adjMatrix[index2][index1] = Double.POSITIVE_INFINITY;
         }
@@ -160,7 +160,7 @@ public class Network<T> extends Graph<T> implements NetworkADT<T> {
         LinkedQueue<Integer> transversalQueue = new LinkedQueue<>();
         ArrayUnorderedList<T> resultList = new ArrayUnorderedList<>();
 
-        if (!isValidIndex(startIndex)) {
+        if (!indexIsValid(startIndex)) {
             return resultList.iterator();
         }
 
@@ -204,7 +204,7 @@ public class Network<T> extends Graph<T> implements NetworkADT<T> {
         LinkedStack<Integer> traversalStack = new LinkedStack<>();
         ArrayUnorderedList<T> resultList = new ArrayUnorderedList<>();
 
-        if (!isValidIndex(startIndex)) {
+        if (!indexIsValid(startIndex)) {
             return resultList.iterator();
         }
 
@@ -273,7 +273,7 @@ public class Network<T> extends Graph<T> implements NetworkADT<T> {
         for (int i = 0; i < numVertices; i++)
             visited[i] = false;
 
-        if (!isValidIndex(startIndex) || !isValidIndex(targetIndex) ||
+        if (!indexIsValid(startIndex) || !indexIsValid(targetIndex) ||
                 (startIndex == targetIndex) || isEmpty())
             return resultList.iterator();
 
@@ -439,6 +439,97 @@ public class Network<T> extends Graph<T> implements NetworkADT<T> {
         }
 
         return result;
+    }
+
+    protected int[] getEdgeWithWeightOf(double weight, boolean[] visited)
+    {
+        int[] edge = new int[2];
+        for (int i = 0; i < numVertices; i++)
+            for (int j = 0; j < numVertices; j++)
+                if ((adjMatrix[i][j] == weight) && (visited[i] ^ visited[j]))
+                {
+                    edge[0] = i;
+                    edge[1] = j;
+                    return edge;
+                }
+
+        /* Will only get to here if a valid edge is not found */
+        edge[0] = -1;
+        edge[1] = -1;
+        return edge;
+    }
+
+    public Network<T> mstNetwork()
+    {
+        int x, y;
+        int index;
+        double weight;
+        int[] edge = new int[2];
+        LinkedHeap<Double> minHeap = new LinkedHeap<>();
+        Network<T> resultGraph = new Network<>();
+
+        if (isEmpty() || !isConnected())
+            return resultGraph;
+
+        resultGraph.adjMatrix = new double[numVertices][numVertices];
+        for (int i = 0; i < numVertices; i++)
+            for (int j = 0; j < numVertices; j++)
+                resultGraph.adjMatrix[i][j] = Double.POSITIVE_INFINITY;
+        resultGraph.vertices = (T[])(new Object[numVertices]);
+
+        boolean[] visited = new boolean[numVertices];
+        for (int i = 0; i < numVertices; i++)
+            visited[i] = false;
+
+        edge[0] = 0;
+        resultGraph.vertices[0] = this.vertices[0];
+        resultGraph.numVertices++;
+        visited[0] = true;
+
+        /* Add all edges, which are adjacent to the starting vertex,
+         to the heap */
+        for (int i = 0; i < numVertices; i++)
+            minHeap.addElement(adjMatrix[0][i]);
+
+        while ((resultGraph.size() < this.size()) && !minHeap.isEmpty())
+        {
+            /* Get the edge with the smallest weight that has exactly
+             one vertex already in the resultGraph */
+            do
+            {
+                weight = (minHeap.removeMin());
+                edge = getEdgeWithWeightOf(weight, visited);
+            } while (!indexIsValid(edge[0]) || !indexIsValid(edge[1]));
+
+            x = edge[0];
+            y = edge[1];
+            if (!visited[x])
+                index = x;
+            else
+                index = y;
+
+            /* Add the new edge and vertex to the resultGraph */
+            resultGraph.vertices[index] = this.vertices[index];
+            visited[index] = true;
+            resultGraph.numVertices++;
+
+            resultGraph.adjMatrix[x][y] = this.adjMatrix[x][y];
+            resultGraph.adjMatrix[y][x] = this.adjMatrix[y][x];
+
+            /* Add all edges, that are adjacent to the newly added vertex,
+             to the heap */
+            for (int i = 0; i < numVertices; i++)
+            {
+                if (!visited[i] && (this.adjMatrix[i][index] <
+                        Double.POSITIVE_INFINITY))
+                {
+                    edge[0] = index;
+                    edge[1] = i;
+                    minHeap.addElement(adjMatrix[index][i]);
+                }
+            }
+        }
+        return resultGraph;
     }
 
     public String toString() {

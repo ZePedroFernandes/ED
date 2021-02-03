@@ -56,7 +56,7 @@ public class Graph<T> implements GraphADT<T> {
         numVertices++;
     }
 
-    private boolean isValidIndex(int index) {
+    private boolean indexIsValid(int index) {
         return ((index < numVertices) && (index >= 0));
     }
 
@@ -76,7 +76,7 @@ public class Graph<T> implements GraphADT<T> {
     }
 
     public void removeVertex(int index) {
-        if (isValidIndex(index)) {
+        if (indexIsValid(index)) {
             this.numVertices--;
             if (numVertices - index >= 0)
                 System.arraycopy(this.vertices, index + 1, this.vertices, index, numVertices - index);
@@ -96,7 +96,7 @@ public class Graph<T> implements GraphADT<T> {
     }
 
     public void addEdge(int index1, int index2) {
-        if (isValidIndex(index1) && isValidIndex(index2)) {
+        if (indexIsValid(index1) && indexIsValid(index2)) {
             adjMatrix[index1][index2] = true;
             adjMatrix[index2][index1] = true;
         }
@@ -108,7 +108,7 @@ public class Graph<T> implements GraphADT<T> {
     }
 
     public void removeEdge(int index1, int index2) {
-        if (isValidIndex(index1) && isValidIndex(index2)) {
+        if (indexIsValid(index1) && indexIsValid(index2)) {
             adjMatrix[index1][index2] = false;
             adjMatrix[index2][index1] = false;
         }
@@ -124,7 +124,7 @@ public class Graph<T> implements GraphADT<T> {
         LinkedQueue<Integer> transversalQueue = new LinkedQueue<>();
         ArrayUnorderedList<T> resultList = new ArrayUnorderedList<>();
 
-        if (!isValidIndex(startIndex)) {
+        if (!indexIsValid(startIndex)) {
             return resultList.iterator();
         }
 
@@ -162,7 +162,7 @@ public class Graph<T> implements GraphADT<T> {
         LinkedStack<Integer> traversalStack = new LinkedStack<>();
         ArrayUnorderedList<T> resultList = new ArrayUnorderedList<>();
 
-        if (!isValidIndex(startIndex)) {
+        if (!indexIsValid(startIndex)) {
             return resultList.iterator();
         }
 
@@ -211,7 +211,7 @@ public class Graph<T> implements GraphADT<T> {
         LinkedQueue<Integer> traversalQueue = new LinkedQueue<>();
         ArrayUnorderedList<Integer> resultList = new ArrayUnorderedList<>();
 
-        if (!isValidIndex(startIndex) || !isValidIndex(targetIndex)
+        if (!indexIsValid(startIndex) || !indexIsValid(targetIndex)
                 || (startIndex == targetIndex)) {
             return resultList.iterator();
         }
@@ -255,7 +255,7 @@ public class Graph<T> implements GraphADT<T> {
     }
 
     public int shortestPathLength(int startIndex, int targetIndex) {
-        if (!isValidIndex(startIndex) || !isValidIndex(targetIndex)) {
+        if (!indexIsValid(startIndex) || !indexIsValid(targetIndex)) {
             return 0;
         }
 

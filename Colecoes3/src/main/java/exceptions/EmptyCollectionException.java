@@ -6,7 +6,7 @@ package exceptions;
 Número: 8190239 
 Turma: 1
  */
-public class EmptyCollectionException extends Exception{
+public class EmptyCollectionException extends RuntimeException{
 
     public EmptyCollectionException() {
     }

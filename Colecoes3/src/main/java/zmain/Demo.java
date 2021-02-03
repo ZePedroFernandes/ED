@@ -52,13 +52,9 @@ public class Demo {
         network.addEdge(C, E,1);
         network.addEdge(H, E,1);
 
+        Network<Vertex> mst = network.mstNetwork();
 
-        Iterator<Vertex> itr = network.iteratorShortestPath(A,E);
-
-        while(itr.hasNext()){
-            System.out.println(itr.next());
-        }
-
+        System.out.println(mst);
 
     }//Main
 
