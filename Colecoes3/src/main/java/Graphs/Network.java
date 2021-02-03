@@ -196,7 +196,7 @@ public class Network<T> extends Graph<T> implements NetworkADT<T> {
         return iteratorDFS(getIndex(startVertex));
     }
 
-    public Iterator<T> iteratorDFS(int startIndex){
+    public Iterator<T> iteratorDFS(int startIndex) {
         Integer x;
         boolean found;
         LinkedStack<Integer> traversalStack = new LinkedStack<>();
@@ -246,6 +246,10 @@ public class Network<T> extends Graph<T> implements NetworkADT<T> {
      */
     @Override
     public Iterator<T> iteratorShortestPath(T startVertex, T targetVertex) {
+        return iteratorShortestPath(getIndex(startVertex),getIndex(targetVertex));
+    }
+
+    public Iterator<T> iteratorShortestPath(int startIndex, int targetIndex) {
         return null;
     }
 
@@ -256,7 +260,7 @@ public class Network<T> extends Graph<T> implements NetworkADT<T> {
      */
     @Override
     public boolean isEmpty() {
-        return false;
+        return this.numVertices == 0;
     }
 
     /**
@@ -266,7 +270,40 @@ public class Network<T> extends Graph<T> implements NetworkADT<T> {
      */
     @Override
     public boolean isConnected() {
-        return false;
+        Integer x;
+        LinkedQueue<Integer> transversalQueue = new LinkedQueue<>();
+
+        if (isEmpty()) {
+            return false;
+        }
+
+        if (this.size() == 1) {
+            return true;
+        }
+
+        int connectedToFirstVertex = 1;
+        boolean[] visited = new boolean[this.numVertices];
+
+        for (int i = 0; i < numVertices; i++) {
+            visited[i] = false;
+        }
+
+        transversalQueue.enqueue(0);
+        visited[0] = true;
+
+        while (!transversalQueue.isEmpty()) {
+            x = transversalQueue.dequeue();
+
+            for (int i = 0; i < numVertices; i++) {
+                if ((adjMatrix[x][i] != null) && !visited[i]) {
+                    transversalQueue.enqueue(i);
+                    connectedToFirstVertex++;
+                    visited[i] = true;
+                }
+            }
+        }
+
+        return (connectedToFirstVertex == numVertices);
     }
 
     /**
@@ -276,7 +313,7 @@ public class Network<T> extends Graph<T> implements NetworkADT<T> {
      */
     @Override
     public int size() {
-        return 0;
+        return this.numVertices;
     }
 
     /**
