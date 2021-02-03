@@ -14,6 +14,7 @@ public class Network<T> extends Graph<T> implements NetworkADT<T> {
     protected double[][] adjMatrix;
     protected double DEFAULT_WEIGHT = 1;
 
+    @SuppressWarnings("unchecked")
     public Network() {
         this.numVertices = 0;
         this.vertices = (T[]) (new Object[DEFAULT_CAPACITY]);
@@ -83,9 +84,8 @@ public class Network<T> extends Graph<T> implements NetworkADT<T> {
     public void removeVertex(int index) {
         if (isValidIndex(index)) {
             this.numVertices--;
-            for (int i = index; i < numVertices; i++) {
-                this.vertices[i] = this.vertices[i + 1];
-            }
+            if (numVertices - index >= 0)
+                System.arraycopy(this.vertices, index + 1, this.vertices, index, numVertices - index);
 
             for (int i = index; i < numVertices; i++) {
                 for (int j = 0; j < numVertices; j++) {
@@ -263,7 +263,7 @@ public class Network<T> extends Graph<T> implements NetworkADT<T> {
         LinkedHeap<Double> traversalMinHeap = new LinkedHeap<>();
         ArrayUnorderedList<Integer> resultList =
                 new ArrayUnorderedList<>();
-        LinkedStack<Integer> stack = new LinkedStack<Integer>();
+        LinkedStack<Integer> stack = new LinkedStack<>();
 
         double[] pathWeight = new double[numVertices];
         for (int i = 0; i < numVertices; i++)
@@ -445,7 +445,7 @@ public class Network<T> extends Graph<T> implements NetworkADT<T> {
         if (numVertices == 0)
             return "Graph is empty";
 
-        StringBuilder result = new StringBuilder(new String(""));
+        StringBuilder result = new StringBuilder();
 
         // Print the adjacency Matrix
         result.append("Adjacency Matrix\n");

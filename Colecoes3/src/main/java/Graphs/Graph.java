@@ -21,21 +21,21 @@ public class Graph<T> implements GraphADT<T> {
     /**
      * Creates an empty graph.
      */
+    @SuppressWarnings("unchecked")
     public Graph() {
         numVertices = 0;
         adjMatrix = new boolean[DEFAULT_CAPACITY][DEFAULT_CAPACITY];
         vertices = (T[]) (new Object[DEFAULT_CAPACITY]);
     }
 
+    @SuppressWarnings("unchecked")
     private void expandCapacity() {
         T[] expandedVertices = (T[]) new Object[vertices.length * 2];
         boolean[][] expandedMatrix = new boolean[vertices.length * 2][vertices.length * 2];
 
         for (int i = 0; i < vertices.length; i++) {
 
-            for (int j = 0; j < vertices.length; j++) {
-                expandedMatrix[i][j] = adjMatrix[i][j];
-            }
+            System.arraycopy(adjMatrix[i], 0, expandedMatrix[i], 0, vertices.length);
 
             expandedVertices[i] = vertices[i];
         }
@@ -78,9 +78,8 @@ public class Graph<T> implements GraphADT<T> {
     public void removeVertex(int index) {
         if (isValidIndex(index)) {
             this.numVertices--;
-            for (int i = index; i < numVertices; i++) {
-                this.vertices[i] = this.vertices[i + 1];
-            }
+            if (numVertices - index >= 0)
+                System.arraycopy(this.vertices, index + 1, this.vertices, index, numVertices - index);
 
             for(int i = index; i < numVertices; i++){
                 for(int j = 0; j < numVertices; j++){
@@ -206,52 +205,6 @@ public class Graph<T> implements GraphADT<T> {
         return resultList.iterator();
     }
 
-    /*public Iterator<T> iteratorShortestPath2(int startIndex, int targetIndex) {
-        Integer x;
-        LinkedQueue<Integer> transversalQueue = new LinkedQueue<>();
-        LinkedStack<Pair<Integer, Integer>> pairs = new LinkedStack<>();
-        ArrayUnorderedList<T> resultList = new ArrayUnorderedList<>();
-
-        if (!isValidIndex(startIndex) || !isValidIndex(targetIndex)) {
-            return resultList.iterator();
-        }
-
-        boolean[] visited = new boolean[this.numVertices];
-        for (int i = 0; i < numVertices; i++) {
-            visited[i] = false;
-        }
-
-        transversalQueue.enqueue(startIndex);
-        visited[startIndex] = true;
-
-        while (!transversalQueue.isEmpty() && !transversalQueue.first().equals(targetIndex)) {
-            x = transversalQueue.dequeue();
-
-            for (int i = 0; i < numVertices; i++) {
-                if (adjMatrix[x][i] && !visited[i]) {
-                    transversalQueue.enqueue(i);
-                    pairs.push(new Pair<>(x, i));
-                    visited[i] = true;
-                }
-            }
-        }
-        Pair<Integer, Integer> pair;
-        Integer destination = targetIndex;
-
-        while (destination != startIndex) {
-            pair = pairs.pop();
-            if (pair.end.equals(destination)) {
-                destination = pair.start;
-                resultList.addToFront(vertices[pair.start]);
-            }
-        }
-        if (!resultList.isEmpty()) {
-            resultList.addToRear(vertices[targetIndex]);
-        }
-
-        return resultList.iterator();
-    }
-*/
     public Iterator<Integer> iteratorShortestPathIndices(int startIndex, int targetIndex) {
         int index = startIndex;
         int[] predecessor = new int[numVertices];
