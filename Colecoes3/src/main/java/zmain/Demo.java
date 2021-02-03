@@ -1,6 +1,5 @@
 package zmain;
 
-import graphs.Graph;
 import graphs.Network;
 import graphs.Vertex;
 
@@ -9,7 +8,7 @@ import java.util.Iterator;
 /**
  * @author Nome : José Pedro Fernandes Número: 8190239 Turma: 1
  */
-public class main {
+public class Demo {
     static final Vertex A = new Vertex("A", 3);
     static final Vertex B = new Vertex("B", 3);
     static final Vertex C = new Vertex("C", 3);
@@ -40,21 +39,21 @@ public class main {
         network.addVertex(J);
 
         network.addEdge(A, B,1);
-        network.addEdge(A, F,2);
+        network.addEdge(A, F,1);
 
-        network.addEdge(B, C,3);
-        network.addEdge(B, D,4);
-        network.addEdge(F, G,5);
+        network.addEdge(B, C,1);
+        network.addEdge(B, D,1);
+        network.addEdge(F, G,1);
 
-        network.addEdge(C, D,6);
-        network.addEdge(D, G,7);
+        network.addEdge(C, D,1);
+        network.addEdge(D, G,1);
 
-        network.addEdge(G, H,8);
-        network.addEdge(C, E,9);
-        network.addEdge(H, E,10);
+        network.addEdge(G, H,1);
+        network.addEdge(C, E,1);
+        network.addEdge(H, E,1);
 
 
-        Iterator<Vertex> itr = network.iteratorBFS(A);
+        Iterator<Vertex> itr = network.iteratorShortestPath(A,E);
 
         while(itr.hasNext()){
             System.out.println(itr.next());

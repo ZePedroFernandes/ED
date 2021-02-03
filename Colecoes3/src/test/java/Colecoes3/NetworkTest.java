@@ -24,7 +24,7 @@ public class NetworkTest {
         network = new Network<>();
     }
 
-    public void setDefaultNetwork() {
+    public void addVertices(){
         network.addVertex(A);
         network.addVertex(B);
         network.addVertex(C);
@@ -33,6 +33,10 @@ public class NetworkTest {
         network.addVertex(F);
         network.addVertex(G);
         network.addVertex(H);
+    }
+
+    public void setDefaultNetwork() {
+        addVertices();
 
         network.addEdge(A, B);
         network.addEdge(A, F);
@@ -49,6 +53,42 @@ public class NetworkTest {
         network.addEdge(H, E);
     }
 
+    public void setDefaultNetwork2(){
+        addVertices();
+
+        network.addEdge(A, B,2);
+        network.addEdge(A, F);
+
+        network.addEdge(B, C,2);
+        network.addEdge(B, D);
+        network.addEdge(F, G);
+
+        network.addEdge(C, D);
+        network.addEdge(D, G);
+
+        network.addEdge(G, H);
+        network.addEdge(C, E,2);
+        network.addEdge(H, E);
+    }
+
+    public void setDefaultNetwork3(){
+        addVertices();
+
+        network.addEdge(A, B,3);
+        network.addEdge(A, F,3);
+
+        network.addEdge(B, C,2);
+        network.addEdge(B, D);
+        network.addEdge(F, G,2);
+
+        network.addEdge(C, D,4);
+        network.addEdge(D, G,10);
+
+        network.addEdge(G, H,1);
+        network.addEdge(C, E,2);
+        network.addEdge(H, E,2);
+    }
+
     private String getBFSActualString(Vertex vertex) {
         Iterator<Vertex> itr = network.iteratorBFS(vertex);
         return buildString(itr);
@@ -56,6 +96,11 @@ public class NetworkTest {
 
     private String getDFSActualString(Vertex vertex) {
         Iterator<Vertex> itr = network.iteratorDFS(vertex);
+        return buildString(itr);
+    }
+
+    private String getShortestPathActualString(Vertex vertex1, Vertex vertex2){
+        Iterator<Vertex> itr = network.iteratorShortestPath(vertex1,vertex2);
         return buildString(itr);
     }
 
@@ -195,6 +240,77 @@ public class NetworkTest {
         setDefaultNetwork();
         String actual = getDFSActualString(H);
         String expected = "H->E->C->B->A->F->G->D";
+        assertEquals(expected,actual);
+    }
+
+    @Test
+    public void test_ShortestPath_1(){
+        setDefaultNetwork();
+        String actual = getShortestPathActualString(A,E);
+        String expected = "A->B->C->E";
+        assertEquals(expected,actual);
+    }
+
+    @Test
+    public void test_ShortestPath_2(){
+        setDefaultNetwork2();
+        String actual = getShortestPathActualString(A,E);
+        String expected = "A->F->G->H->E";
+        assertEquals(expected,actual);
+    }
+
+    @Test
+    public void test_ShortestPath_3(){
+        addVertices();
+
+        network.addEdge(A, B,2);
+        network.addEdge(A, F,3);
+
+        network.addEdge(B, C,2);
+        network.addEdge(B, D);
+        network.addEdge(F, G);
+
+        network.addEdge(C, D,4);
+        network.addEdge(D, G);
+
+        network.addEdge(G, H,5);
+        network.addEdge(C, E,2);
+        network.addEdge(H, E,2);
+
+        String actual = getShortestPathActualString(F,C);
+        String expected = "F->G->D->B->C";
+        assertEquals(expected,actual);
+    }
+
+    @Test
+    public void test_ShortestPath_4(){
+        addVertices();
+
+        network.addEdge(A, B,2);
+        network.addEdge(A, F,3);
+
+        network.addEdge(B, C,2);
+        network.addEdge(B, D);
+        network.addEdge(F, G);
+
+        network.addEdge(C, D,4);
+        network.addEdge(D, G);
+
+        network.addEdge(G, H,1);
+        network.addEdge(C, E,2);
+        network.addEdge(H, E,2);
+
+        String actual = getShortestPathActualString(E,D);
+        String expected = "E->H->G->D";
+        assertEquals(expected,actual);
+    }
+
+    @Test
+    public void test_ShortestPath_5(){
+        setDefaultNetwork3();
+
+        String actual = getShortestPathActualString(G,D);
+        String expected = "G->H->E->C->B->D";
         assertEquals(expected,actual);
     }
 }
