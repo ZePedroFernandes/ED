@@ -27,30 +27,38 @@ public class Demo {
 
         Network<Vertex> network = new Network<>();
 
-        network.addVertex(A);
-        network.addVertex(B);
-        network.addVertex(C);
-        network.addVertex(D);
-        network.addVertex(E);
+        network.addVertex(A);//1
+        network.addVertex(B);//2
+        network.addVertex(C);//3
+        network.addVertex(D);//4
+        network.addVertex(E);//5
         network.addVertex(F);
         network.addVertex(G);
         network.addVertex(H);
-        network.addVertex(I);
-        network.addVertex(J);
 
-        network.addEdge(A, B,1);
-        network.addEdge(A, F,1);
+        /*network.addEdge(A, B,12);
+        network.addEdge(A, D,6);
 
-        network.addEdge(B, C,1);
-        network.addEdge(B, D,1);
-        network.addEdge(F, G,1);
+        network.addEdge(B, D,8);
+        network.addEdge(B, E,3);
 
-        network.addEdge(C, D,1);
-        network.addEdge(D, G,1);
+        network.addEdge(D, C,11);
+
+        network.addEdge(E, C,1);*/
+
+        network.addEdge(A, B,3);
+        network.addEdge(A, F,3);
+
+        network.addEdge(B, C,2);
+        network.addEdge(B, D);
+        network.addEdge(F, G,2);
+
+        network.addEdge(C, D,4);
+        network.addEdge(D, G,10);
 
         network.addEdge(G, H,1);
-        network.addEdge(C, E,1);
-        network.addEdge(H, E,1);
+        network.addEdge(C, E,2);
+        network.addEdge(H, E,2);
 
         Network<Vertex> mst = network.mstNetwork();
 
