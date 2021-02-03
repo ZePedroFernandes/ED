@@ -313,4 +313,39 @@ public class NetworkTest {
         String expected = "G->H->E->C->B->D";
         assertEquals(expected,actual);
     }
+
+    @Test
+    public void test_ShortestPathWeight_1(){
+        setDefaultNetwork3();
+        double actual = network.shortestPathWeight(A,E);
+        assertEquals(7.0,actual);
+    }
+
+    @Test
+    public void test_ShortestPathWeight_2(){
+        setDefaultNetwork3();
+        double actual = network.shortestPathWeight(B,C);
+        assertEquals(2,actual);
+    }
+
+    @Test
+    public void test_ShortestPathWeight_3(){
+        setDefaultNetwork3();
+        double actual = network.shortestPathWeight(C,D);
+        assertEquals(3,actual);
+    }
+
+    @Test
+    public void test_ShortestPathWeight_4(){
+        setDefaultNetwork3();
+        double actual = network.shortestPathWeight(A,A);
+        assertEquals(0,actual);
+    }
+
+    @Test
+    public void test_ShortestPathWeight_5(){
+        setDefaultNetwork3();
+        double actual = network.shortestPathWeight(D,G);
+        assertEquals(8,actual);
+    }
 }
