@@ -296,6 +296,7 @@ public class Network<T> extends Graph<T> implements NetworkADT<T> {
         }
 
         do {
+
             try {
                 weight = (traversalMinHeap.removeMin());
             } catch (EmptyCollectionException ignored) {

@@ -1,5 +1,6 @@
 package lists;
 
+import exceptions.EmptyCollectionException;
 import exceptions.InvalidElementException;
 import exceptions.EmptyException;
 
@@ -73,11 +74,11 @@ public class LinkedList<T> {
      * the {@link LinkedList list} nothing happens to the list.
      *
      * @param element the element to be removed.
-     * @throws EmptyException if the {@link LinkedList list} is empty.
+     * @throws EmptyCollectionException if the {@link LinkedList list} is empty.
      */
-    public void remove(T element) throws EmptyException {
+    public void remove(T element) throws EmptyCollectionException {
         if (this.count == 0) {
-            throw new EmptyException("The list is empty");
+            throw new EmptyCollectionException("The list is empty");
         }
 
         if (this.count == 1 && this.head.getElement().equals(element)) {// Removing the one element in the list
@@ -145,7 +146,7 @@ public class LinkedList<T> {
         if (current == this.tail) {
             current.setNext(previous);
         } else {
-            LinkedNode tmp = current.getNext();
+            LinkedNode<T> tmp = current.getNext();
             current.setNext(previous);
             this.head = tmp;
             invert(tmp, current);
@@ -171,15 +172,15 @@ public class LinkedList<T> {
         if (this.count == 0) {
             return null;
         }
-        String s = "";
-        LinkedNode current = this.head;
+        StringBuilder s = new StringBuilder();
+        LinkedNode<T> current = this.head;
 
         while (current != null) {
-            s += current.toString();
+            s.append(current.toString());
             current = current.getNext();
         }
 
-        return s;
+        return s.toString();
     }
 
     /**

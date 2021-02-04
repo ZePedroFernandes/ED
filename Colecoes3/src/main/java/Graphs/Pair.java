@@ -4,18 +4,24 @@ package graphs;
  *
  * @author Nome : José Pedro Fernandes Número: 8190239 Turma: 1
  */
-class Pair {
+class Pair implements Comparable<Pair>{
 
     protected int vertex;
 
-    protected double weight;
+    protected int weight;
 
-    public Pair(int vertex, double weight) {
+    public Pair(int vertex, int weight) {
         this.vertex = vertex;
         this.weight = weight;
     }
 
     public Pair() {
+
     }
-    
+
+
+    @Override
+    public int compareTo(Pair o) {
+        return this.weight - o.weight;
+    }
 }

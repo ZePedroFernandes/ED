@@ -4,6 +4,7 @@ import ADTs.GraphADT;
 
 import java.util.Iterator;
 
+import exceptions.EmptyCollectionException;
 import exceptions.EmptyException;
 import lists.LinkedList;
 import lists.OrderedLists.ArrayList;
@@ -101,7 +102,7 @@ public class GraphList<T> implements GraphADT<T> {
             try {
                 this.adjList[vertex1].remove(vertex2);
                 this.adjList[vertex2].remove(vertex1);
-            } catch (EmptyException ignored) {
+            } catch (EmptyCollectionException ignored) {
             }
         }
     }
