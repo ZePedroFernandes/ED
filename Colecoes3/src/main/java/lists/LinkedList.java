@@ -162,6 +162,10 @@ public class LinkedList<T> {
         return this.count;
     }
 
+    public boolean isEmpty(){
+        return this.count == 0;
+    }
+
     /**
      * Returns a string representation of the {@link LinkedList}.
      *

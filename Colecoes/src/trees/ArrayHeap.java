@@ -100,8 +100,8 @@ public class ArrayHeap<T> extends ArrayBinaryTree<T> implements HeapADT<T> {
      * Finds the smaller child for a element, returns -1 if the element has no
      * childs, otherwise returns the index of the smaller child.
      *
-     * @param index the index at wich childs will be compared.
-     * @return the index of the smalles child.
+     * @param index the index at which children will be compared.
+     * @return the index of the smallest child.
      */
     private int findSmallerChild(int index) {
         int smallerChild;

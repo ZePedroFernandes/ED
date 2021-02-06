@@ -23,7 +23,7 @@ public class LinkedHeap<T> extends LinkedBinaryTree<T> implements HeapADT<T> {
     @Override
     public void addElement(T obj) {
         HeapNode<T> node = new HeapNode<>(obj);
-        if (this.root == null) {
+        if (this.root.element == null) {
             this.root = node;
         } else {
             HeapNode<T> next_parent = getNextParentAdd();

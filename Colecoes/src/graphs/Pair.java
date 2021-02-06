@@ -4,35 +4,24 @@ package graphs;
  *
  * @author Nome : José Pedro Fernandes Número: 8190239 Turma: 1
  */
-class Pair<T1, T2> {
+class Pair implements Comparable<Pair>{
 
-    protected T1 start;
+    protected int vertex;
 
-    protected T2 end;
+    protected int weight;
 
-    public Pair(T1 start, T2 end) {
-        this.start = start;
-        this.end = end;
+    public Pair(int vertex, int weight) {
+        this.vertex = vertex;
+        this.weight = weight;
     }
 
     public Pair() {
+
     }
 
-    public T1 getStart() {
-        return start;
-    }
 
-    public void setStart(T1 start) {
-        this.start = start;
+    @Override
+    public int compareTo(Pair o) {
+        return this.weight - o.weight;
     }
-
-    public T2 getEnd() {
-        return end;
-    }
-
-    public void setEnd(T2 end) {
-        this.end = end;
-    }
-
-    
 }

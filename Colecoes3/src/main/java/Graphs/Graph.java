@@ -29,7 +29,7 @@ public class Graph<T> implements GraphADT<T> {
     }
 
     @SuppressWarnings("unchecked")
-    private void expandCapacity() {
+    protected void expandCapacity() {
         T[] expandedVertices = (T[]) new Object[vertices.length * 2];
         boolean[][] expandedMatrix = new boolean[vertices.length * 2][vertices.length * 2];
 
@@ -56,11 +56,11 @@ public class Graph<T> implements GraphADT<T> {
         numVertices++;
     }
 
-    private boolean indexIsValid(int index) {
+    protected boolean indexIsValid(int index) {
         return ((index < numVertices) && (index >= 0));
     }
 
-    private int getIndex(T targetVertex) {
+    protected int getIndex(T targetVertex) {
         for (int i = 0; i < numVertices; i++) {
             if (this.vertices[i].equals(targetVertex)) {
                 return i;
@@ -345,7 +345,7 @@ public class Graph<T> implements GraphADT<T> {
         result.append("\n\n");
 
         for (int i = 0; i < numVertices; i++) {
-            result.append("  ").append(i).append("\t\t");
+            result.append(" ").append(i).append("\t\t");
 
             for (int j = 0; j < numVertices; j++) {
                 if (adjMatrix[i][j]) {

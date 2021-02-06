@@ -155,4 +155,8 @@ public class LinkedBinaryTree<T> implements BinaryTreeADT<T> {
         return results.iterator();
     }
 
+    public void removeAllElements(){
+        this.root = new BinaryTreeNode<>();
+        count = 0;
+    }
 }
