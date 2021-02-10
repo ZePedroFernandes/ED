@@ -248,11 +248,19 @@ public class Network<T> extends Graph<T> implements NetworkADT<T> {
      */
     @Override
     public Iterator<T> iteratorShortestPath(T startVertex, T targetVertex) {
-        Iterator<Integer> indices = iteratorShortestPathIndices(getIndex(startVertex), getIndex(targetVertex));
+        return iteratorShortestPath(getIndex(startVertex), getIndex(targetVertex));
+    }
+
+    public Iterator<T> iteratorShortestPath(int startIndex, int targetIndex) {
         ArrayUnorderedList<T> resultList = new ArrayUnorderedList<>();
-        while (indices.hasNext()) {
-            resultList.addToRear(vertices[indices.next()]);
+
+        if (indexIsValid(startIndex) && indexIsValid(targetIndex)) {
+            Iterator<Integer> indices = iteratorShortestPathIndices(startIndex,targetIndex);
+            while(indices.hasNext()){
+                resultList.addToRear(vertices[indices.next()]);
+            }
         }
+
         return resultList.iterator();
     }
 

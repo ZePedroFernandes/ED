@@ -70,52 +70,52 @@ public class LinkedListSearchingAndSorting<T> {
         return previous;
     }
 
-    private static <T extends Comparable<? super T>>
-            void swapNodes(LinkedList<T> list, LinkedNode<T> first, LinkedNode<T> second) {
-        if (first == second) {
-            return;
-        }
-
-        if (second == list.head) {
-            LinkedNode<T> tmp = second;
-            second = first;
-            first = tmp;
-        }
-
-        if (second == list.tail) {
-            list.tail = first;
-        }
-
-        LinkedNode<T> prevFirst = list.head;
-        LinkedNode<T> prevSecond = list.head;
-        LinkedNode<T> tmp;
-
-        while (prevSecond.getNext() != second) {
-            prevSecond = prevSecond.getNext();
-        }
-
-        if (first == list.head) {
-            tmp = second.getNext();
-            prevSecond.setNext(first);
-            list.head = second;
-            second.setNext(first.getNext());
-            first.setNext(tmp);
-
-        } else {
-
-            while (prevFirst.getNext() != first) {
-                prevFirst = prevFirst.getNext();
-            }
-
-            tmp = prevSecond.getNext();//
-            prevSecond.setNext(prevFirst.getNext());
-            prevFirst.setNext(tmp);
-
-            tmp = prevSecond.getNext().getNext();
-            prevSecond.getNext().setNext(prevFirst.getNext().getNext());
-            prevFirst.getNext().setNext(tmp);
-        }
-    }
+//    private static <T extends Comparable<? super T>>
+//            void swapNodes(LinkedList<T> list, LinkedNode<T> first, LinkedNode<T> second) {
+//        if (first == second) {
+//            return;
+//        }
+//
+//        if (second == list.head) {
+//            LinkedNode<T> tmp = second;
+//            second = first;
+//            first = tmp;
+//        }
+//
+//        if (second == list.tail) {
+//            list.tail = first;
+//        }
+//
+//        LinkedNode<T> prevFirst = list.head;
+//        LinkedNode<T> prevSecond = list.head;
+//        LinkedNode<T> tmp;
+//
+//        while (prevSecond.getNext() != second) {
+//            prevSecond = prevSecond.getNext();
+//        }
+//
+//        if (first == list.head) {
+//            tmp = second.getNext();
+//            prevSecond.setNext(first);
+//            list.head = second;
+//            second.setNext(first.getNext());
+//            first.setNext(tmp);
+//
+//        } else {
+//
+//            while (prevFirst.getNext() != first) {
+//                prevFirst = prevFirst.getNext();
+//            }
+//
+//            tmp = prevSecond.getNext();//
+//            prevSecond.setNext(prevFirst.getNext());
+//            prevFirst.setNext(tmp);
+//
+//            tmp = prevSecond.getNext().getNext();
+//            prevSecond.getNext().setNext(prevFirst.getNext().getNext());
+//            prevFirst.getNext().setNext(tmp);
+//        }
+//    }
 
     public static <T extends Comparable<? super T>> void insertionSort(LinkedList<T> list) {
 
@@ -194,17 +194,17 @@ public class LinkedListSearchingAndSorting<T> {
         }
     }
 
-    private static <T> LinkedNode<T> findMiddle(LinkedNode<T> start, LinkedNode<T> end) {
-        LinkedNode<T> slow = start;
-        LinkedNode<T> fast = start;
-
-        while (fast.getNext().getNext() != end && fast.getNext() != end) {
-            slow = slow.getNext();
-            fast = fast.getNext().getNext();
-        }
-
-        return slow;
-    }
+//    private static <T> LinkedNode<T> findMiddle(LinkedNode<T> start, LinkedNode<T> end) {
+//        LinkedNode<T> slow = start;
+//        LinkedNode<T> fast = start;
+//
+//        while (fast.getNext().getNext() != end && fast.getNext() != end) {
+//            slow = slow.getNext();
+//            fast = fast.getNext().getNext();
+//        }
+//
+//        return slow;
+//    }
 
 //    public static <T extends Comparable<? super T>>
 //            void mergeSort(LinkedList<T> list ,LinkedNode<T> start, LinkedNode<T> end) {

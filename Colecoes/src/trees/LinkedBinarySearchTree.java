@@ -54,7 +54,7 @@ public class LinkedBinarySearchTree<T> extends LinkedBinaryTree<T> implements Bi
                     } else {
                         current = current.left;
                     }
-                } else {
+                } else { // comparableElement.compareTo(current.element) > 0
                     if (current.right == null) {
                         current.right = temp;
                         added = true;

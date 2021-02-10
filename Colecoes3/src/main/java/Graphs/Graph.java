@@ -206,17 +206,17 @@ public class Graph<T> implements GraphADT<T> {
     }
 
     public Iterator<Integer> iteratorShortestPathIndices(int startIndex, int targetIndex) {
-        int index = startIndex;
-        int[] predecessor = new int[numVertices];
-        LinkedQueue<Integer> traversalQueue = new LinkedQueue<>();
         ArrayUnorderedList<Integer> resultList = new ArrayUnorderedList<>();
 
         if (!indexIsValid(startIndex) || !indexIsValid(targetIndex)
                 || (startIndex == targetIndex)) {
             return resultList.iterator();
         }
-
+        int index = startIndex;
+        int[] predecessor = new int[numVertices];
+        LinkedQueue<Integer> traversalQueue = new LinkedQueue<>();
         boolean[] visited = new boolean[numVertices];
+
         for (int i = 0; i < numVertices; i++) {
             visited[i] = false;
         }

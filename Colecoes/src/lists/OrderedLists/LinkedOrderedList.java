@@ -32,6 +32,7 @@ public class LinkedOrderedList<T> extends LinkedList<T> {
     }
 
     @SuppressWarnings("unchecked")
+    @Override
     public void add(T element) throws InvalidElementException {
 
         if (element == null) {
